@@ -1,3 +1,7 @@
+body {
+  font-family: "Airbnb Cereal";
+}
+
 .payment-container {
   display: flex;
   justify-content: space-between;
@@ -9,124 +13,66 @@
     max-width: 550px;
   }
 
-.payment-summary {
-  width: 350px;
-  background: #fff;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid #e4e4e4;
-  font-family: 'Arial', sans-serif;
-  font-size: 14px;
-  color: #222;
+  .payment-summary {
+    width: 350px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #e4e4e4;
+    color: #222;
 
-  .stay-header {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-
-    .stay-img {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .stay-info {
-      h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 4px 0;
-      }
-
-      .rating-line {
-        font-size: 14px;
-        color: #717171;
-        margin-bottom: 4px;
-      }
-
-      p {
-        font-size: 13px;
-        margin: 0;
-        color: #484848;
-      }
-
-      a {
-        font-size: 13px;
-        color: #222;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .summary-section {
-    border-top: 1px solid #ebebeb;
-    padding-top: 16px;
-    margin-top: 16px;
-
-    h4 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 14px;
-      margin: 4px 0;
-    }
-
-    .btn-change-summary {
-      margin-top: 8px;
-      background-color: #f7f7f7;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 14px;
-      color: #222;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #eee;
-      }
-    }
-
-    .price-line {
+    .stay-header {
       display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      margin: 6px 0;
+      gap: 12px;
+      margin-bottom: 24px;
 
-      &.total {
-        font-weight: 600;
-        border-top: 1px solid #ccc;
-        padding-top: 12px;
-        margin-top: 12px;
+      .stay-img {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
 
-        .currency {
-          font-weight: normal;
+      .stay-info {
+        h3 {
+          font-weight: 700;
+          margin: 0 0 4px 0;
+        }
+
+        .rating-line {
+          font-size: 0.8em;
+          color: #717171;
+          margin-bottom: 4px;
+        }
+
+        p {
+          font-size: 0.9rem;
+          margin: 0;
+          color: #484848;
+        }
+
+        a {
           font-size: 13px;
+          color: #222;
+          text-decoration: underline;
         }
       }
     }
 
-    .price-breakdown-link {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 13px;
-      text-decoration: underline;
-      color: #222;
-      cursor: pointer;
+    .summary-section {
+      border-top: 1px solid #ebebeb;
+      padding-top: 16px;
+      margin-top: 16px;
     }
   }
-}
-
 
   .btn-request {
     background-color: #ff385c;
+    height: 2.8em;
     color: white;
-    padding: 12px;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 13px;
+    font-size: 1em;
     margin-top: 16px;
     width: 100%;
     cursor: pointer;
@@ -139,9 +85,8 @@
     padding: 20px;
     max-width: 100%;
     height: 7em;
-    font-family: 'Arial', sans-serif;
 
-    .payment-method-card{
+    .payment-method-card {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -151,10 +96,10 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      font-weight: 500;
       margin-bottom: 16px;
     }
-    
+
     .change-btn-wrapper {
       display: flex;
       justify-content: flex-end;
@@ -165,7 +110,7 @@
         border: 1px solid #ddd;
         border-radius: 8px;
         padding: 6px 12px;
-        font-size: 14px;
+        font-weight: 700;
         color: #222;
         cursor: pointer;
         transition: background-color 0.2s ease;
@@ -176,7 +121,40 @@
       }
     }
   }
-  
+
+  .price-link {
+    text-decoration: underline;
+  }
+
+  .trip-details {
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .btn-change-summary {
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 14px;
+        color: #222;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+
+    .trip-info {
+      p {
+        font-size: 14px;
+        margin: 4px 0;
+      }
+    }
+  }
 }
 
 .message-to-host {
@@ -187,7 +165,7 @@
   margin-top: 24px;
 
   p {
-    font-size: 16px;
+    // font-weight: 500;
     color: #484848;
     margin-bottom: 12px;
   }
@@ -197,7 +175,7 @@
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 14px;
+    font-weight: 700;
     resize: vertical;
     line-height: 1.4;
 
@@ -207,4 +185,14 @@
   }
 }
 
+.summary-section {
+  border-top: 1px solid #ebebeb;
+  padding-top: 16px;
+  margin-top: 16px;
 
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
