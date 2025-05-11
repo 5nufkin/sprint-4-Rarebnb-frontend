@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { loadStays, addStay, updateStay, removeStay, addStayMsg } from '../store/actions/Stay.actions'
+import { loadStays, addStay, updateStay, removeStay, addStayMsg } from '../store/actions/stay.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { StayService } from '../services/Stay/'
+import { stayService } from '../services/stay/'
 import { userService } from '../services/user'
 
 import { StayList } from '../cmps/StayList'
@@ -12,55 +12,55 @@ import { StayFilter } from '../cmps/StayFilter'
 
 export function StayIndex() {
 
-    const [ filterBy, setFilterBy ] = useState(StayService.getDefaultFilter())
-    const Stays = useSelector(storeState => storeState.StayModule.Stays)
+    const [ filterBy, setFilterBy ] = useState(stayService.getDefaultFilter())
+    const stays = useSelector(storeState => storeState.stayModule.stays)
 
     useEffect(() => {
         loadStays(filterBy)
     }, [filterBy])
 
-    async function onRemoveStay(StayId) {
+    async function onRemoveStay(stayId) {
         try {
-            await removeStay(StayId)
+            await removeStay(stayId)
             showSuccessMsg('Stay removed')            
         } catch (err) {
-            showErrorMsg('Cannot remove Stay')
+            showErrorMsg('Cannot remove stay')
         }
     }
 
     async function onAddStay() {
-        const Stay = StayService.getEmptyStay()
-        Stay.name = prompt('name?', 'Some name')
+        const stay = stayService.getEmptyStay()
+        stay.name = prompt('Name?', 'Some Name')
         try {
-            const savedStay = await addStay(Stay)
+            const savedStay = await addStay(stay)
             showSuccessMsg(`Stay added (id: ${savedStay._id})`)
         } catch (err) {
-            showErrorMsg('Cannot add Stay')
+            showErrorMsg('Cannot add stay')
         }        
     }
 
-    async function onUpdateStay(Stay) {
-        const price = +prompt('New price?', Stay.price) || 0
-        if(price === 0 || price === Stay.price) return
+    async function onUpdateStay(stay) {
+        const price = +prompt('New price?', stay.price) || 0
+        if(price === 0 || price === stay.price) return
 
-        const StayToSave = { ...Stay, price: price }
+        const stayToSave = { ...stay, price }
         try {
-            const savedStay = await updateStay(StayToSave)
+            const savedStay = await updateStay(stayToSave)
             showSuccessMsg(`Stay updated, new price: ${savedStay.price}`)
         } catch (err) {
-            showErrorMsg('Cannot update Stay')
+            showErrorMsg('Cannot update stay')
         }        
     }
 
     return (
-        <main className="Stay-index">
+        <main className="stay-index">
             <header>
                 <h2>Stays</h2>
                 {userService.getLoggedinUser() && <button onClick={onAddStay}>Add a Stay</button>}
             </header>
             <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
             <StayList 
-                Stays={Stays}
+                stays={stays}
                 onRemoveStay={onRemoveStay} 
                 onUpdateStay={onUpdateStay}/>
         </main>

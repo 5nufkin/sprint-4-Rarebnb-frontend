@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 
-export function StayPreview({ Stay }) {
+export function StayPreview({ stay }) {
     return <article className="preview">
         <header>
-            <Link to={`/Stay/${Stay._id}`}>{Stay.vendor}</Link>
+            <Link to={`/stay/${stay._id}`}>{stay.name}</Link>
         </header>
 
-        <p>Speed: <span>{Stay.speed.toLocaleString()} Km/h</span></p>
-        {Stay.owner && <p>Owner: <span>{Stay.owner.fullname}</span></p>}
+        <p>Price: <span>{stay.price.toLocaleString()} Km/h</span></p>
+        {stay.owner && <p>Owner: <span>{stay.owner.fullname}</span></p>}
         
     </article>
 }

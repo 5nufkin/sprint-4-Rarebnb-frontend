@@ -4,39 +4,39 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadStay, addStayMsg } from '../store/actions/Stay.actions'
+import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 
 
 export function StayDetails() {
 
-  const {StayId} = useParams()
-  const Stay = useSelector(storeState => storeState.StayModule.Stay)
+  const {stayId} = useParams()
+  const stay = useSelector(storeState => storeState.stayModule.stay)
 
   useEffect(() => {
-    loadStay(StayId)
-  }, [StayId])
+    loadStay(stayId)
+  }, [stayId])
 
-  async function onAddStayMsg(StayId) {
+  async function onAddStayMsg(stayId) {
     try {
-        await addStayMsg(StayId, 'bla bla ' + parseInt(Math.random()*10))
+        await addStayMsg(stayId, 'bla bla ' + parseInt(Math.random()*10))
         showSuccessMsg(`Stay msg added`)
     } catch (err) {
-        showErrorMsg('Cannot add Stay msg')
+        showErrorMsg('Cannot add stay msg')
     }        
 
 }
 
   return (
-    <section className="Stay-details">
-      <Link to="/Stay">Back to list</Link>
+    <section className="stay-details">
+      <Link to="/stay">Back to list</Link>
       <h1>Stay Details</h1>
-      {Stay && <div>
-        <h3>{Stay.name}</h3>
-        <h4>{Stay.price} KMH</h4>
-        <pre> {JSON.stringify(Stay, null, 2)} </pre>
+      {stay && <div>
+        <h3>{stay.name}</h3>
+        <h4>{stay.price} KMH</h4>
+        <pre> {JSON.stringify(stay, null, 2)} </pre>
       </div>
       }
-      <button onClick={() => { onAddStayMsg(Stay._id) }}>Add Stay msg</button>
+      <button onClick={() => { onAddStayMsg(stay._id) }}>Add stay msg</button>
 
     </section>
   )
