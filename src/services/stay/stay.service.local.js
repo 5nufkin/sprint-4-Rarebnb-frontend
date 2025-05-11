@@ -1,4 +1,3 @@
-speed
 import { storageService } from '../async-storage.service'
 import { makeId } from '../util.service'
 import { userService } from '../user'
