@@ -1,4 +1,4 @@
-import { GlobeIcon } from "./Icons";
+import { GlobeIcon, PrivacyChoicesIcon } from "./Icons";
 
 export function AppFooter() {
   return (
@@ -12,7 +12,8 @@ export function AppFooter() {
         <span> · </span>
         <a href="#">Privacy</a>
         <span> · </span>
-        <a href="#">Your Privacy Choices</a>
+        <a href="#">Your Privacy Choices {<PrivacyChoicesIcon />
+        }</a>
       </div>
 
       <div className="footer-right">
