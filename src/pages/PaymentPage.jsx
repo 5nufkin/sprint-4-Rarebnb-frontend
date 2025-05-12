@@ -1,10 +1,10 @@
 export function PaymentPage() {
   return (
     <section className="payment-page">
-      <a className="back-to-detail">Request to book</a>
       <div className="payment-container">
         {/* ===== Left Side ===== */}
         <div className="payment-left">
+          <h1 className="back-to-detail">Request to book</h1>
           {/* Payment Method */}
           <section className="payment-method-box">
             <h3 className="section-title">Payment method</h3>
@@ -46,7 +46,7 @@ export function PaymentPage() {
           <section className="stay-summary">
             <div className="stay-header">
               <img
-                src="https://example.com/stay.jpg"
+                src="https://a0.muscache.com/im/pictures/65e59e50-cd82-45b6-959b-a310711fd7c7.jpg?im_w=960"
                 alt="Stay"
                 className="stay-img"
               />
@@ -91,8 +91,10 @@ export function PaymentPage() {
               <span>Airbnb service fee</span>
               <span>₪343.06</span>
             </div>
-            <div className="price-total summary-section ">
-              <span>Total ILS</span>
+            <div className="price-total summary-section">
+              <span>
+                Total <span className="currency">ILS</span>
+              </span>
               <span>₪2,773.06</span>
             </div>
           </section>
@@ -102,10 +104,13 @@ export function PaymentPage() {
             <a href="#" className="price-link">
               Price breakdown
             </a>
-            <span className="icon">💎</span>
-            <p>This is a rare find. Amir place is usually booked.</p>
           </div>
         </aside>
+      </div>
+      <div className="payment-summary-bottom">
+        <span className="icon">💎</span>
+        <p>This is a rare find.</p>
+        <p>Amir place is usually booked.</p>
       </div>
     </section>
   )

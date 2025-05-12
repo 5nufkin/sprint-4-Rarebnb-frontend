@@ -6,20 +6,40 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 32px;
-  gap: 40px;
+  gap: 80px;
+
+  .price-total {
+    display: flex;
+    justify-content: space-between;
+
+    .currency {
+      text-decoration: underline;
+    }
+  }
 
   .payment-left {
     flex: 1;
     max-width: 550px;
+
+    .back-to-detail {
+      font-size: 32px;
+    }
+    
+    
   }
 
   .payment-summary {
     width: 350px;
     background: #fff;
     padding: 24px;
-    border-radius: 16px;
+    border-radius: 24px;
     border: 1px solid #e4e4e4;
     color: #222;
+
+    .payment-summary-bottom {
+      display: flex;
+      flex-direction: column;
+    }
 
     .stay-header {
       display: flex;
@@ -41,14 +61,14 @@ body {
 
         .rating-line {
           font-size: 0.8em;
-          color: #717171;
+          color: #222;
           margin-bottom: 4px;
         }
 
         p {
           font-size: 0.9rem;
           margin: 0;
-          color: #484848;
+          color: #222;
         }
 
         a {
@@ -71,7 +91,7 @@ body {
     height: 2.8em;
     color: white;
     border: none;
-    border-radius: 13px;
+    border-radius: 8px;
     font-size: 1em;
     margin-top: 16px;
     width: 100%;
@@ -81,7 +101,7 @@ body {
   .payment-method-box {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 12px;
+    border-radius: 24px;
     padding: 20px;
     max-width: 100%;
     height: 7em;
@@ -133,18 +153,16 @@ body {
       align-items: center;
       margin-bottom: 8px;
 
-      .btn-change-summary {
+      .btn-change {
+        display: flex;
         background-color: #f7f7f7;
         border: 1px solid #ddd;
         border-radius: 8px;
         padding: 6px 12px;
-        font-size: 14px;
+        font-weight: 700;
         color: #222;
         cursor: pointer;
-
-        &:hover {
-          background-color: #eee;
-        }
+        transition: background-color 0.2s ease;
       }
     }
 
@@ -159,8 +177,9 @@ body {
 
 .message-to-host {
   background-color: #fff;
+  height: 15em;
   border: 1px solid #ddd;
-  border-radius: 12px;
+  border-radius: 24px;
   padding: 20px;
   margin-top: 24px;
 
