@@ -1,10 +1,78 @@
-.preview {
-    a {
-        color: $clr4;
-        padding: 0;
-    }    
-	p {
-		margin-block: 0 0.2rem;
-        font-size: .85em;
-	}
+.stay-preview {
+
+  a {
+    .preview-img {
+      border-radius: 20px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      margin-block-end: rem(12px);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .preview-details {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      grid-template-areas:
+        "header rating"
+        "summary summary"
+        "bed-count bed-count"
+        "price .";
+      gap: rem(2px) rem(8px);
+      margin-inline: rem(4px);
+
+      >* {
+        line-height: rem(19px);
+      }
+
+      .bold {
+        font-weight: 600;
+        color: $clr-text-primary;
+      }
+
+      .regular {
+        color: $clr-text-secondary;
+      }
+
+      h2,
+      p {
+        font-size: rem(15px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+      }
+
+      .header {
+        grid-area: header;
+      }
+
+      .summary {
+        grid-area: summary;
+      }
+
+      .bed-count {
+        grid-area: bed-count;
+      }
+
+      .avgRating {
+        grid-area: rating;
+
+        svg {
+          margin-inline-end: rem(4px);
+        }
+      }
+
+      .price {
+        grid-area: price;
+        margin-block-start: rem(6px);
+      }
+    }
+  }
 }
