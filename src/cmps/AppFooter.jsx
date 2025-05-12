@@ -1,3 +1,5 @@
+import { GlobeIcon } from "./Icons";
+
 export function AppFooter() {
   return (
     <footer className="app-footer full">
@@ -14,8 +16,8 @@ export function AppFooter() {
       </div>
 
       <div className="footer-right">
-        <span>🌐 English (US)</span>
-        <span>₪ ILS</span>
+        <a className="language">{<GlobeIcon />}English (US)</a>
+        <a>₪ ILS</a>
         <a href="#"> Support & resources</a>
       </div>
     </footer>
