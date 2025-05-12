@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { stayService } from '../services/stay'
-import { GlobeIcon, HeartIcon, StarIcon } from './Icons'
+import { HeartIcon, StarIcon } from './Icons'
 
 export function StayPreview({ stay }) {
 
@@ -18,7 +18,6 @@ export function StayPreview({ stay }) {
           <p className='summary regular'>{stay.summary}</p>
           <p className='bed-count regular'>{stay.bedCount} bed{stay.bedCount === 1 ? '' : 's'}</p>
           <p className='price regular'><span className='bold'>${stay.price.toLocaleString()}</span> night</p>
-          <p><GlobeIcon /></p>
         </section>
       </Link>
     </article>

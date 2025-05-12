@@ -1,33 +1,56 @@
 .app-header {
-    display: flex;
-    min-height: 3.5rem;
+  display: flex;
+  min-height: 3.5rem;
 
-    background-color: $clr4;
-    
-    nav {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        gap: 1em;
-        
-        font-size: .8em;
+  background-color: $clr-bg;
 
-        .active {
-            color: $clr1;
-        }
+  .logo {
 
-        .logo {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-inline-end: 2em;
-        }
-
-        .login-link {
-            margin-inline-start: auto;
-        }
-
-        button {
-            margin-inline-end: 0;
-        }
+    .logo-icon,
+    .logo-full {
+      display: none;
     }
+
+    // // Show icon only on medium screens
+    @media (min-width: 550px) and (max-width: 743px) {
+      .logo-icon {
+        display: block;
+      }
+    }
+
+    // Show full logo on wide screens
+    @media (min-width: 744px) {
+      .logo-full {
+        display: block;
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1em;
+
+    font-size: .8em;
+
+    .active {
+      color: $clr1;
+    }
+
+    .logo {
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-inline-end: 2em;
+      color: $clr-brand-main;
+    }
+
+    .login-link {
+      margin-inline-start: auto;
+    }
+
+    button {
+      margin-inline-end: 0;
+    }
+  }
 }
