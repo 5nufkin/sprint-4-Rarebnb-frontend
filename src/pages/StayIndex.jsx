@@ -5,6 +5,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay/'
 import { StayList } from '../cmps/StayList'
 import { StayFilter } from '../cmps/StayFilter'
+import { StayFilterMinimized } from '../cmps/StayFilterMinimized'
 
 export function StayIndex() {
   const stays = useSelector(storeState => storeState.stayModule.stays)
@@ -49,8 +50,8 @@ export function StayIndex() {
 
   return (
     <main className="stay-index">
-      {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
-      
+      <StayFilterMinimized filterBy={filterBy} setFilterBy={setFilterBy} />
+
       <StayList stays={stays} onUpdateStay={onUpdateStay} />
     </main>
   )
