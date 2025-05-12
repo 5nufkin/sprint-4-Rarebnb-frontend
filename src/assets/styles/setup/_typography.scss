@@ -1,7 +1,7 @@
 // //*Airbnb Cereal
 @font-face {
   font-family: 'Airbnb Cereal';
-  src: url('../../fonts/AirbnbCerealLight.otf') format('opentype');
+  src: url('../../../../public/fonts/AirbnbCerealLight.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,15 @@
 
 @font-face {
   font-family: 'Airbnb Cereal';
-  src: url('../../fonts/AirbnbCerealMedium.otf') format('opentype');
+  src: url('../../../../public/fonts/AirbnbCerealBookk.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Airbnb Cereal';
+  src: url('../../../../public/fonts/AirbnbCerealMedium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -17,7 +25,15 @@
 
 @font-face {
   font-family: 'Airbnb Cereal';
-  src: url('../../fonts/AirbnbCerealBold.otf') format('opentype');
+  src: url('../../../../public/fonts/AirbnbCerealSemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Airbnb Cereal';
+  src: url('../../../../public/fonts/AirbnbCerealBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
