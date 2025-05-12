@@ -1,9 +1,11 @@
 // Colors
+$clr-white: #fff;
+
 $clr-bg: #fff;
 $clr-text-primary: #222;
 $clr-text-secondary: #6a6a6a;
-
-
+$clr-btn-like: #00000080;
+$clr-brand-main: #FF385C;
 
 
 
@@ -21,6 +23,9 @@ $gray3: #777;
 $gray4: #333;
 
 // Breakpoints
-$mobile-breakpoint: 460px;
-$narrow-breakpoint: 720px;
-$normal-breakpoint: 960px;
+// $mobile-breakpoint: 550px; //1 columns
+$mobile-breakpoint: 502px; //1 columns
+// $narrow-breakpoint: 744px; //2 columns
+$narrow-breakpoint: 696px; //2 columns
+$normal-breakpoint: 950px; //3 columns
+$wide-breakpoint: 1128px; //4 columns

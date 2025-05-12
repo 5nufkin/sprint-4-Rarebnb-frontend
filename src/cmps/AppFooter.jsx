@@ -1,16 +1,23 @@
-import { useSelector } from 'react-redux'
-
 export function AppFooter() {
-	const count = useSelector(storeState => storeState.userModule.count)
+  return (
+    <footer className="app-footer full">
+      <div className="footer-left">
+        <span>© 2025 Rarebnb, Inc.</span>
+        <span> · </span>
+        <a href="#">Terms</a>
+        <span> · </span>
+        <a href="#">Sitemap</a>
+        <span> · </span>
+        <a href="#">Privacy</a>
+        <span> · </span>
+        <a href="#">Your Privacy Choices</a>
+      </div>
 
-	return (
-		<footer className="app-footer full">
-			<p>Coffeerights &copy; 2024</p>
-			<p>Count: {count}</p>
-            
-            {import.meta.env.VITE_LOCAL ? 
-                <span className="local-services">Local Services</span> : 
-                <span className="remote-services">Remote Services</span>}
-		</footer>
-	)
+      <div className="footer-right">
+        <span>🌐 English (US)</span>
+        <span>₪ ILS</span>
+        <a href="#"> Support & resources</a>
+      </div>
+    </footer>
+  )
 }

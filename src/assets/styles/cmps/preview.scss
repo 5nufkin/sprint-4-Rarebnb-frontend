@@ -1,11 +1,11 @@
 .stay-preview {
+  position: relative;
 
   a {
     .preview-img {
       border-radius: 20px;
       width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
+      @include aspect-ratio(1.0526, 1);
       margin-block-end: rem(12px);
 
       img {
@@ -13,6 +13,24 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
+      }
+    }
+
+    .btn-like {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+
+      svg.icon-like {
+        color: $clr-btn-like;
+        stroke: $clr-white;
+      }
+
+      &:hover {
+        scale: 1.08;
       }
     }
 
@@ -63,6 +81,7 @@
 
       .avgRating {
         grid-area: rating;
+        transform: translate(-2px, -1px);
 
         svg {
           margin-inline-end: rem(4px);
@@ -72,6 +91,8 @@
       .price {
         grid-area: price;
         margin-block-start: rem(6px);
+        pointer-events: none;
+        cursor: text;
       }
     }
   }
