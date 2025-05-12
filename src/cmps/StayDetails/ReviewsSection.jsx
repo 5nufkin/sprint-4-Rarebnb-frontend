@@ -1,0 +1,1 @@
+export function ReviewsSection() { return <div className="p-4 border rounded-lg">Reviews</div> }

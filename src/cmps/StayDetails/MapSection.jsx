@@ -1,0 +1,1 @@
+export function MapSection() { return <div className="p-4 border rounded-lg">Map</div> }

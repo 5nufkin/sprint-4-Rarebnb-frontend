@@ -1,0 +1,1 @@
+export function HostCard() { return <div className="p-4 border rounded-lg">Host</div> }

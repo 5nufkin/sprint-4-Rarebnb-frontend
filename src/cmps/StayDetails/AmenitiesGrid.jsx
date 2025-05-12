@@ -1,0 +1,1 @@
+export function AmenitiesGrid() { return <div className="p-4 border rounded-lg">Amenities</div> }

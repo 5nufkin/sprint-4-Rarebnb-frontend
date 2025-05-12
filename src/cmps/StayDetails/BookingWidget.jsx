@@ -1,0 +1,1 @@
+export function BookingWidget() { return <div className="p-4 border rounded-lg">Booking Widget</div> }

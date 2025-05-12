@@ -1,43 +1,36 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
+// Store actions & helpers
+import { loadStay, addStayMsg } from '../store/actions/stay.actions.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 
 
 export function StayDetails() {
+  const { stayId } = useParams()
+  const dispatch = useDispatch()
 
-  const {stayId} = useParams()
-  const stay = useSelector(storeState => storeState.stayModule.stay)
+  const { stay, isLoading, error } = useSelector(state => state.stayModule)
 
   useEffect(() => {
-    loadStay(stayId)
-  }, [stayId])
+    dispatch(loadStay(stayId))
+  }, [stayId, dispatch])
 
-  async function onAddStayMsg(stayId) {
+  async function handleAddStayMsg() {
+    if (!stay?._id) return
     try {
-        await addStayMsg(stayId, 'bla bla ' + parseInt(Math.random()*10))
-        showSuccessMsg(`Stay msg added`)
+      await dispatch(addStayMsg(stay._id, `From UI – ${Date.now()}`))
+      showSuccessMsg('Message added!')
     } catch (err) {
-        showErrorMsg('Cannot add stay msg')
-    }        
-
-}
+      showErrorMsg('Cannot add stay message')
+    }
+  }
 
   return (
-    <section className="stay-details">
-      <Link to="/stay">Back to list</Link>
-      <h1>Stay Details</h1>
-      {stay && <div>
-        <h3>{stay.name}</h3>
-        <h4>{stay.price} KMH</h4>
-        <pre> {JSON.stringify(stay, null, 2)} </pre>
-      </div>
-      }
-      <button onClick={() => { onAddStayMsg(stay._id) }}>Add stay msg</button>
+    <main className="stay-details max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <Link to="/stay" className="text-sm text-gray-600 hover:underline">← Back to results</Link>
 
-    </section>
+    </main>
   )
 }
