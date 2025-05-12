@@ -1,29 +1,77 @@
-import { DiamondIcon } from "../Icons"
+import { DiamondIcon, StarIcon } from "../Icons"
+
+import { useParams } from "react-router"
+import { useEffect, useState } from "react"
+import { stayService } from "../../services/stay/stay.service.local"
+
+// const stay = {
+//   _id: "s101",
+//   name: "Ribeira Charming Duplex",
+//   price: 80.0,
+//   // imgUrls: "https://e26e9b.jpg",
+// }
+
+const order = {
+  totalPrice: 160,
+  startDate: "2025/10/15",
+  endDate: "2025/10/17",
+  guests: {
+    adults: 1,
+    kids: 2,
+  },
+  stay: {
+    _id: "h102",
+    name: "House Of Uncle My",
+    price: 80.0,
+  },
+}
 
 export function BookingSummary() {
+  const [stay, setStay] = useState(null)
+  const { stayId } = useParams()
+
+  const nights = 2
+  // const pricePerNight = stay.price.toFixed(2)
+  const total = order.totalPrice.toFixed(2)
+  const cleaningFee = 30
+  const serviceFee = total - nights * stay?.price - cleaningFee
+  console.log(stay)
+
+  useEffect(() => {
+    stayService
+      .getById(stayId)
+      .then((stay) => {
+        setStay(stay)
+      })
+      .catch((err) => {
+        console.error("Error fetching stay:", err)
+      })
+  }, [stayId])
+
+  if (!stay) return <div>Loading…</div>
+
   return (
     <div className="payment-right">
       <aside className="payment-summary">
         {/* Stay Summary */}
         <section className="stay-summary">
           <div className="stay-header">
-            <img
-              src="https://a0.muscache.com/im/pictures/65e59e50-cd82-45b6-959b-a310711fd7c7.jpg?im_w=960"
-              alt="Stay"
-              className="stay-img"
-            />
+            <img src={stay.imgUrls[0]} alt="Stay" className="stay-img" />
             <div className="stay-info">
-              <h3>Hayarkon/BenGurion Beach and Sea View Luxury Suite</h3>
+              <h3>{stay.name}</h3>
               <div className="rating-line">
-                <span>⭐ 4.88 (78)</span>
+                <span>
+                  <StarIcon />
+                  4.88 (78)
+                </span>
                 <span className="superhost"> • Superhost</span>
               </div>
-              <p className="cancel-policy">
-                Cancel before check-in on May 13 for a partial refund.{" "}
-                <a href="#">Full policy</a>
-              </p>
             </div>
           </div>
+          <p className="cancel-policy">
+            Cancel before check-in on Oct 15 for a partial refund.{" "}
+            <a href="#" className="full-policy">Full policy</a>
+          </p>
         </section>
 
         {/* Trip Details */}
@@ -33,8 +81,8 @@ export function BookingSummary() {
             <button className="btn-change">Change</button>
           </div>
           <div className="trip-info">
-            <p>May 13 – 18, 2025</p>
-            <p>1 adult</p>
+            <p>Oct 15 – 17, 2025</p>
+            <p>{order.guests.adults} adult</p>
           </div>
         </section>
 
@@ -42,22 +90,24 @@ export function BookingSummary() {
         <section className="price-breakdown summary-section">
           <h4>Price details</h4>
           <div className="price-line">
-            <span>₪450.00 x 5 nights</span>
-            <span>₪2,250.00</span>
+            <span>
+              ₪{stay.price} x {nights} nights
+            </span>
+            <span>₪{(nights * stay.price).toFixed(2)}</span>
           </div>
           <div className="price-line">
             <span>Cleaning fee</span>
-            <span>₪180.00</span>
+            <span>₪{cleaningFee}</span>
           </div>
           <div className="price-line">
             <span>Airbnb service fee</span>
-            <span>₪343.06</span>
+            <span>₪{serviceFee.toFixed(2)}</span>
           </div>
           <div className="price-total summary-section">
             <span>
               Total <span className="currency">ILS</span>
             </span>
-            <span>₪2,773.06</span>
+            <span>₪{total}</span>
           </div>
         </section>
 
@@ -71,12 +121,14 @@ export function BookingSummary() {
 
       {/* Rare Find Note */}
       <div className="payment-summary-bottom">
-        <DiamondIcon />
+        <div className="diamond-icon">
+          <DiamondIcon />
+        </div>
         <div className="diamond-text">
-          <p>
-            <strong>This is a rare find.</strong>
+          <p className="diamond-text-first-row">This is a rare find.</p>
+          <p className="diamond-text-second-row">
+            Amirs place is usually booked.
           </p>
-          <p>Amirs place is usually booked.</p>
         </div>
       </div>
     </div>
