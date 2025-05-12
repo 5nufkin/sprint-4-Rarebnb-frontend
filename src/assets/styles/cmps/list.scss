@@ -1,5 +1,5 @@
 .list {
-  --min-column-size: 250px;
+  --min-column-size: 231px;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
