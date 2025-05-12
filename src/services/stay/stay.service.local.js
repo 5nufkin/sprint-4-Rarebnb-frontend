@@ -327,27 +327,28 @@ const gStays = [
 window.cs = stayService
 _createStays()
 
-async function query(filterBy = { txt: '', minPrice: 0 }) {
+async function query(filterBy = { country: '' }) {
+  console.log('filterBy:',filterBy)
   var stays = await storageService.query(STORAGE_KEY)
-  const { txt, minPrice, sortField, sortDir } = filterBy
 
-  if (txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description))
+  if (filterBy.country) {
+    const regex = new RegExp(filterBy.country, 'i')
+    stays = stays.filter(stay => regex.test(stay.loc?.country) || regex.test(stay.loc?.city))
   }
-  if (minPrice) {
-    stays = stays.filter(stay => stay.price >= minPrice)
-  }
-  if (sortField === 'name') {
-    stays.sort((stay1, stay2) =>
-      stay1[sortField].localeCompare(stay2[sortField]) * +sortDir)
-  }
-  if (sortField === 'price') {
-    stays.sort((stay1, stay2) =>
-      (stay1[sortField] - stay2[sortField]) * +sortDir)
-  }
+  // if (minPrice) {
+  //   stays = stays.filter(stay => stay.price >= minPrice)
+  // }
+  // if (sortField === 'name') {
+  //   stays.sort((stay1, stay2) =>
+  //     stay1[sortField].localeCompare(stay2[sortField]) * +sortDir)
+  // }
+  // if (sortField === 'price') {
+  //   stays.sort((stay1, stay2) =>
+  //     (stay1[sortField] - stay2[sortField]) * +sortDir)
+  // }
 
   // stays = stays.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
+  console.log(stays)
   return stays
 }
 

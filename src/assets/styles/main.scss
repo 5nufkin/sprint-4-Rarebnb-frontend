@@ -13,8 +13,6 @@
 
 // pages
 @import "RootCmp";
-
-@import "pages/AboutUs";
 @import "pages/CarIndex";
 @import "pages/ReviewIndex";
 @import "pages/UserDetails";
@@ -35,5 +33,7 @@
 @import "cmps/ReviewEdit";
 @import "cmps/ReviewList";
 @import "cmps/ReviewPreview";
+@import "cmps/StayFilterExpanded";
+@import "cmps/Popover";
 // @import "cmps/CarList";
 // @import "cmps/CarPreview";
