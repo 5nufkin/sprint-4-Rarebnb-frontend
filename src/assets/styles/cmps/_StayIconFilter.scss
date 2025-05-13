@@ -52,34 +52,31 @@
     }
 
     .filter-fade-left,
-.filter-fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 60px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-  background: white;
-}
+    .filter-fade-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      background: white;
+    }
 
-.filter-fade-left {
-  left: 0;
-  mask-image: linear-gradient(to right, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to right, black 60%, transparent);
-}
+    .filter-fade-left {
+      left: 0;
+      mask-image: linear-gradient(to right, black 60%, transparent);
+      -webkit-mask-image: linear-gradient(to right, black 60%, transparent);
+    }
 
-.filter-fade-right {
-  right: 0;
-  mask-image: linear-gradient(to left, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
-  .filter-fade-left {
-  background: red;
-}
-
-}
-
-
+    .filter-fade-right {
+      right: 0;
+      mask-image: linear-gradient(to left, black 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
+      .filter-fade-left {
+        background: red;
+      }
+    }
   }
 
   .filter-item {
@@ -88,7 +85,7 @@
     align-items: center;
     min-width: 80px;
     cursor: pointer;
-    color: #222;
+    color: $gray5;
     flex: 0 0 auto;
     position: relative;
 
