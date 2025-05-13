@@ -10,21 +10,35 @@ function totalGuests(g) {
 
 export function BookingWidget({ stay }) {
 
-  const [checkIn, setCheckIn]   = useState(null)
+  const [checkIn, setCheckIn] = useState(null)
   const [checkOut, setCheckOut] = useState(null)
-  const [guests, setGuests]     = useState({ adults: 1, children: 0, infants: 0, pets: 0 })
+  const [guests, setGuests] = useState({ adults: 1, children: 0, infants: 0, pets: 0 })
 
-  const nights   = checkIn && checkOut ? Math.round((checkOut - checkIn) / 864e5) : 0
-  const subtotal = nights * stay.price
-  const fee      = Math.round(subtotal * 0.18)
-  const total    = subtotal + fee
+  const nights       = checkIn && checkOut ? Math.round((checkOut - checkIn) / 864e5) : 0
+  const subtotal     = nights * stay.price
+  const cleaningFee  = 30
+  const serviceFee   = Math.round(subtotal * 0.18)
+  const total        = subtotal + serviceFee + cleaningFee
+  const pricePerNight = stay.price
+
   const navigate = useNavigate()
 
-    function onReserve() {
-      navigate(`/stay/${stay._id}/payment`, {
-        state: { checkIn, checkOut, guests }
-      })
-    }
+  function onReserve() {
+    if (!nights) return
+
+    navigate(`/stay/${stay._id}/payment`, {
+      state: {
+        stayId: stay._id,
+        checkIn, checkOut,
+        guests,
+        nights,
+        pricePerNight,
+        cleaningFee,
+        serviceFee,
+        total,
+      }
+    })
+  }
 
   return (
     <div className="booking-widget">
@@ -70,7 +84,7 @@ export function BookingWidget({ stay }) {
       {nights > 0 && (
         <div className="breakdown">
           <div><a>₪{stay.price} × {nights} night{nights > 1 && 's'}</a><span>₪{subtotal.toLocaleString()}</span></div>
-          <div><a>Airbnb service fee</a><span>₪{fee.toLocaleString()}</span></div>
+          <div><a>Airbnb service fee</a><span>₪{serviceFee.toLocaleString()}</span></div>
           <hr />
           <div className="total"><span>Total</span><span>₪{total.toLocaleString()}</span></div>
         </div>
