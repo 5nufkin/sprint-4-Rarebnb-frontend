@@ -43,7 +43,7 @@ export function StayIconFilter() {
     {
       label: "OMG!",
       iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_8_abswds.png",
+        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078079/asset_7_gmzfon.png",
     },
     {
       label: "Amazing view",
