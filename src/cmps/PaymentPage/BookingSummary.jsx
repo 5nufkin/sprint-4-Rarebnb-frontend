@@ -10,10 +10,11 @@ export function BookingSummary() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const { state } = useLocation()
- const { checkIn, checkOut, guests, nights, pricePerNight, cleaningFee, serviceFee, total } = state
+  const { checkIn, checkOut, guests, nights, pricePerNight, cleaningFee, serviceFee, total } = state
 
   const checkInStr  = checkIn  ? checkIn.toLocaleDateString()  : '––'
   const checkOutStr = checkOut ? checkOut.toLocaleDateString() : '––'
+
   function totalGuests(g) {
     return g.adults + g.children + g.infants + g.pets
   }
