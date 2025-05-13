@@ -97,7 +97,6 @@
               border-radius: 0;
             }
 
-
             &--selected,
             &--in-selecting-range:hover {
               background-color: $clr-text-primary;
@@ -121,7 +120,7 @@
             }
 
             &--disabled {
-              color: #d3d3d3;
+              color: $gray3;
 
               &:hover {
                 background-color: $clr-white;

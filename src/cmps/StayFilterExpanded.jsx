@@ -106,7 +106,11 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       {
         (activeSection === 'check-in' || activeSection === 'check-out') && (
           <Popover style={{ left: '50%', transform: 'translateX(-50%)', width: '100%' }}>
-            <MyDatePicker onSetDates={handleDateChange} />
+            <MyDatePicker
+              onSetDates={handleDateChange}
+              setActiveSection={setActiveSection}
+              markedDates={[filterByToEdit.checkIn, filterByToEdit.checkOut]}
+            />
           </Popover>
         )
       }
