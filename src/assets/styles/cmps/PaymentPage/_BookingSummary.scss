@@ -1,0 +1,140 @@
+.payment-summary {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid #e4e4e4;
+  color: #222;
+  width: 28rem;
+
+  .stay-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    .stay-img {
+      width: 95px;
+      height: 95px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .stay-info {
+      h3 {
+        font-weight: 700;
+        margin: 0 0 4px 0;
+      }
+
+      .rating-line {
+        font-size: 0.8em;
+        color: #222;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin: 0;
+        color: #222;
+      }
+
+      a {
+        font-size: 13px;
+        color: #222;
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+  .summary-section {
+    border-top: 1px solid #ebebeb;
+    padding-top: 16px;
+    margin-top: 16px;
+
+    &:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
+}
+.section-header {
+  .trip-info{
+    color: blue;
+  }
+}
+
+.payment-summary-bottom {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #717171;
+
+  .diamond-text {
+    p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    p:first-of-type {
+      color: #222;
+    }
+  }
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+
+  .currency {
+    text-decoration: underline;
+  }
+}
+
+.price-link {
+  text-decoration: underline;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .btn-change {
+    display: flex;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 600;
+    color: #222;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
+.diamond-text {
+  .diamond-text-first-row {
+    font-size: 18px;
+  }
+}
+
+.stay-summary{
+  .full-policy {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+}

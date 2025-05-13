@@ -1,0 +1,44 @@
+// styles/_PaymentMethod.scss
+.payment-method-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  padding: 20px;
+  max-width: 100%;
+  height: 7em;
+
+  .payment-method-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .change-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-change {
+      display: flex;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-weight: 700;
+      color: #222;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}

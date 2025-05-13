@@ -1,10 +1,18 @@
 // Colors
+$clr-white: #fff;
+
 $clr-bg: #fff;
 $clr-text-primary: #222;
 $clr-text-secondary: #6a6a6a;
+$clr-text-tertiary: #383838;
+$clr-btn-like: #00000080;
+$clr-brand-main: #FF385C;
 
-
-
+$gray1: #ebebeb;
+$gray2: #ddd;
+$gray3: #777777;
+$gray4: #333;
+$gray5: #6A6A6A;
 
 
 $clr1: #ce2e6c;
@@ -15,12 +23,11 @@ $clr5: #dff0ea;
 $clr6: #fff;
 $clr7: #222;
 
-$gray1: #ddd;
-$gray2: #aaa;
-$gray3: #777;
-$gray4: #333;
 
 // Breakpoints
-$mobile-breakpoint: 460px;
-$narrow-breakpoint: 720px;
-$normal-breakpoint: 960px;
+// $mobile-breakpoint: 550px; //1 columns
+$mobile-breakpoint: 502px; //1 columns
+// $narrow-breakpoint: 744px; //2 columns
+$narrow-breakpoint: 696px; //2 columns
+$normal-breakpoint: 950px; //3 columns
+$wide-breakpoint: 1128px; //4 columns

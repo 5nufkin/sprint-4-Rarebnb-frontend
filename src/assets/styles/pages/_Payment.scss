@@ -1,198 +1,26 @@
-body {
-  font-family: "Airbnb Cereal";
-}
-
 .payment-container {
   display: flex;
-  justify-content: space-between;
-  padding: 32px;
-  gap: 40px;
+  flex-direction: row;
+  gap: 6.5rem;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
 
   .payment-left {
     flex: 1;
     max-width: 550px;
-  }
 
-  .payment-summary {
-    width: 350px;
-    background: #fff;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #e4e4e4;
-    color: #222;
-
-    .stay-header {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-
-      .stay-img {
-        width: 64px;
-        height: 64px;
-        border-radius: 8px;
-        object-fit: cover;
-      }
-
-      .stay-info {
-        h3 {
-          font-weight: 700;
-          margin: 0 0 4px 0;
-        }
-
-        .rating-line {
-          font-size: 0.8em;
-          color: #717171;
-          margin-bottom: 4px;
-        }
-
-        p {
-          font-size: 0.9rem;
-          margin: 0;
-          color: #484848;
-        }
-
-        a {
-          font-size: 13px;
-          color: #222;
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .summary-section {
-      border-top: 1px solid #ebebeb;
-      padding-top: 16px;
-      margin-top: 16px;
-    }
-  }
-
-  .btn-request {
-    background-color: #ff385c;
-    height: 2.8em;
-    color: white;
-    border: none;
-    border-radius: 13px;
-    font-size: 1em;
-    margin-top: 16px;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .payment-method-box {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 100%;
-    height: 7em;
-
-    .payment-method-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-display {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-
-    .change-btn-wrapper {
-      display: flex;
-      justify-content: flex-end;
-
-      .btn-change {
-        display: flex;
-        background-color: #f7f7f7;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 6px 12px;
-        font-weight: 700;
-        color: #222;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-          background-color: #eee;
-        }
-      }
-    }
-  }
-
-  .price-link {
-    text-decoration: underline;
-  }
-
-  .trip-details {
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-
-      .btn-change-summary {
-        background-color: #f7f7f7;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 6px 12px;
-        font-size: 14px;
-        color: #222;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #eee;
-        }
-      }
-    }
-
-    .trip-info {
-      p {
-        font-size: 14px;
-        margin: 4px 0;
-      }
-    }
   }
 }
-
-.message-to-host {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 24px;
-
-  p {
-    // font-weight: 500;
-    color: #484848;
-    margin-bottom: 12px;
-  }
-
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-weight: 700;
-    resize: vertical;
-    line-height: 1.4;
-
-    &::placeholder {
-      color: #888;
-    }
-  }
+.back-to-detail {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+  color: #222;
 }
 
-.summary-section {
-  border-top: 1px solid #ebebeb;
-  padding-top: 16px;
-  margin-top: 16px;
-
-  &:first-of-type {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+.btn-request {
+  font-size: 1.25rem;
+  height: 4rem;
 }
