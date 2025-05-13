@@ -51,19 +51,26 @@ export function StayDetails() {
       <div className="main-grid">
         <div className="left-col">
           <Highlights highlights={demoHighlights} />
+          <div className="section-divider" />
 
           <section><h2>About this space</h2><p>{stay.summary}</p></section>
 
           <SleepingRooms rooms={demoRooms} />
           <AmenitiesGrid amenities={stay.amenities} />
-          <ReviewsSection reviews={stay.reviews} />
+          <ReviewsSection stay={stay} />
           <LocationMap location={stay.loc} />
           <HostCard host={stay.host} />
+          <div className="section-divider" />
         </div>
 
         <aside className="booking-col">
-          <BookingWidget stay={stay} />
+          <div className="booking-wrapper">
+            <BookingWidget stay={stay} />
+          </div>
         </aside>
+
+
+
       </div>
     </main>
   )
