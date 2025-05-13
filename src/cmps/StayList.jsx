@@ -1,10 +1,6 @@
-import { userService } from '../services/user'
 import { StayPreview } from './StayPreview'
 
 export function StayList({ stays}) {
-
-  console.log(stays)
-
 
   return <section>
     <ul className="list">

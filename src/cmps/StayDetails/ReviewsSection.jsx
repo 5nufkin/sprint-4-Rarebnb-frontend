@@ -1,15 +1,9 @@
-// import { useEffect, useState } from "react"
-// import { useParams } from "react-router"
-import { stayService } from "../../services/stay/stay.service.local"
 import { StarIcon } from "../Icons"
 
 export function ReviewsSection({ stay }) {
-  console.log("Loaded stay:", stay)
-  console.log("Reviews:", stay.reviews)
-
   const avgRating = stay.reviews?.length
     ? stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
-      stay.reviews.length
+    stay.reviews.length
     : 0
 
   return (

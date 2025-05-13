@@ -3,7 +3,6 @@ import { useState } from "react"
 
 export function StayFilterMinimized({ filterBy, setFilterBy }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-  console.log(filterBy)
 
   function handleChange({ target }) {
     let { value, name: field, type } = target
@@ -14,8 +13,6 @@ export function StayFilterMinimized({ filterBy, setFilterBy }) {
     }
     setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
   }
-
-  // const {country,}
 
   return (
     <section className="filter-minimized">
