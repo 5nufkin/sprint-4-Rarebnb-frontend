@@ -13,7 +13,6 @@ export function GuestsSelector({ value, onChange }) {
   const btnRef = useRef(null)
   const popRef = useRef(null)
 
-  /* ---------- close handlers ---------- */
   useEffect(() => {
     function handle(e) {
       if (e.key === 'Escape') setOpen(false)
@@ -30,7 +29,6 @@ export function GuestsSelector({ value, onChange }) {
     }
   }, [])
 
-  /* ---------- inc / dec ---------- */
   function mutate(key, delta) {
     const g = GROUPS.find(gr => gr.key === key)
     const next = { ...value, [key]: Math.max(g.min, Math.min(value[key] + delta, g.max)) }
@@ -38,7 +36,6 @@ export function GuestsSelector({ value, onChange }) {
   }
   const total = Object.values(value).reduce((s, n) => s + n, 0)
 
-  /* ---------- popover ---------- */
   const pop = open && createPortal(
     <div
       ref={popRef}

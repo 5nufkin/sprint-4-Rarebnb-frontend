@@ -2,24 +2,30 @@ import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { GuestsSelector } from './GuestSelector.jsx'
+import { useNavigate } from 'react-router-dom'
 
 function totalGuests(g) {
   return g.adults + g.children + g.infants + g.pets
 }
 
 export function BookingWidget({ stay }) {
-  /* ---------- state ---------- */
+
   const [checkIn, setCheckIn]   = useState(null)
   const [checkOut, setCheckOut] = useState(null)
   const [guests, setGuests]     = useState({ adults: 1, children: 0, infants: 0, pets: 0 })
 
-  /* ---------- calculations ---------- */
   const nights   = checkIn && checkOut ? Math.round((checkOut - checkIn) / 864e5) : 0
   const subtotal = nights * stay.price
   const fee      = Math.round(subtotal * 0.18)
   const total    = subtotal + fee
+  const navigate = useNavigate()
 
-  /* ---------- render ---------- */
+    function onReserve() {
+      navigate(`/stay/${stay._id}/payment`, {
+        state: { checkIn, checkOut, guests }
+      })
+    }
+
   return (
     <div className="booking-widget">
       <div className="rare-banner"><span>💎</span>Rare find! This place is usually booked</div>
@@ -28,7 +34,6 @@ export function BookingWidget({ stay }) {
         <span className="price">₪{stay.price.toLocaleString()}</span> night
       </div>
 
-      {/* ---- date + guests table ---- */}
       <div className="field-grid">
         <div className="field-cell">
           <label>CHECK-IN</label>
@@ -59,7 +64,7 @@ export function BookingWidget({ stay }) {
         </div>
       </div>
 
-      <button className="reserve-btn" disabled={!nights}>Reserve</button>
+      <button className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</button>
       <p className="note">You won’t be charged yet</p>
 
       {nights > 0 && (

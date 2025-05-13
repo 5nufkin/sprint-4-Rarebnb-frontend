@@ -64,7 +64,6 @@ export function StayDetails() {
         </div>
 
         <aside className="booking-col">
-          {/* עטיפה עם position:relative */}
           <div className="booking-wrapper">
             <BookingWidget stay={stay} />
           </div>
