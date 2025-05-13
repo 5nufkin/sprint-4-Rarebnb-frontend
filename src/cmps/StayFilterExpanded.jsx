@@ -1,8 +1,8 @@
-import { act, useState } from "react"
-import { DatePicker } from "./DatePicker"
+import { useState } from "react"
 import { GuestPicker } from "./GuestPicker"
 import { Popover } from "./Popover"
 import { MagnifyingGlassIcon } from "./Icons"
+import { MyDatePicker } from "./MyDatePicker"
 
 
 export function StayFilterExpanded({ filterBy, setFilterBy }) {
@@ -105,8 +105,8 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
 
       {
         (activeSection === 'check-in' || activeSection === 'check-out') && (
-          <Popover>
-            <DatePicker onSetDates={handleDateChange} />
+          <Popover style={{ left: '50%', transform: 'translateX(-50%)', width: '100%' }}>
+            <MyDatePicker onSetDates={handleDateChange} />
           </Popover>
         )
       }
