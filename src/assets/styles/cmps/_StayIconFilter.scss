@@ -89,6 +89,13 @@
     flex: 0 0 auto;
     position: relative;
 
+    &:hover {
+      svg,
+      .icon-img {
+        filter: brightness(0); 
+      }
+    }
+
     .icon-img {
       width: 27px;
       height: 27px;
@@ -124,3 +131,4 @@
 .scroll-btn {
   z-index: 3;
 }
+

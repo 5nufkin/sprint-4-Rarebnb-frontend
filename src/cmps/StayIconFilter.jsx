@@ -1,5 +1,61 @@
 import { useEffect, useRef, useState } from "react"
-import { LeftIcon, RightIcon } from "../../src/cmps/Icons"
+import {
+  adaptedIcon,
+  aFramesIcon,
+  AmazingPoolIcon,
+  AmazingViewIcon,
+  BeachFrontIcon,
+  BeachIcon,
+  bedAndBreakfastIcon,
+  boatIcon,
+  cabinHomeIcon,
+  campingIcon,
+  castelIcon,
+  caveIcon,
+  chefKitchenIcon,
+  containersIcon,
+  countrySideIcon,
+  creativeSpaces,
+  dammusiIcon,
+  desertIcon,
+  designHomesIcon,
+  domesIcon,
+  earthHomesIcon,
+  farmsIcon,
+  golfIcon,
+  grandPianosIcon,
+  hanoksIcon,
+  historicalHomesIcon,
+  houseBoatsIcon,
+  islandsIcon,
+  lakeFrontIcon,
+  LeftIcon,
+  luxeIcon,
+  mansionIcon,
+  nationalParkIcon,
+  newHomeIcon,
+  offTheGridIcon,
+  OMGIcon,
+  playHomeIcon,
+  riadsIcon,
+  RightIcon,
+  roomIcon,
+  shepherdHuts,
+  skiingIcon,
+  skiInOutIcon,
+  snowIcon,
+  surfingIcon,
+  tinyHomesIcon,
+  topCitiesIcon,
+  topOfTheWorld,
+  towerIcon,
+  treehousesIcon,
+  trendingIcon,
+  tropicalIcon,
+  trulliIcon,
+  vineyardsIcon,
+  windmillsIcon,
+} from "../../src/cmps/Icons"
 
 export function StayIconFilter() {
   const scrollContainerRef = useRef(null)
@@ -22,233 +78,279 @@ export function StayIconFilter() {
   const filters = [
     {
       label: "Castels",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087385/asset_1_wvz8jp.png",
+      icon: castelIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087385/asset_1_wvz8jp.png",
     },
     {
       label: "Amazing pools",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_4_eratlb.png",
+      icon: AmazingPoolIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_4_eratlb.png",
     },
     {
       label: "Cabins",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087386/asset_3_mm4slz.png",
+      icon: cabinHomeIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087386/asset_3_mm4slz.png",
     },
     {
       label: "Luxe",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087393/asset_18_egbufh.png",
+      icon: luxeIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087393/asset_18_egbufh.png",
     },
     {
       label: "OMG!",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078079/asset_7_gmzfon.png",
+      icon: OMGIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078079/asset_7_gmzfon.png",
     },
     {
       label: "Amazing view",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087388/asset_6_jhuyck.png",
+      icon: AmazingViewIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087388/asset_6_jhuyck.png",
     },
     {
       label: "Beachfront",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087389/asset_8_fxggjr.png",
+      icon: BeachFrontIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087389/asset_8_fxggjr.png",
     },
     {
       label: "Mansions",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087389/asset_9_bmsvby.png",
+      icon: mansionIcon,
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087389/asset_9_bmsvby.png",
     },
     {
       label: "Countryside",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747121570/countryside_qtoqjd.png",
+      icon: countrySideIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747121570/countryside_qtoqjd.png",
     },
     {
       label: "Lakefront",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087390/asset_11_v2kpqd.png",
+      icon: lakeFrontIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087390/asset_11_v2kpqd.png",
     },
     {
       label: "Islands",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_12_qx02rk.png",
+      icon: islandsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_12_qx02rk.png",
     },
     {
       label: "Design",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_13_s0ylfv.png",
+      icon: designHomesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_13_s0ylfv.png",
     },
     {
       label: "Off-the-grid",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_14_gmtlld.png",
+      icon: offTheGridIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087391/asset_14_gmtlld.png",
     },
     {
       label: "Farms",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087392/asset_15_hmpfnz.png",
+      icon: farmsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087392/asset_15_hmpfnz.png",
     },
     {
       label: "Trending",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087392/asset_16_bspsni.png",
+      icon: trendingIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087392/asset_16_bspsni.png",
     },
     {
       label: "Treehouses",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_5_iorm5b.png",
+      icon: treehousesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_5_iorm5b.png",
     },
     {
       label: "Top cities",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_6_ykxppv.png",
+      icon: topCitiesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_6_ykxppv.png",
     },
     {
       label: "Tiny homes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_20_wegcaz.png",
+      icon: tinyHomesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_20_wegcaz.png",
     },
     {
       label: "Tropical",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_21_nsnakp.png",
+      icon: tropicalIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_21_nsnakp.png",
     },
     {
       label: "Top of the world",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_22_vqnbok.png",
+      icon: topOfTheWorld
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087395/asset_22_vqnbok.png",
     },
     {
       label: "Historical homes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087396/asset_23_hxc6q2.png",
+      icon: historicalHomesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087396/asset_23_hxc6q2.png",
     },
     {
       label: "Boats",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087396/asset_24_f04fcp.png",
+      icon: boatIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087396/asset_24_f04fcp.png",
     },
     {
       label: "Play",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087397/asset_25_idnujj.png",
+      icon: playHomeIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087397/asset_25_idnujj.png",
     },
     {
       label: "Earth homes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087397/asset_26_vhcp2e.png",
+      icon: earthHomesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087397/asset_26_vhcp2e.png",
     },
     {
       label: "Ski-in/out",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087398/asset_27_ddbyud.png",
+      icon: skiInOutIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087398/asset_27_ddbyud.png",
     },
     {
       label: "National parks",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087398/asset_28_rs9hyi.png",
+      icon: nationalParkIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087398/asset_28_rs9hyi.png",
     },
     {
       label: "Houseboats",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087399/asset_29_sn6gss.png",
+      icon: houseBoatsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087399/asset_29_sn6gss.png",
     },
     {
       label: "Desert",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087399/asset_30_ilnxez.png",
+      icon: desertIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087399/asset_30_ilnxez.png",
     },
     {
       label: "A-frames",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087400/asset_31_xbvkzp.png",
+      icon: aFramesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087400/asset_31_xbvkzp.png",
     },
     {
       label: "Chef's kitchens",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087400/asset_32_jl1vmp.png",
+      icon: chefKitchenIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087400/asset_32_jl1vmp.png",
     },
     {
       label: "Vineyards",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087401/asset_33_pvgn9n.png",
+      icon: vineyardsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087401/asset_33_pvgn9n.png",
     },
     {
       label: "Arctic",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_53_oq1fcf.png",
+      icon: snowIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_53_oq1fcf.png",
     },
     {
       label: "Rooms",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087402/asset_35_kaesg0.png",
+      icon: roomIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087402/asset_35_kaesg0.png",
     },
     {
       label: "Caves",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087402/asset_36_mil2ir.png",
+      icon: caveIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087402/asset_36_mil2ir.png",
     },
     {
       label: "Domes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087403/asset_37_t7pct3.png",
+      icon: domesIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087403/asset_37_t7pct3.png",
     },
     {
       label: "Camping",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087405/asset_38_x2bkjx.png",
+      icon: campingIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087405/asset_38_x2bkjx.png",
     },
     {
       label: "New",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087387/asset_5_yxg7gc.png",
+      icon: newHomeIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087387/asset_5_yxg7gc.png",
     },
     {
       label: "Bed & breakfasts",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087405/asset_39_sbbv7k.png",
+      icon: bedAndBreakfastIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087405/asset_39_sbbv7k.png",
     },
     {
       label: "Towers",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087406/asset_40_frsexx.png",
+      icon: towerIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087406/asset_40_frsexx.png",
     },
     {
       label: "Surfing",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087448/asset_41_cbsnb5.png",
+      icon: surfingIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087448/asset_41_cbsnb5.png",
     },
     {
       label: "Creative spaces",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_42_syujlj.png",
+      icon: creativeSpaces
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_42_syujlj.png",
     },
     {
       label: "Containers",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_43_rhrsju.png",
+      icon: containersIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_43_rhrsju.png",
     },
     {
       label: "Skiing",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_44_tci3po.png",
+      icon: skiingIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087471/asset_44_tci3po.png",
     },
     {
       label: "Windmills",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087472/asset_45_qqqok3.png",
+      icon: windmillsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087472/asset_45_qqqok3.png",
     },
     {
       label: "Dammusi",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087472/asset_46_pv0lnz.png",
+      icon: dammusiIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087472/asset_46_pv0lnz.png",
     },
     {
       label: "Riads",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087473/asset_47_tjfazg.png",
+      icon: riadsIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087473/asset_47_tjfazg.png",
     },
     {
       label: "Barns",
@@ -257,6 +359,7 @@ export function StayIconFilter() {
     },
     {
       label: "Ryokans",
+      // icon: 
       iconUrl:
         "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076727/asset_50_eic5th.png",
     },
@@ -267,8 +370,9 @@ export function StayIconFilter() {
     },
     {
       label: "Grand pianos",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087475/asset_51_tb4sov.png",
+      icon: grandPianosIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087475/asset_51_tb4sov.png",
     },
     {
       label: "Yurts",
@@ -277,18 +381,21 @@ export function StayIconFilter() {
     },
     {
       label: "Shepherd's huts",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087476/asset_53_aazica.png",
+      icon: shepherdHuts
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087476/asset_53_aazica.png",
     },
     {
       label: "Adapted",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_55_bkiemu.png",
+      icon: adaptedIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_55_bkiemu.png",
     },
     {
       label: "Hanoks",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078120/asset_55_qnrt7p.png",
+      icon: hanoksIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078120/asset_55_qnrt7p.png",
     },
     {
       label: "Campers",
@@ -297,8 +404,9 @@ export function StayIconFilter() {
     },
     {
       label: "Golfing",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078075/asset_4_d86ei1.png",
+      icon: golfIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078075/asset_4_d86ei1.png",
     },
     {
       label: "Minsus",
@@ -312,13 +420,15 @@ export function StayIconFilter() {
     },
     {
       label: "Trulli",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078135/asset_59_yc8wi5.png",
+      icon: trulliIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078135/asset_59_yc8wi5.png",
     },
     {
       label: "Beach",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087479/asset_60_hjkfvt.png",
+      icon: BeachIcon,
+
+      // "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087479/asset_60_hjkfvt.png",
     },
     {
       label: "Lake",
@@ -349,15 +459,20 @@ export function StayIconFilter() {
         <div className="filter-list" ref={scrollContainerRef}>
           {filters.map((filter, idx) => (
             <div className="filter-item" key={idx}>
-              <img
-                className="icon-img"
-                src={filter.iconUrl}
-                alt={filter.label}
-              />
+              {filter.icon ? (
+                <filter.icon className="icon-img" />
+              ) : (
+                <img
+                  className="icon-img"
+                  src={filter.iconUrl}
+                  alt={filter.label}
+                />
+              )}
               <span className="label">{filter.label}</span>
             </div>
           ))}
         </div>
+
         {canScrollLeft && <div className="filter-fade-left" />}
         {canScrollRight && <div className="filter-fade-right" />}
       </div>
