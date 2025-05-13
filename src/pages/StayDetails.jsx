@@ -18,9 +18,6 @@ export function StayDetails() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
 
-  console.log('stayId:', stayId)
-  console.log('stay:', stay)
-
   useEffect(() => {
     stayService.getById(stayId)
       .then((stay) => {
