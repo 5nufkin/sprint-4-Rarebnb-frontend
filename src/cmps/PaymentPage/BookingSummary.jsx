@@ -3,39 +3,22 @@ import { DiamondIcon, StarIcon } from "../Icons"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/stay.service.local"
+import { useLocation } from 'react-router-dom'
 
-// const stay = {
-//   _id: "s101",
-//   name: "Ribeira Charming Duplex",
-//   price: 80.0,
-//   // imgUrls: "https://e26e9b.jpg",
-// }
-
-const order = {
-  totalPrice: 160,
-  startDate: "2025/10/15",
-  endDate: "2025/10/17",
-  guests: {
-    adults: 1,
-    kids: 2,
-  },
-  stay: {
-    _id: "h102",
-    name: "House Of Uncle My",
-    price: 80.0,
-  },
-}
 
 export function BookingSummary() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
+  const { state } = useLocation()
+  const { checkIn, checkOut, guests, nights, pricePerNight, cleaningFee, serviceFee, total } = state
 
-  const nights = 2
-  // const pricePerNight = stay.price.toFixed(2)
-  const total = order.totalPrice.toFixed(2)
-  const cleaningFee = 30
-  const serviceFee = total - nights * stay?.price - cleaningFee
-  console.log(stay)
+  const checkInStr  = checkIn  ? checkIn.toLocaleDateString()  : '––'
+  const checkOutStr = checkOut ? checkOut.toLocaleDateString() : '––'
+
+  function totalGuests(g) {
+    return g.adults + g.children + g.infants + g.pets
+  }
+
 
   useEffect(() => {
     stayService
@@ -69,7 +52,7 @@ export function BookingSummary() {
             </div>
           </div>
           <p className="cancel-policy">
-            Cancel before check-in on Oct 15 for a partial refund.{" "}
+            Cancel before check-in on {checkInStr} for a partial refund.{" "}
             <a href="#" className="full-policy">Full policy</a>
           </p>
         </section>
@@ -81,8 +64,8 @@ export function BookingSummary() {
             <button className="btn-change">Change</button>
           </div>
           <div className="trip-info">
-            <p>Oct 15 – 17, 2025</p>
-            <p>{order.guests.adults} adult</p>
+            <p>{checkInStr} – {checkOutStr}</p>
+            <p>{totalGuests(guests)} guests</p>
           </div>
         </section>
 
@@ -91,7 +74,7 @@ export function BookingSummary() {
           <h4>Price details</h4>
           <div className="price-line">
             <span>
-              ₪{stay.price} x {nights} nights
+              ₪{pricePerNight} x {nights} nights
             </span>
             <span>₪{(nights * stay.price).toFixed(2)}</span>
           </div>
