@@ -1,5 +1,5 @@
 import { useRef } from "react"
-// import { LeftIcon, RightIcon } from "./Icons"
+import { LeftIcon, RightIcon } from "../../src/cmps/Icons"
 
 export function StayIconFilter() {
   const scrollContainerRef = useRef(null)
@@ -15,22 +15,21 @@ export function StayIconFilter() {
     {
       label: "Arctic",
       iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076719/asset_34_o7egrr.png",
+        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_53_oq1fcf.png",
     },
     {
       label: "New",
       iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076720/asset_39_g2mvv7.png",
+        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087387/asset_5_yxg7gc.png",
     },
     {
       label: "A-frames",
       iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076719/asset_31_m3rvi7.png",
+        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087400/asset_31_xbvkzp.png",
     },
     {
       label: "Domes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076720/asset_37_lbax4n.png",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087403/asset_37_t7pct3.png"
     },
     {
       label: "Lake",
@@ -39,13 +38,11 @@ export function StayIconFilter() {
     },
     {
       label: "Beach",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076708/asset_1_iglns6.png",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087479/asset_60_hjkfvt.png"
     },
     {
       label: "Hanoks",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076707/asset_56_xurb2f.png",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078120/asset_55_qnrt7p.png"
     },
     {
       label: "Adapted",
@@ -54,21 +51,18 @@ export function StayIconFilter() {
     },
     {
       label: "Surfing",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076721/asset_42_igctlh.png",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087448/asset_41_cbsnb5.png"
     },
     {
-      label: "Camping",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076720/asset_38_ny5pcu.png",
+      label: "Campers",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078120/asset_56_qjkmge.png"
     },
     {
-      label: "Cave",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076720/asset_36_tmbusb.png",
+      label: "Caves",
+      iconUrl: "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087402/asset_36_mil2ir.png"
     },
     {
-      label: "Tower",
+      label: "Towers",
       iconUrl:
         "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076721/asset_41_ruqbxs.png",
     },
@@ -292,7 +286,7 @@ export function StayIconFilter() {
   return (
     <section className="filter-carousel">
       <button className="scroll-btn left" onClick={onScrollLeft}>
-        {/* <LeftIcon /> */}
+        <LeftIcon />
       </button>
 
       <div className="filter-list" ref={scrollContainerRef}>
@@ -305,7 +299,7 @@ export function StayIconFilter() {
       </div>
 
       <button className="scroll-btn right" onClick={onScrollRight}>
-        {/* <RightIcon /> */}
+        <RightIcon />
       </button>
     </section>
   )
