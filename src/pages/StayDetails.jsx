@@ -56,7 +56,7 @@ export function StayDetails() {
 
           <SleepingRooms rooms={demoRooms} />
           <AmenitiesGrid amenities={stay.amenities} />
-          <ReviewsSection reviews={stay.reviews} />
+          <ReviewsSection stay={stay} />
           <LocationMap location={stay.loc} />
           <HostCard host={stay.host} />
         </div>
