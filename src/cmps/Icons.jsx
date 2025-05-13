@@ -28,11 +28,10 @@ export function AirbnbLogoIcon({ className }) {
   )
 }
 
-
 export function DiamondIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="presentation" aria-hidden="true" focusable="false"
-    style={{
+      style={{
         display: 'block',
         height: '3.2em',
         width: '3.2em',
@@ -50,25 +49,33 @@ export function DiamondIcon() {
   )
 }
 
-export function PrivacyChoicesIcon(){
+export function PrivacyChoicesIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="12" fill="none"><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" fill="#fff"/><path d="M14 1h7a5 5 0 010 10H11l3-10z" fill="#06F"/><path d="M4.5 6.5l1.774 1.774a.25.25 0 00.39-.049L9.5 3.5" stroke="#06F" /><path d="M16.5 3.5L19 6m0 0l2.5 2.5M19 6l2.5-2.5M19 6l-2.5 2.5" stroke="#fff" /><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" stroke="#06F"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="12" fill="none"><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" fill="#fff" /><path d="M14 1h7a5 5 0 010 10H11l3-10z" fill="#06F" /><path d="M4.5 6.5l1.774 1.774a.25.25 0 00.39-.049L9.5 3.5" stroke="#06F" /><path d="M16.5 3.5L19 6m0 0l2.5 2.5M19 6l2.5-2.5M19 6l-2.5 2.5" stroke="#fff" /><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" stroke="#06F" /></svg>
   )
 }
 
-export function VISAicon(){
+export function VISAicon() {
   return (
-    <svg  viewBox="0 0 29 9" width="26" height="26" fontSize="18px" xmlns="http://www.w3.org/2000/svg"><path d="M20.839 6.026c.006-1.375-1.133-1.973-2.044-2.45-.611-.322-1.119-.589-1.111-1 .007-.313.305-.646.955-.73a4.249 4.249 0 0 1 2.221.387l.396-1.846A6.051 6.051 0 0 0 19.149 0c-2.226 0-3.792 1.183-3.807 2.877-.014 1.253 1.119 1.953 1.972 2.37.878.426 1.172.7 1.169 1.082 0 .585-.701.841-1.348.852-1.099.016-1.75-.288-2.267-.529l-.046-.021-.407 1.907c.526.241 1.498.452 2.504.462 2.367 0 3.914-1.169 3.922-2.978l-.002.004zM11.51.163L7.861 8.869H5.48L3.684 1.92c-.11-.428-.204-.584-.536-.765C2.608.861 1.714.586.926.415L.979.155h3.833a1.048 1.048 0 0 1 1.032.888l.948 5.032L9.135.151l2.375.012zM28.8 8.86h-2.082l-.272-1.294h-2.889l-.47 1.301h-2.365L24.101.8a1.03 1.03 0 0 1 .959-.645h1.922L28.8 8.86zm-4.594-3.084l1.186-3.268.676 3.276-1.862-.008zM12.869 8.861L14.731.155h-2.255L10.613 8.86h2.256z" fill="#122D98" fillRule="evenodd"/></svg>
+    <svg viewBox="0 0 29 9" width="26" height="26" fontSize="18px" xmlns="http://www.w3.org/2000/svg"><path d="M20.839 6.026c.006-1.375-1.133-1.973-2.044-2.45-.611-.322-1.119-.589-1.111-1 .007-.313.305-.646.955-.73a4.249 4.249 0 0 1 2.221.387l.396-1.846A6.051 6.051 0 0 0 19.149 0c-2.226 0-3.792 1.183-3.807 2.877-.014 1.253 1.119 1.953 1.972 2.37.878.426 1.172.7 1.169 1.082 0 .585-.701.841-1.348.852-1.099.016-1.75-.288-2.267-.529l-.046-.021-.407 1.907c.526.241 1.498.452 2.504.462 2.367 0 3.914-1.169 3.922-2.978l-.002.004zM11.51.163L7.861 8.869H5.48L3.684 1.92c-.11-.428-.204-.584-.536-.765C2.608.861 1.714.586.926.415L.979.155h3.833a1.048 1.048 0 0 1 1.032.888l.948 5.032L9.135.151l2.375.012zM28.8 8.86h-2.082l-.272-1.294h-2.889l-.47 1.301h-2.365L24.101.8a1.03 1.03 0 0 1 .959-.645h1.922L28.8 8.86zm-4.594-3.084l1.186-3.268.676 3.276-1.862-.008zM12.869 8.861L14.731.155h-2.255L10.613 8.86h2.256z" fill="#122D98" fillRule="evenodd" /></svg>
   )
 }
 
-export function LeftIcon(){
+export function LeftIcon() {
   return (
-<svg fill="#000000" width="32px" height="32px" viewBox="-78.5 0 512 512" xmlns="http://www.w3.org/2000/svg" ><title>left</title><path d="M257 64L291 98 128 262 291 426 257 460 61 262 257 64Z" /></svg>
+    <svg fill="#000000" width="32px" height="32px" viewBox="-78.5 0 512 512" xmlns="http://www.w3.org/2000/svg" ><title>left</title><path d="M257 64L291 98 128 262 291 426 257 460 61 262 257 64Z" /></svg>
   )
 }
-export function RightIcon(){
+
+export function RightIcon() {
   return (
-<svg fill="#000000" width="32px" height="32px" viewBox="-77 0 512 512" xmlns="http://www.w3.org/2000/svg" ><title>right</title><path d="M98 460L64 426 227 262 64 98 98 64 294 262 98 460Z" /></svg>
+    <svg fill="#000000" width="32px" height="32px" viewBox="-77 0 512 512" xmlns="http://www.w3.org/2000/svg" ><title>right</title><path d="M98 460L64 426 227 262 64 98 98 64 294 262 98 460Z" /></svg>
+  )
+}
+
+export function MagnifyingGlassIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentColor', strokeWidth: 4, overflow: 'visible' }} aria-hidden="true" role="presentation" focusable="false"><path fill="none" d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9" /></svg>
+
   )
 }
