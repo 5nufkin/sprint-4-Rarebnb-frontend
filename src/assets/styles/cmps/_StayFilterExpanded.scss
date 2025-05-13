@@ -1,30 +1,92 @@
 .filter-bar {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+
+  width: 100%;
+  margin: auto;
+  height: rem(66px);
+
   background-color: $clr-white;
   border: 1px solid $gray2;
   border-radius: rem(32px);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-  height: rem(66px);
-  margin-inline: rem(8px);
+
+  &.focused{
+    background-color: $gray1;
+    button:hover{
+      background-color: $gray2;
+    }
+  }
+
+  .btn-location {
+    padding: rem(12px) rem(30px);
+  }
+
+  .btn-dates {
+    height: 100%;
+    display: flex;
+
+    button {
+      padding-inline: rem(23px);
+      flex: 1;
+    }
+  }
+
+  .active {
+    background-color: $clr-white;
+  }
+
+  .active:hover{
+    background-color: white;
+  }
 
   button {
     position: relative;
-    border: 0;
-    color: $clr-text-tertiary;
-    padding: 5px 10px;
+    padding: rem(12px) rem(24px);
     margin: 0;
-    cursor: pointer;
-    font-family: 'Airbnb Cereal';
-    font-size: 12px;
-    line-height: 16px;
+    height: 100%;
+
     background-color: transparent;
-    font-weight: 600;
+    color: $clr-text-tertiary;
+    border: 0;
     border-radius: 100px;
+
+    font-family: 'Airbnb Cereal';
+    font-weight: 600;
+    font-size: 12px;
+    text-align: left;
+    line-height: 16px;
+    cursor: pointer;
 
     &:hover {
       background-color: $gray1;
+    }
+
+    .btn-content {
+      display: grid;
+
+      .btn-label {
+        margin-block-end: 2px;
+      }
+
+      .btn-value {
+        font-size: rem(14px);
+        font-weight: 400;
+        color: $clr-text-secondary;
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      right: rem(8px);
+      top: rem(8px);
+
+      color: $clr-white;
+      background: $clr-brand-main;
+      padding: rem(16px);
+      border-radius: 50%;
     }
 
     input[type="text"] {
@@ -34,19 +96,11 @@
       font-weight: 600;
       font-family: 'Airbnb Cereal';
       color: $clr-text-tertiary;
-
-      &:focus {
-        background-color: transparent;
-      }
+      padding: 0;
 
       &::placeholder {
         font-weight: 400;
       }
     }
-  }
-
-  >button {
-    width: 100%;
-    height: 100%;
   }
 }
