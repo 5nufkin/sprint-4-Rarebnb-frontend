@@ -20,6 +20,7 @@
 @import "pages/LoginSignup";
 @import "pages/Chat";
 @import "pages/Payment";
+@import "pages/StayDetails.scss";
 
 // Components
 @import "cmps/list";
@@ -33,7 +34,13 @@
 @import "cmps/ReviewEdit";
 @import "cmps/ReviewList";
 @import "cmps/ReviewPreview";
+@import "cmps/StayIconFilter";
+
 @import "cmps/StayFilterExpanded";
 @import "cmps/Popover";
 // @import "cmps/CarList";
 // @import "cmps/CarPreview";
+
+@import "cmps/PaymentPage/BookingSummary";
+@import "cmps/PaymentPage/MessegeToHost";
+@import "cmps/PaymentPage/PaymentMethod";
