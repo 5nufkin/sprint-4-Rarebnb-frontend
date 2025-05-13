@@ -4,9 +4,13 @@ import { stayService } from "../../services/stay/stay.service.local"
 import { StarIcon } from "../Icons"
 
 export function ReviewsSection({ stay }) {
-  const avgRating =
-    stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
-    stay.reviews.length
+  console.log("Loaded stay:", stay)
+  console.log("Reviews:", stay.reviews)
+
+  const avgRating = stay.reviews?.length
+    ? stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
+      stay.reviews.length
+    : 0
 
   return (
     <section className="reviews-section">
