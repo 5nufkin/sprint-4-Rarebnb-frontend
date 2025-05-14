@@ -32,6 +32,12 @@ export function formatDate(date) {
   })
 }
 
+export function formatRating(rating) {
+  return Number.isInteger(rating)
+    ? rating.toFixed(1)
+    : rating.toFixed(2)
+}
+
 export function randomPastTime() {
   const HOUR = 1000 * 60 * 60
   const DAY = 1000 * 60 * 60 * 24
