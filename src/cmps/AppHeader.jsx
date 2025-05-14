@@ -5,6 +5,7 @@ import { AirbnbLogoFull, AirbnbLogoIcon, MenuIcon } from "./Icons";
 import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
 import { stayService } from "../services/stay";
 import { loadStays } from "../store/actions/stay.actions";
+import { StayFilterMinimized } from "./StayFilterMinimized";
 
 
 export function AppHeader() {
@@ -43,6 +44,9 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header className={`app-header full ${isAtTop ? 'header-large' : 'header-small'}`}>
+
+        <StayFilterMinimized filterBy={filterBy} />
+
         <section className='header-content main-layout'>
           <NavLink to="/" className="logo">
             <AirbnbLogoIcon className="logo-icon" />

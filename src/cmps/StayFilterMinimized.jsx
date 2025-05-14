@@ -1,26 +1,34 @@
-import { useState } from "react"
+import { getDateTxt } from "../services/util.service"
 
 
-export function StayFilterMinimized({ filterBy, setFilterBy }) {
-  const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+export function StayFilterMinimized({ filterBy }) {
+  console.log(filterBy)
 
-  function handleChange({ target }) {
-    let { value, name: field, type } = target
-    value = type === 'number' ? +value || '' : value
-    if (field === 'inStock') {
-      if (!value) value = null
-      else value = value === 'true' ? true : false
-    }
-    setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
-  }
+  const { city, country, checkIn, checkOut, guestTotal } = filterBy
+  console.log(city, country)
 
   return (
     <section className="filter-minimized">
-      <form>
-        <label htmlFor="country">Where </label>
-        <input  onChange={handleChange}
-          type="text" placeholder="Search destinations" id="minPrice" name="minPrice" />
-      </form>
+      <button>
+        <section className="location">
+          {city || country
+            ? <p>Homes in {city || country}</p>
+            : <p>Anywhere</p>
+          }
+        </section>
+        <section className="dates">
+          {checkIn && checkOut
+            ? <p>{getDateTxt(checkIn, checkOut)}</p>
+            : <p>Anytime</p>
+          }
+        </section>
+        <section className="guests">
+          {guestTotal > 0
+            ? <p>{guestTotal} guest{guestTotal > 1 ? 's' : ''}</p>
+            : <p>Add guests</p>
+          }
+        </section>
+      </button>
     </section>
   )
 }

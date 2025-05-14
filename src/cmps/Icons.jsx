@@ -109,7 +109,6 @@ export function MenuIcon() {
   );
 }
 
-
 export function DiamondIcon() {
   return (
     <svg
@@ -891,6 +890,7 @@ export function earthHomesIcon() {
     </svg>
   )
 }
+
 export function skiInOutIcon() {
   return (
     <svg
