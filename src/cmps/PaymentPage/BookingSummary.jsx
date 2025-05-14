@@ -45,7 +45,7 @@ export function BookingSummary() {
               <div className="rating-line">
                 <span>
                   <StarIcon />
-                  4.88 (78)
+                  4.88 (78) 
                 </span>
                 <span className="superhost"> • Superhost</span>
               </div>
