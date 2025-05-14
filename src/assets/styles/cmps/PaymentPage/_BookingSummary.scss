@@ -1,22 +1,24 @@
-.payment-summary {
+.booking-summary {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: $clr-bg;
   padding: 1.5rem;
   border-radius: 1.5rem;
-  border: 1px solid #e4e4e4;
-  color: #222;
+  border: 1px solid $gray-2
+  
+  ;
+  color: $clr7;
   width: 28rem;
 
   .stay-header {
     display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 0.67em;
+    margin-bottom: 1.35em;
 
     .stay-img {
-      width: 95px;
-      height: 95px;
-      border-radius: 8px;
+      width: 6em;
+      height: 6em;
+      border-radius: 0.5em;
       object-fit: cover;
     }
 
@@ -28,19 +30,17 @@
 
       .rating-line {
         font-size: 0.8em;
-        color: #222;
-        margin-bottom: 4px;
+        color: $clr7;
       }
 
       p {
         font-size: 0.9rem;
         margin: 0;
-        color: #222;
+        color: $clr7;
       }
 
       a {
-        font-size: 13px;
-        color: #222;
+        color: $clr7;
         text-decoration: underline;
       }
     }
@@ -48,9 +48,8 @@
 
 
   .summary-section {
-    border-top: 1px solid #ebebeb;
-    padding-top: 16px;
-    margin-top: 16px;
+    border-top: 1px solid $gray1;
+    padding-top: 0.85em;
 
     &:first-of-type {
       border-top: none;
@@ -60,19 +59,14 @@
   }
 
 }
-.section-header {
-  .trip-info{
-    color: blue;
-  }
-}
 
 .payment-summary-bottom {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin-top: 16px;
-  font-size: 14px;
-  color: #717171;
+  gap: 0.85em;
+  margin-top: 1.15em;
+  font-size: 0.78em;
+  color: $clr7;
 
   .diamond-text {
     p {
@@ -81,7 +75,7 @@
     }
 
     p:first-of-type {
-      color: #222;
+      color: $clr7;
     }
   }
 }
@@ -110,25 +104,25 @@
 
   .btn-change {
     display: flex;
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 6px 12px;
+    background-color: $gray0;
+    border: 1px solid $gray2;
+    border-radius: 0.5rem;
+    padding: 0.43em 0.85em;
     font-weight: 600;
-    color: #222;
-    font-size: 14px;
+    color: $clr7;
+    font-size: 0.88rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #eee;
+      background-color: $gray-1;
     }
   }
 }
 
 .diamond-text {
   .diamond-text-first-row {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 }
 

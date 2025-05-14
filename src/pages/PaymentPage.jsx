@@ -2,24 +2,24 @@ import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
 import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
 import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
 
-import { useParams } from 'react-router'
-import { useEffect, useState } from 'react'
+import { useParams } from "react-router"
+import { useEffect, useState } from "react"
 import { stayService } from "../services/stay/stay.service.local"
-
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
 
   useEffect(() => {
-    stayService
-      .getById(stayId)
-      .then((stay) => {
+    async function loadStay() {
+      try {
+        const stay = await stayService.getById(stayId)
         setStay(stay)
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error fetching stay:", err)
-      })
+      }
+    }
+    loadStay()
   }, [stayId])
 
   if (!stay) return <div>Loading…</div>

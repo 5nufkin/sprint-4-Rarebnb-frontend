@@ -19,14 +19,17 @@ export function StayDetails() {
   const { stayId } = useParams()
 
   useEffect(() => {
-    stayService.getById(stayId)
-      .then((stay) => {
+    async function  loadStay() {
+      try {
+        const stay = await stayService.getById(stayId)        
         setStay(stay)
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error('Error fetching stay:', err)
-      })
+      }
+    }
+    loadStay()
   }, [stayId])
+
 
   if (!stay) return <div>Loading…</div>
 
