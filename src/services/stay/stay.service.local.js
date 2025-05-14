@@ -1254,7 +1254,7 @@ async function save(stay) {
       name: stay.name,
       price: stay.price,
       // Later, owner is set by the backend
-      owner: userService.getLoggedinUser(),
+      owner: userService.getLoggedInUser(),
       msgs: [],
     }
     savedStay = await storageService.post(STORAGE_KEY, stayToSave)
@@ -1268,7 +1268,7 @@ async function addStayMsg(stayId, txt) {
 
   const msg = {
     id: makeId(),
-    by: userService.getLoggedinUser(),
+    by: userService.getLoggedInUser(),
     txt,
   }
   stay.msgs.push(msg)

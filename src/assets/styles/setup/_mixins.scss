@@ -1,5 +1,4 @@
 /* Breakpoint mixins */
-
 @mixin for-mobile-layout {
   @media (max-width: calc($mobile-breakpoint + 48px)) {
     @content;
@@ -57,4 +56,22 @@
       @content;
     }
   }
+}
+
+@mixin circle-button($size: 40px) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $size;
+  height: $size;
+  aspect-ratio: 1/1;
+
+  border-radius: 50%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: clip;
+  cursor: pointer;
 }
