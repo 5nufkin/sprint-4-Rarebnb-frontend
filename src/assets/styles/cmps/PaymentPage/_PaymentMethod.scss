@@ -18,15 +18,17 @@
   }
 
   .btn-change {
+    display: flex;
     background-color: $gray0;
     border: 0.1em solid $gray2;
     border-radius: 0.5rem;
-    padding: 0.45em 0.895em;
-    font-weight: 700;
+    padding: 0.43em 0.85em;
+    font-weight: 600;
     color: $clr7;
     cursor: pointer;
     transition: background-color 0.2s ease;
-
+    font-size: 0.88rem;
+    
     &:hover {
       background-color: $gray-1;
     }

@@ -45,6 +45,9 @@ export function StayDetails() {
 
   return (
     <main className="stay-details">
+      <div className="page-container">
+
+ 
       <HeroGallery images={stay.imgUrls} />
       <HeadingBar stay={stay} />
 
@@ -68,9 +71,7 @@ export function StayDetails() {
             <BookingWidget stay={stay} />
           </div>
         </aside>
-
-
-
+     </div>
       </div>
     </main>
   )

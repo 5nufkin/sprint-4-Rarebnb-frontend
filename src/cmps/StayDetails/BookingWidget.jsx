@@ -4,9 +4,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { GuestsSelector } from './GuestSelector.jsx'
 import { useNavigate } from 'react-router-dom'
 
-function totalGuests(g) {
-  return g.adults + g.children + g.infants + g.pets
-}
 
 export function BookingWidget({ stay }) {
   const [checkIn,  setCheckIn]  = useState(null)
@@ -40,6 +37,7 @@ export function BookingWidget({ stay }) {
   }
 
   return (
+    <>
     <div className="booking-widget">
       <div className="rare-banner"><span>💎</span>Rare find! This place is usually booked</div>
 
@@ -90,7 +88,9 @@ export function BookingWidget({ stay }) {
         </div>
       )}
 
-      <a className="report-link" href="#">🏳 Report this listing</a>
+      
     </div>
+    <a className="report-link" href="#">🏳 Report this listing</a>
+    </>
   )
 }

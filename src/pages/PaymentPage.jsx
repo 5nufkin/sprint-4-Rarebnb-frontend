@@ -1,7 +1,6 @@
 import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
 import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
 import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
-
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../services/stay"
