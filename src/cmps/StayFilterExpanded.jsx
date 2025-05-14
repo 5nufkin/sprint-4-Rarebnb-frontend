@@ -1,14 +1,32 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { GuestPicker } from "./GuestPicker"
 import { Popover } from "./Popover"
 import { MagnifyingGlassIcon } from "./Icons"
 import { MyDatePicker } from "./MyDatePicker"
+import { formatDate } from "../services/util.service"
 
 
 export function StayFilterExpanded({ filterBy, setFilterBy }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
   const [activeSection, setActiveSection] = useState('')
   const isFocused = !!activeSection
+  const filterBarRef = useRef()
+
+  useEffect(() => {
+    function handleClickOutside(ev) {
+      if (filterBarRef.current && !filterBarRef.current.contains(ev.target)) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        setActiveSection('')
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+
+  }, [])
 
 
   function handleChange({ target }) {
@@ -36,20 +54,13 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
     setFilterBy({ ...filterByToEdit })
   }
 
-  function formatDate(date) {
-    return new Date(date).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric'
-    })
-  }
-
   const { country, checkIn, checkOut, adults, children, infants, pets } = filterByToEdit
   const totalGuests = adults + children + infants + pets
 
   return (
-    <section className={`filter-bar ${isFocused ? 'focused' : ''}`}>
+    <section ref={filterBarRef} className={`filter-bar ${isFocused ? 'focused' : ''}`}>
       <button
-        className={`btn-location ${activeSection === 'location' ? 'active' : 'inactive'}`}
+        className={`btn-location ${activeSection === 'location' ? 'active' : ''}`}
         onClick={() => setActiveSection('location')}
       >
         <div className="btn-content">
@@ -62,7 +73,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       <div className="btn-dates">
 
         <button
-          className={`btn-check-in ${activeSection === 'check-in' ? 'active' : 'inactive'}`}
+          className={`btn-check-in ${activeSection === 'check-in' ? 'active' : ''}`}
           onClick={() => setActiveSection('check-in')}
         >
           <div className="btn-content">
@@ -72,7 +83,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
         </button>
 
         <button
-          className={`btn-check-out ${activeSection === 'check-out' ? 'active' : 'inactive'}`}
+          className={`btn-check-out ${activeSection === 'check-out' ? 'active' : ''}`}
           onClick={() => setActiveSection('check-out')}
         >
           <div className="btn-content">
@@ -107,7 +118,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
 
       {
         activeSection === 'guests' && (
-          <Popover style={{ right: 0 }}>
+          <Popover style={{ right: 0, width: '50%' }}>
             <GuestPicker
               onSetGuests={onSetGuests}
               guests={{ adults, children, infants, pets }}

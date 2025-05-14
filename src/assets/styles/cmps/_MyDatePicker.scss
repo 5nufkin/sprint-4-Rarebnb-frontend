@@ -1,7 +1,5 @@
 .date-picker {
   width: 100%;
-  max-width: 820px;
-  margin: auto;
 
   .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
     background-color: $clr-white;

@@ -20,15 +20,18 @@ export function GuestPicker({ guests, onSetGuests }) {
         { key: 'pets', label: 'Pets', desc: 'Bringing a service animal?' }
       ].map(({ key, label, desc }) => (
         <section className={`${key} guest-row`} key={key}>
+
           <div className="guest-info">
             <p className="guest-type">{label}</p>
             <p className="guest-desc">{desc}</p>
           </div>
+
           <div className="guest-counter">
             <button type="button" onClick={() => updateCount(key, -1)} disabled={guests[key] === 0}>–</button>
             <span className="guest-count">{guests[key]}</span>
             <button type="button" onClick={() => updateCount(key, +1)}>+</button>
           </div>
+
         </section>
       ))}
 
