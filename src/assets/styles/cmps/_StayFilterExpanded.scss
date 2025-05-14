@@ -1,7 +1,7 @@
 .filter-bar {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   align-items: center;
 
   width: 100%;
@@ -23,20 +23,6 @@
 
     button.active:hover {
       background-color: $clr-white;
-    }
-  }
-
-  .btn-location {
-    padding: rem(12px) rem(30px);
-  }
-
-  .btn-dates {
-    height: 100%;
-    display: flex;
-
-    button {
-      padding-inline: rem(23px);
-      flex: 1;
     }
   }
 
@@ -62,6 +48,28 @@
     line-height: 16px;
     cursor: pointer;
 
+    &.btn-location {
+      padding-inline: rem(30px);
+    }
+
+    &.btn-check-in {
+      grid-column: 2;
+    }
+
+    &.btn-check-out {
+      grid-column: 3;
+    }
+
+    &.btn-guests {
+      grid-column: 4;
+      transform: translateX(2px);
+      padding-inline: rem(22px);
+
+      .btn-content {
+        transform: translateX(3px);
+      }
+    }
+
     &:hover {
       background-color: $gray1;
     }
@@ -82,7 +90,7 @@
 
     .search-icon {
       position: absolute;
-      right: rem(8px);
+      right: rem(12px);
       top: rem(8px);
 
       color: $clr-white;
@@ -103,6 +111,17 @@
       &::placeholder {
         font-weight: 400;
       }
+    }
+
+    &:not(.btn-location)::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0; 
+      transform: translateY(-50%);
+      width: 1px;
+      height: 50%;
+      background-color: $gray2;
     }
   }
 }
