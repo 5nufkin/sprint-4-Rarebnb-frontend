@@ -4,9 +4,7 @@
   background: $clr-bg;
   padding: 1.5rem;
   border-radius: 1.5rem;
-  border: 1px solid $gray-2
-  
-  ;
+  border: 1px solid $gray-2;
   color: $clr7;
   width: 28rem;
 
@@ -16,8 +14,8 @@
     margin-bottom: 1.35em;
 
     .stay-img {
-      width: 6em;
-      height: 6em;
+      width: 5em;
+      height: 5em;
       border-radius: 0.5em;
       object-fit: cover;
     }
@@ -46,18 +44,12 @@
     }
   }
 
-
   .summary-section {
     border-top: 1px solid $gray1;
     padding-top: 0.85em;
+    padding-bottom: 0.85em;
 
-    &:first-of-type {
-      border-top: none;
-      padding-top: 0;
-      margin-top: 0;
-    }
   }
-
 }
 
 .payment-summary-bottom {
@@ -83,6 +75,9 @@
 .price-line {
   display: flex;
   justify-content: space-between;
+  font-weight: 400;
+  font-size: 0.88888em;
+  margin-bottom: 0.15em;
 }
 
 .price-total {
@@ -96,6 +91,8 @@
 
 .price-link {
   text-decoration: underline;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 .section-header {
   display: flex;
@@ -108,7 +105,7 @@
     border: 1px solid $gray2;
     border-radius: 0.5rem;
     padding: 0.43em 0.85em;
-    font-weight: 600;
+    font-weight: 550;
     color: $clr7;
     font-size: 0.88rem;
     cursor: pointer;
@@ -131,4 +128,17 @@
     font-weight: 700;
     text-decoration: underline;
   }
+
+  .cancel-policy {
+    font-size: 0.8em;
+  }
 }
+
+  .dates-check-in-out{
+    font-size: 0.785em;
+    font-weight: 400;
+    
+    p{
+      margin: 0;
+    }
+  }

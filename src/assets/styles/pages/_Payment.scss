@@ -17,7 +17,8 @@
   font-weight: 700;
   margin: 0 0 20px 0;
   line-height: 1.5;
-  color: #222;
+  color: $clr7;
+
 }
 
 .btn-request {
@@ -26,5 +27,6 @@
   border-radius: 1rem;
   width: 20em;
   font-weight: 550;
-  background: rgb(230, 30, 77)
+  background: $clr-brand-main;
+
 }

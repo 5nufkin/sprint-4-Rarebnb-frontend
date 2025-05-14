@@ -23,8 +23,8 @@ export function BookingSummary() {
   const checkInStr = checkIn ? checkIn.toLocaleDateString() : "––"
   const checkOutStr = checkOut ? checkOut.toLocaleDateString() : "––"
 
-  function totalGuests(g) {
-    return g.adults + g.children + g.infants + g.pets
+  function totalGuests(guest) {
+    return guest.adults + guest.children + guest.infants + guest.pets
   }
 
   useEffect(() => {
@@ -41,7 +41,13 @@ export function BookingSummary() {
   }, [stayId])
 
   if (!stay) return <div>Loading…</div>
-
+  const reviews = stay.reviews || []
+  const avgRating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((sum, review) => sum + review.rate, 0) / reviews.length
+        ).toFixed(2)
+      : "–"
   return (
     <div className="payment-right">
       <aside className="booking-summary">
@@ -54,9 +60,11 @@ export function BookingSummary() {
               <div className="rating-line">
                 <span>
                   <StarIcon />
-                  4.88 (78)
+                  {avgRating} ({reviews.length})
                 </span>
-                <span className="superhost"> • Superhost</span>
+                {stay.isSuperhost && (
+                  <span className="superhost"> • Superhost</span>
+                )}
               </div>
             </div>
           </div>
@@ -69,7 +77,7 @@ export function BookingSummary() {
         </section>
 
         {/* Trip Details */}
-        <section className="trip-details summary-section">
+        <section className="dates-check-in-out summary-section">
           <div className="section-header">
             <h4>Trip details</h4>
             <button className="btn-change">Change</button>
@@ -82,8 +90,8 @@ export function BookingSummary() {
           </div>
         </section>
 
-        {/* Price Breakdown */}
-        <section className="price-breakdown summary-section">
+        {/* Price details */}
+        <section className="price-details summary-section">
           <h4>Price details</h4>
           <div className="price-line">
             <span>
@@ -100,7 +108,7 @@ export function BookingSummary() {
             <span>₪{serviceFee.toFixed(2)}</span>
           </div>
           <div className="price-total summary-section">
-            <span>
+            <span className="price-link">
               Total <span className="currency">ILS</span>
             </span>
             <span>₪{total}</span>

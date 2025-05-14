@@ -231,15 +231,15 @@ const gStays = [
       },
       {
         id: "r026",
-        txt: "Lovely hosts and charming place.",
+        txt: "A well maintained apartment with a sense of home in a prime location. Clean and thoughtful about the details.",
         rate: 5,
         by: {
           _id: "u226",
-          fullname: "Harper Bell",
+          fullname: "Yoram",
           imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
-          location: "Berlin, Germany",
+          location: "Jerusalem, Israel",
         },
-        date: "June 2020",
+        date: "April 2025",
       },
       {
         id: "r027",
