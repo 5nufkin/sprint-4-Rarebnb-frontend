@@ -1,14 +1,13 @@
-import { useState } from 'react'
 import DatePicker from 'react-datepicker'
-// import 'react-datepicker/dist/react-datepicker.css'
 
-export function MyDatePicker({ onSetDates }) {
-  const [dateRange, setDateRange] = useState([null, null])
-  const [startDate, endDate] = dateRange
+export function MyDatePicker({ onSetDates, setActiveSection, markedDates = [] }) {
+  const [startDate, endDate] = markedDates
 
   const handleChange = (update) => {
-    setDateRange(update)
-    onSetDates({ checkIn: update[0], checkOut: update[1] })
+    const [start, end] = update
+    onSetDates({ checkIn: start, checkOut: end })
+
+    if (start && !end) setActiveSection('check-out')
   }
 
   return (

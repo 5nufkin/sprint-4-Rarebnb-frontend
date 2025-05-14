@@ -1208,7 +1208,6 @@ window.cs = stayService
 _createStays()
 
 async function query(filterBy = { country: "" }) {
-  console.log("filterBy:", filterBy)
   var stays = await storageService.query(STORAGE_KEY)
 
   if (filterBy.country) {
@@ -1230,7 +1229,6 @@ async function query(filterBy = { country: "" }) {
   // }
 
   // stays = stays.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
-  console.log(stays)
   return stays
 }
 

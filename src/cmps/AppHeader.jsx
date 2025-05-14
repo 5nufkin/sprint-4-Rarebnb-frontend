@@ -29,7 +29,7 @@ export function AppHeader() {
 
         {/* {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>} */}
 
-        {!user && <NavLink to="login" className="login-link">Login</NavLink>}
+        {/* {!user && <NavLink to="login" className="login-link">Login</NavLink>} */}
         {user && (
           <div className="user-info">
             <Link to={`user/${user._id}`}>

@@ -9,7 +9,6 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
   const [activeSection, setActiveSection] = useState('')
   const isFocused = !!activeSection
-  console.log(activeSection)
 
 
   function handleChange({ target }) {
@@ -28,7 +27,6 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
   }
 
   function onSetGuests(guests) {
-    console.log(guests)
     setFilterByToEdit(prev => ({ ...prev, ...guests }))
   }
 
@@ -44,12 +42,6 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       day: 'numeric'
     })
   }
-
-  function handleClick(section) {
-    console.log(section)
-    setActiveSection(section)
-  }
-
 
   const { country, checkIn, checkOut, adults, children, infants, pets } = filterByToEdit
   const totalGuests = adults + children + infants + pets
@@ -76,7 +68,6 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
           <div className="btn-content">
             <span className="btn-label">Check in</span>
             <span className="btn-value">{checkIn ? formatDate(checkIn) : 'Add dates'}</span>
-            {/* {checkIn ? formatDate(checkIn) : 'Check in'} */}
           </div>
         </button>
 
@@ -87,7 +78,6 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
           <div className="btn-content">
             <span className="btn-label">Check out</span>
             <span className="btn-value">{checkOut ? formatDate(checkOut) : 'Add dates'}</span>
-            {/* {checkOut ? formatDate(checkOut) : 'Check out'} */}
           </div>
         </button>
 
@@ -106,7 +96,11 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       {
         (activeSection === 'check-in' || activeSection === 'check-out') && (
           <Popover style={{ left: '50%', transform: 'translateX(-50%)', width: '100%' }}>
-            <MyDatePicker onSetDates={handleDateChange} />
+            <MyDatePicker
+              onSetDates={handleDateChange}
+              setActiveSection={setActiveSection}
+              markedDates={[filterByToEdit.checkIn, filterByToEdit.checkOut]}
+            />
           </Popover>
         )
       }
