@@ -26,13 +26,24 @@ export function PaymentPage() {
   return (
     <section className="payment-page">
       <h1 className="back-to-detail">Request to book</h1>
-      <div className="payment-container">
-        {/* ===== Left Side ===== */}
-        <div className="payment-left">
-          <PaymentMethod />
-          <MessageToHost />
+
+      <div className="main-payment-grid">
+        <div className="booking-summary-wrapper">
+          <BookingSummary />
         </div>
-        {<BookingSummary />}
+
+        <div className="payment-left">
+          <div className="payment-method-wrapper">
+            <PaymentMethod />
+          </div>
+          <div className="message-to-host">
+            <MessageToHost />
+          </div>
+        </div>
+
+        <div className="confirm-wrapper">
+          <button className="btn-request">Request to book</button>
+        </div>
       </div>
     </section>
   )

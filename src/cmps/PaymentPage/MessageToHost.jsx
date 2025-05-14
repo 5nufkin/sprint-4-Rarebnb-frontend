@@ -1,4 +1,4 @@
-export function MessageToHost({ onSubmit }) {
+export function MessageToHost() {
   return (
     <>
       <section className="message-to-host">
@@ -17,10 +17,6 @@ export function MessageToHost({ onSubmit }) {
         The host has 24 hours to confirm your booking. You’ll be charged after
         the request is accepted.
       </p>
-
-      <button className="btn-request" onClick={onSubmit}>
-        Request to book
-      </button>
     </>
   )
 }
