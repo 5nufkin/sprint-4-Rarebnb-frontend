@@ -9,7 +9,6 @@
   .payment-left {
     flex: 1;
     max-width: 550px;
-
   }
 }
 .back-to-detail {
@@ -18,7 +17,6 @@
   margin: 0 0 20px 0;
   line-height: 1.5;
   color: $clr7;
-
 }
 
 .btn-request {
@@ -28,5 +26,72 @@
   width: 20em;
   font-weight: 550;
   background: $clr-brand-main;
+}
 
+
+////////////////////////////////////////////
+.main-payment-grid {
+  display: grid;
+  grid-template-areas: "left right" "footer footer";
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.booking-summary-wrapper {
+  grid-area: right;
+}
+
+.payment-left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-method-wrapper {
+  width: 100%;
+}
+
+.confirm-wrapper {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+}
+
+
+///////////////////////////
+@media (max-width: 950px) {
+  .main-payment-grid {
+    grid-template-areas:
+      "right"
+      "left"
+      "footer";
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+    .payment-summary-bottom,
+  .message-to-host {
+    display: none !important;
+  }
+  
+
+  .booking-summary-wrapper,
+  .payment-left,
+  .payment-method-wrapper,
+  .confirm-wrapper {
+    width: 100%;
+    max-width: 26em;
+  }
+
+  .message-to-host {
+    display: none;
+  }
+
+  .confirm-wrapper {
+    margin-top: 20px;
+  }
 }

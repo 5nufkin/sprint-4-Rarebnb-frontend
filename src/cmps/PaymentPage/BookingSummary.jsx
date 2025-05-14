@@ -4,6 +4,8 @@ import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/index"
 import { useLocation } from "react-router-dom"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+
 
 export function BookingSummary() {
   const [stay, setStay] = useState(null)
@@ -32,7 +34,9 @@ export function BookingSummary() {
       try {
         const stay = await stayService.getById(stayId)
         setStay(stay)
+        showSuccessMsg()
       } catch (err) {
+        showErrorMsg()
         console.error("Error fetching stay:", err)
       }
     }
