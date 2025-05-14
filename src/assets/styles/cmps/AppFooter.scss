@@ -9,16 +9,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 43px;
-  background-color: #fff;
-  font-size: 1rem;
-  border-top: 1px solid #ddd;
+  padding: 2.5em 3em;
+  background-color: $clr-bg;
+  font-size: 0.91rem;
+  border-top: 1px solid $gray2;
 
   .footer-left,
   .footer-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 0.4em;
     flex-wrap: wrap;
     line-height: 18px;
   }
@@ -28,7 +28,8 @@
   }
 
   .footer-right {
-    font-weight: 500;
+    gap: 0.7em;
+    font-weight: 430;
 
     .language {
         display: flex;
