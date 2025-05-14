@@ -1,0 +1,110 @@
+.hamburger-menu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 16.7em;
+  background-color: $clr-white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px $clr-btn-menu;
+  padding: 0.3em 0;
+  z-index: 1000;
+}
+
+.hamburger-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hamburger-menu li {
+  padding: 0.6em 1.2em;
+  transition: background 0.2s;
+}
+
+.hamburger-menu li:hover {
+  background-color: $gray0;
+}
+
+.hamburger-menu a,
+.hamburger-menu .logout-btn {
+  display: block;
+  text-decoration: none;
+  color: $clr7;
+  font-size: 0.86em;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  text-align: left;
+  color: $clr-brand-main;
+}
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-menu li:nth-child(3),
+.hamburger-menu li:nth-child(5),
+.hamburger-menu li:nth-child(7) {
+  border-top: 1px solid #ebebeb;
+}
+
+// ===== New button design (combined user + menu) =====
+.user-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.user-menu-btn:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-menu-btn .user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.menu-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #222; 
+}
+
+// ===== Responsive: hide menu under 640px =====
+@media (max-width: 639px) {
+  .user-menu-btn {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+}
