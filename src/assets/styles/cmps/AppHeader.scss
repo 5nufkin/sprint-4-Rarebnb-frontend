@@ -1,6 +1,28 @@
+.observer-top{
+  position: absolute;
+  top: 0;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: linear-gradient(180deg, $clr-white 39.9%, $gray-3 100%);
   height: rem(200px);
+  border-block-end: 1px solid #ebebeb;
+
+  // transition: height .2s; //! Glitching 
+
+  &.header-small{
+    height: rem(80px);
+
+    .filter-bar{
+      display: none;
+    }
+  }
 
   .header-content {
     display: flex;
