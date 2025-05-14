@@ -11,6 +11,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
   const [activeSection, setActiveSection] = useState('')
   const isFocused = !!activeSection
   const filterBarRef = useRef()
+  const locationInputRef = useRef()
 
   useEffect(() => {
     function handleClickOutside(ev) {
@@ -18,6 +19,10 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
         ev.preventDefault()
         ev.stopPropagation()
         setActiveSection('')
+
+        if (locationInputRef.current) {
+          locationInputRef.current.blur()
+        }
       }
     }
 
@@ -65,34 +70,37 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       >
         <div className="btn-content">
           <label htmlFor="country" className="btn-label">Where </label>
-          <input value={country} onChange={handleChange}
-            type="text" placeholder="Search destinations" id="country" name="country" />
+          <input value={country} onChange={handleChange} ref={locationInputRef}
+            type="text" placeholder="Search destinations" id="country" name="country"
+            onKeyDown={(ev) => {
+              if (ev.key === 'Enter') {
+                ev.target.blur()
+                setActiveSection('check-in')
+              }
+            }}
+          />
         </div>
       </button>
 
-      <div className="btn-dates">
+      <button
+        className={`btn-check-in ${activeSection === 'check-in' ? 'active' : ''}`}
+        onClick={() => setActiveSection('check-in')}
+      >
+        <div className="btn-content">
+          <span className="btn-label">Check in</span>
+          <span className="btn-value">{checkIn ? formatDate(checkIn) : 'Add dates'}</span>
+        </div>
+      </button>
 
-        <button
-          className={`btn-check-in ${activeSection === 'check-in' ? 'active' : ''}`}
-          onClick={() => setActiveSection('check-in')}
-        >
-          <div className="btn-content">
-            <span className="btn-label">Check in</span>
-            <span className="btn-value">{checkIn ? formatDate(checkIn) : 'Add dates'}</span>
-          </div>
-        </button>
-
-        <button
-          className={`btn-check-out ${activeSection === 'check-out' ? 'active' : ''}`}
-          onClick={() => setActiveSection('check-out')}
-        >
-          <div className="btn-content">
-            <span className="btn-label">Check out</span>
-            <span className="btn-value">{checkOut ? formatDate(checkOut) : 'Add dates'}</span>
-          </div>
-        </button>
-
-      </div>
+      <button
+        className={`btn-check-out ${activeSection === 'check-out' ? 'active' : ''}`}
+        onClick={() => setActiveSection('check-out')}
+      >
+        <div className="btn-content">
+          <span className="btn-label">Check out</span>
+          <span className="btn-value">{checkOut ? formatDate(checkOut) : 'Add dates'}</span>
+        </div>
+      </button>
 
       <button className="btn-guests" onClick={() => setActiveSection('guests')}>
         <div className="btn-content">
