@@ -451,7 +451,7 @@ export function StayIconFilter() {
     <section className="filter-carousel">
       {canScrollLeft && (
         <button className="scroll-btn left" onClick={onScrollLeft}>
-          <LeftIcon />
+          <LeftIcon className="left-scroll"/>
         </button>
       )}
 

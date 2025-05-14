@@ -32,12 +32,12 @@ export function ReviewsSection({ stay }) {
 
             <div className="review-date">
               {Array.from({ length: +review.rate }, (_, i) => (
-                <span key={"full-" + i} style={{ color: "black" }}>
+                <span className="star" key={"full-" + i} style={{ color: "black" }}>
                   ★
                 </span>
               ))}
               {Array.from({ length: 5 - +review.rate }, (_, i) => (
-                <span key={"empty-" + i} style={{ color: "#ccc" }}>
+                <span className="star" key={"empty-" + i} style={{ color: "#ccc" }}>
                   ★
                 </span>
               ))}
@@ -46,7 +46,7 @@ export function ReviewsSection({ stay }) {
             </div>
 
             <p className="review-text">{review.txt}</p>
-            {review.txt.length > 200 && (
+            {review.txt.length > 100 && (
               <button className="btn-show-more">Show more</button>
             )}
           </article>

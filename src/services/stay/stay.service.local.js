@@ -232,7 +232,7 @@ const gStays = [
       {
         id: "r026",
         txt: "A well maintained apartment with a sense of home in a prime location. Clean and thoughtful about the details.",
-        rate: 5,
+        rate: 4,
         by: {
           _id: "u226",
           fullname: "Yoram",

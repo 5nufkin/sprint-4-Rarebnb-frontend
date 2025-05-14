@@ -15,8 +15,8 @@
     cursor: pointer;
     position: absolute;
     z-index: 3;
-    width: 35px;
-    height: 35px;
+    width: 2.5em;
+    height: 2.5em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &:hover {
@@ -107,7 +107,6 @@
     }
 
     .label {
-      // font-size: 14px;
       font-size: 0.6em;
       font-weight: 700;
     }
@@ -135,4 +134,3 @@
 .scroll-btn {
   z-index: 3;
 }
-
