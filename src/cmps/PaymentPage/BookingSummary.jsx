@@ -3,39 +3,48 @@ import { DiamondIcon, StarIcon } from "../Icons"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/stay.service.local"
-import { useLocation } from 'react-router-dom'
-
+import { useLocation } from "react-router-dom"
 
 export function BookingSummary() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const { state } = useLocation()
-  const { checkIn, checkOut, guests, nights, pricePerNight, cleaningFee, serviceFee, total } = state
+  const {
+    checkIn,
+    checkOut,
+    guests,
+    nights,
+    pricePerNight,
+    cleaningFee,
+    serviceFee,
+    total,
+  } = state
 
-  const checkInStr  = checkIn  ? checkIn.toLocaleDateString()  : '––'
-  const checkOutStr = checkOut ? checkOut.toLocaleDateString() : '––'
+  const checkInStr = checkIn ? checkIn.toLocaleDateString() : "––"
+  const checkOutStr = checkOut ? checkOut.toLocaleDateString() : "––"
 
   function totalGuests(g) {
     return g.adults + g.children + g.infants + g.pets
   }
 
-
   useEffect(() => {
-    stayService
-      .getById(stayId)
-      .then((stay) => {
+    async function loadStay() {
+      try {
+        const stay = await stayService.getById(stayId)
         setStay(stay)
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error fetching stay:", err)
-      })
+      }
+    }
+
+    loadStay()
   }, [stayId])
 
   if (!stay) return <div>Loading…</div>
 
   return (
     <div className="payment-right">
-      <aside className="payment-summary">
+      <aside className="booking-summary">
         {/* Stay Summary */}
         <section className="stay-summary">
           <div className="stay-header">
@@ -53,7 +62,9 @@ export function BookingSummary() {
           </div>
           <p className="cancel-policy">
             Cancel before check-in on {checkInStr} for a partial refund.{" "}
-            <a href="#" className="full-policy">Full policy</a>
+            <a href="#" className="full-policy">
+              Full policy
+            </a>
           </p>
         </section>
 
@@ -64,7 +75,9 @@ export function BookingSummary() {
             <button className="btn-change">Change</button>
           </div>
           <div className="trip-info">
-            <p>{checkInStr} – {checkOutStr}</p>
+            <p>
+              {checkInStr} – {checkOutStr}
+            </p>
             <p>{totalGuests(guests)} guests</p>
           </div>
         </section>

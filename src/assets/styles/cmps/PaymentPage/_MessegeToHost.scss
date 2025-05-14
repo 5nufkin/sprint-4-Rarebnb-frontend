@@ -1,31 +1,32 @@
 // styles/_MessageToHost.scss
 .message-to-host {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 24px;
-  padding: 20px;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  background-color: $clr-bg;
+  border: 1px solid $gray2;
+  border-radius: 1.3em;
+  padding: 1.1em;
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
+
   display: flex;
   flex-direction: column;
 
   p {
-    color: #222;
-    margin-bottom: 12px;
+    color: $clr7;
+    margin-bottom: 0.65em;
   }
 
   textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 0.7em;
+    border: 1px solid $gray6;
+    border-radius: 0.4em;
+    font-size: 0.89em;
     font-weight: 500;
     resize: vertical;
     line-height: 1.4;
 
     &::placeholder {
-      color: #888;
+      color: $gray7;
     }
   }
 }
