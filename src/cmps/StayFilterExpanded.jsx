@@ -21,9 +21,9 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside, true)
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside, true)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
 
   }, [])
