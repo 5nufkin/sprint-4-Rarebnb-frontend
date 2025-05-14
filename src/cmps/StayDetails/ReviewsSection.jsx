@@ -3,7 +3,7 @@ import { StarIcon } from "../Icons"
 export function ReviewsSection({ stay }) {
   const avgRating = stay.reviews?.length
     ? stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
-    stay.reviews.length
+      stay.reviews.length
     : 0
 
   return (
@@ -29,12 +29,22 @@ export function ReviewsSection({ stay }) {
                 <p className="review-location">{review.by.country}</p>
               </div>
             </div>
+
             <div className="review-date">
-              {[...Array(review.rate)].map((_, i) => (
-                <StarIcon key={i} />
+              {Array.from({ length: +review.rate }, (_, i) => (
+                <span key={"full-" + i} style={{ color: "black" }}>
+                  ★
+                </span>
               ))}
-              <span>{review.date || "Oct 2024"}</span>
+              {Array.from({ length: 5 - +review.rate }, (_, i) => (
+                <span key={"empty-" + i} style={{ color: "#ccc" }}>
+                  ★
+                </span>
+              ))}
+              <span className="separating-dot">·</span>
+              <span> {review.date || "Oct 2024"} </span>
             </div>
+
             <p className="review-text">{review.txt}</p>
             {review.txt.length > 50 && (
               <button className="btn-show-more">Show more</button>
