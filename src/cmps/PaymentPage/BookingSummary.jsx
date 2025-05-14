@@ -23,8 +23,8 @@ export function BookingSummary() {
   const checkInStr = checkIn ? checkIn.toLocaleDateString() : "––"
   const checkOutStr = checkOut ? checkOut.toLocaleDateString() : "––"
 
-  function totalGuests(g) {
-    return g.adults + g.children + g.infants + g.pets
+  function totalGuests(guests) {
+    return guests.adults + guests.children + guests.infants + guests.pets
   }
 
   useEffect(() => {
