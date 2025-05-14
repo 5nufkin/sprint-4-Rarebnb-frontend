@@ -3,7 +3,6 @@ import { GuestPicker } from "./GuestPicker"
 import { Popover } from "./Popover"
 import { MagnifyingGlassIcon } from "./Icons"
 import { MyDatePicker } from "./MyDatePicker"
-import { GuestsSelector } from "./StayDetails/GuestSelector"
 import { formatDate } from "../services/util.service"
 
 
