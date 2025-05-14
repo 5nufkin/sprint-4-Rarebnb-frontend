@@ -11,7 +11,7 @@ import '../assets/styles/pages/StayDetails.scss'
 
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
-import { stayService } from '../services/stay/stay.service.local.js'
+import { stayService } from '../services/stay/index.js'
 
 
 export function StayDetails() {

@@ -2,7 +2,7 @@ import { DiamondIcon, StarIcon } from "../Icons"
 
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
-import { stayService } from "../../services/stay/stay.service.local"
+import { stayService } from "../../services/stay/index"
 import { useLocation } from "react-router-dom"
 
 export function BookingSummary() {

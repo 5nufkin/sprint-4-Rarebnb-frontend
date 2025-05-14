@@ -9,8 +9,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
-    border: 1px solid #ddd;
+    background: $clr-white;
+    border: 1px solid $gray2;
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
@@ -41,10 +41,14 @@
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
-      gap: 25px;
+      gap: 0.6rem;
       scroll-behavior: smooth;
       white-space: nowrap;
       padding: 12px 0;
+
+      :hover{
+        color: $clr7;
+      }
 
       &::-webkit-scrollbar {
         display: none;
@@ -56,7 +60,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 60px;
+      width: 3em;
       height: 100%;
       pointer-events: none;
       z-index: 2;
@@ -83,7 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 80px;
+    min-width: 4.45em;
     cursor: pointer;
     color: $gray5;
     flex: 0 0 auto;
@@ -97,15 +101,15 @@
     }
 
     .icon-img {
-      width: 27px;
-      height: 27px;
+      width: 1.2em;
+      height: 1.2em;
       object-fit: contain;
-      margin-bottom: 6px;
     }
 
     .label {
-      font-size: 14px;
-      font-weight: 500;
+      // font-size: 14px;
+      font-size: 0.6em;
+      font-weight: 700;
     }
 
     &::after {

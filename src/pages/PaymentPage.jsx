@@ -4,7 +4,7 @@ import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
 
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
-import { stayService } from "../services/stay/stay.service.local"
+import { stayService } from "../services/stay"
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
