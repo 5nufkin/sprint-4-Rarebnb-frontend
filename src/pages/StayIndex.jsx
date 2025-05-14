@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStays, addStay, updateStay, removeStay, addStayMsg } from '../store/actions/stay.actions'
+import { addStay, updateStay, removeStay } from '../store/actions/stay.actions'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay/'
 import { StayList } from '../cmps/StayList'
 import { StayIconFilter } from '../cmps/StayIconFilter'
-import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
 
 export function StayIndex() {
   const stays = useSelector(storeState => storeState.stayModule.stays)
-  const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-
-  useEffect(() => {
-    loadStays(filterBy)
-  }, [filterBy])
 
   async function onRemoveStay(stayId) {
     try {
@@ -50,7 +43,6 @@ export function StayIndex() {
 
   return (
     <main className="stay-index">
-      <StayFilterExpanded filterBy={filterBy} setFilterBy={setFilterBy} />
       <StayIconFilter />
       <StayList stays={stays} onUpdateStay={onUpdateStay} />
     </main>

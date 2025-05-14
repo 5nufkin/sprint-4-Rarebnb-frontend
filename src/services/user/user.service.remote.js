@@ -1,6 +1,6 @@
 import { httpService } from '../http.service'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 
 export const userService = {
 	login,
@@ -10,8 +10,8 @@ export const userService = {
 	getById,
 	remove,
 	update,
-    getLoggedinUser,
-    saveLoggedinUser,
+    getLoggedInUser,
+    saveLoggedInUser,
 }
 
 function getUsers() {
@@ -30,16 +30,16 @@ function remove(userId) {
 async function update({ _id, score }) {
 	const user = await httpService.put(`user/${_id}`, { _id, score })
 
-	// When admin updates other user's details, do not update loggedinUser
-    const loggedinUser = getLoggedinUser() // Might not work because its defined in the main service???
-    if (loggedinUser._id === user._id) saveLoggedinUser(user)
+	// When admin updates other user's details, do not update loggedInUser
+    const loggedInUser = getLoggedInUser() // Might not work because its defined in the main service???
+    if (loggedInUser._id === user._id) saveLoggedInUser(user)
 
 	return user
 }
 
 async function login(userCred) {
 	const user = await httpService.post('auth/login', userCred)
-	if (user) return saveLoggedinUser(user)
+	if (user) return saveLoggedInUser(user)
 }
 
 async function signup(userCred) {
@@ -47,7 +47,7 @@ async function signup(userCred) {
 	userCred.score = 10000
 
     const user = await httpService.post('auth/signup', userCred)
-	return saveLoggedinUser(user)
+	return saveLoggedInUser(user)
 }
 
 async function logout() {
@@ -55,11 +55,11 @@ async function logout() {
 	return await httpService.post('auth/logout')
 }
 
-function getLoggedinUser() {
+function getLoggedInUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function saveLoggedinUser(user) {
+function saveLoggedInUser(user) {
 	user = { 
         _id: user._id, 
         fullname: user.fullname, 

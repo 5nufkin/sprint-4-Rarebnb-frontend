@@ -100,6 +100,16 @@ export function AirbnbLogoIcon({ className }) {
   )
 }
 
+export function MenuIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: 16, width: 16, stroke: 'currentColor', strokeWidth: 3, overflow: 'visible' }}
+    >
+      <path d="M2 16h28M2 24h28M2 8h28" />
+    </svg>
+  );
+}
+
+
 export function DiamondIcon() {
   return (
     <svg

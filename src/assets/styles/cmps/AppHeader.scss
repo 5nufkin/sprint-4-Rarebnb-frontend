@@ -1,56 +1,79 @@
+.observer-top{
+  position: absolute;
+  top: 0;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .app-header {
-  display: flex;
-  min-height: 3.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, $clr-white 39.9%, $gray-3 100%);
+  height: rem(200px);
+  border-block-end: 1px solid #ebebeb;
 
-  background-color: $clr-bg;
+  // transition: height .2s; //! Glitching 
 
-  .logo {
+  &.header-small{
+    height: rem(80px);
 
-    .logo-icon,
-    .logo-full {
+    .filter-bar{
       display: none;
-    }
-
-    // // Show icon only on medium screens
-    @media (min-width: 550px) and (max-width: 743px) {
-      .logo-icon {
-        display: block;
-      }
-    }
-
-    // Show full logo on wide screens
-    @media (min-width: 744px) {
-      .logo-full {
-        display: block;
-      }
     }
   }
 
-  nav {
+  .header-content {
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 1em;
-
     font-size: .8em;
+    margin-block-end: rem(25px);
 
-    .active {
-      color: $clr1;
+    height: rem(78px);
+    padding-inline: rem(32px);
+
+    .btn-user {
+      @include circle-button(40px);
+      margin-inline-start: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .btn-menu {
+      @include circle-button(40px);
+      color: $clr-text-primary;
+      background-color: $clr-btn-menu;
+      margin-inline-start: rem(12px);
     }
 
     .logo {
-      font-size: 1.4em;
-      font-weight: bold;
-      margin-inline-end: 2em;
       color: $clr-brand-main;
-    }
 
-    .login-link {
-      margin-inline-start: auto;
-    }
 
-    button {
-      margin-inline-end: 0;
+      .logo-icon,
+      .logo-full {
+        display: none;
+      }
+
+      // // Show icon only on medium screens
+      @media (min-width: 550px) and (max-width: 743px) {
+        .logo-icon {
+          display: block;
+        }
+      }
+
+      // Show full logo on wide screens
+      @media (min-width: 744px) {
+        .logo-full {
+          display: block;
+        }
+      }
     }
   }
 }
