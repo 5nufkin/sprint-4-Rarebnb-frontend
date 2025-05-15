@@ -19,10 +19,7 @@ export function HamburgerMenu({ onClose }) {
           <NavLink to="/profile">Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/account-settings">Account settings</NavLink>
-        </li>
-        <li>
-          <NavLink to="/help">Help Center</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
         <li>
           <button className="logout-btn" onClick={onClose}>
