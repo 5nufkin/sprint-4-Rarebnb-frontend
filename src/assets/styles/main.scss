@@ -20,6 +20,7 @@
 @import "pages/Chat";
 @import "pages/Payment";
 @import "pages/StayDetails.scss";
+@import "pages/Dashboard";
 
 // Components
 @import "cmps/StayList";
@@ -46,3 +47,8 @@
 @import "cmps/PaymentPage/MessegeToHost";
 @import "cmps/PaymentPage/PaymentMethod";
 @import "cmps/PaymentPage/ConfirmationOrder";
+
+
+@import "cmps/Dashboard/StatsCards.scss";
+@import "cmps/Dashboard/OverviewSales.scss";
+

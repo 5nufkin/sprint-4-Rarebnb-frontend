@@ -1,0 +1,52 @@
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.stat-card {
+  background-color: $clr-white;
+  width: 18.5rem;
+  padding: 1.7rem;
+  border-radius: 16px;
+  border: 1px solid $gray-1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card .value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.stat-card .diff {
+  font-size: 0.9rem;
+}
+
+.stat-card .positive {
+  color: $clr8;
+}
+.stat-card .negative {
+  color: $clr9;
+}
+
+.stat-icon-circle {
+  width: 2.2em;
+  height: 2.2em;
+
+  background-color: $clr10;
+  color: $clr-white;
+  border-radius: 50%;
+  padding: 0.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  
+}

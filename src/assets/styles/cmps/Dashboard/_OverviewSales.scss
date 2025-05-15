@@ -1,0 +1,24 @@
+.overview-sale {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  max-width: 25rem;
+}
+
+.overview-sale h4 {
+  margin-bottom: 1rem;
+}
+
+.sales-chart {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.overview-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #eee;
+}
