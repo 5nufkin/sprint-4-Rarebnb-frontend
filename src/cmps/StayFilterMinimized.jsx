@@ -4,7 +4,6 @@ import { MagnifyingGlassIcon } from "./Icons"
 
 export function StayFilterMinimized({ filterBy, isHidden }) {
   const { city, country, checkIn, checkOut, guestTotal } = filterBy
-  console.log(isHidden)
 
   return (
     <section className={`filter-minimized ${isHidden ? 'dis-none' : 'flex'}`}>

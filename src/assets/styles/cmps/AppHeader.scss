@@ -1,4 +1,4 @@
-.observer-top{
+.observer-top {
   position: absolute;
   top: 0;
   height: 1px;
@@ -16,10 +16,23 @@
 
   // transition: height .2s; //! Glitching 
 
-  &.header-small{
+  @media(min-width: 744px) {
+    padding-inline: rem(32px)
+  }
+
+  @media (min-width: 1440px) {
+    padding-inline: rem(48px);
+    max-width: 1824px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: unset;
+  }
+
+  &.header-small {
     height: rem(80px);
 
-    .filter-bar{
+    .filter-bar {
       display: none;
     }
   }
@@ -30,9 +43,7 @@
     align-items: center;
     font-size: .8em;
     margin-block-end: rem(25px);
-
     height: rem(78px);
-    padding-inline: rem(24px);
 
     .btn-user {
       @include circle-button(40px);
