@@ -6,6 +6,8 @@ import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
 import { stayService } from "../services/stay"
 import { loadStays } from "../store/actions/stay.actions"
 import { HamburgerMenu } from "./HamburgerMenu"
+import { StayFilterMinimized } from "./StayFilterMinimized";
+
 
 export function AppHeader() {
   const loggedInUser = useSelector(
@@ -58,10 +60,12 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header full ${
-          isAtTop ? "header-large" : "header-small"
-        }`}
+        className={`app-header full ${isAtTop ? "header-large" : "header-small"
+          }`}
       >
+
+        <StayFilterMinimized filterBy={filterBy} isHidden={isAtTop} />
+
         <section className="header-content main-layout">
           <NavLink to="/" className="logo">
             <AirbnbLogoIcon className="logo-icon" />

@@ -23,7 +23,8 @@ function getDefaultFilter() {
     adults: 0,
     children: 0,
     infants: 0,
-    pets: 0
+    pets: 0,
+    guestTotal: 0,
   }
 }
 

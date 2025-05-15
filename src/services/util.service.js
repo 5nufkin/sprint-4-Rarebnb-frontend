@@ -9,6 +9,15 @@ export function makeId(length = 6) {
   return txt
 }
 
+export function getDateTxt(startDate, endDate) {
+  if (!startDate || !endDate) return null
+  if (startDate.getMonth() === endDate.getMonth()) {
+    return `${startDate.toLocaleDateString('default', { month: 'long' })} ${startDate.getDate()}-${endDate.getDate()}`
+  } else {
+    return `${startDate.toLocaleDateString('default', { month: 'long' })} ${startDate.getDate()}- ${endDate.toLocaleDateString('default', { month: 'long' })} ${endDate.getDate()}`
+  }
+}
+
 export function makeLorem(size = 100) {
   var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
   var txt = ''

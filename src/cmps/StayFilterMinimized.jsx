@@ -1,26 +1,35 @@
-import { useState } from "react"
+import { getDateTxt } from "../services/util.service"
+import { MagnifyingGlassIcon } from "./Icons"
 
 
-export function StayFilterMinimized({ filterBy, setFilterBy }) {
-  const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-
-  function handleChange({ target }) {
-    let { value, name: field, type } = target
-    value = type === 'number' ? +value || '' : value
-    if (field === 'inStock') {
-      if (!value) value = null
-      else value = value === 'true' ? true : false
-    }
-    setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
-  }
+export function StayFilterMinimized({ filterBy, isHidden }) {
+  const { city, country, checkIn, checkOut, guestTotal } = filterBy
+  console.log(isHidden)
 
   return (
-    <section className="filter-minimized">
-      <form>
-        <label htmlFor="country">Where </label>
-        <input  onChange={handleChange}
-          type="text" placeholder="Search destinations" id="minPrice" name="minPrice" />
-      </form>
+    <section className={`filter-minimized ${isHidden ? 'dis-none' : 'flex'}`}>
+      <section className="location flex align-center">
+        <img className="icon-homes" src="https://res.cloudinary.com/dbbj46yzt/image/upload/v1747242745/4aae4ed7-5939-4e76-b100-e69440ebeae4.png_im_w_240_zptu40.avif" />
+        {city || country
+          ? <p>Homes in {city || country}</p>
+          : <p>Anywhere</p>
+        }
+      </section>
+      <section className="dates">
+        {checkIn && checkOut
+          ? <p>{getDateTxt(checkIn, checkOut)}</p>
+          : <p>Anytime</p>
+        }
+      </section>
+      <section className="guests">
+        {guestTotal > 0
+          ? <p>{guestTotal} guest{guestTotal > 1 ? 's' : ''}</p>
+          : <p>Add guests</p>
+        }
+      </section>
+      <section className="btn-search search-icon">
+        <MagnifyingGlassIcon width="12px" height="12px" />
+      </section>
     </section>
   )
 }

@@ -50,7 +50,8 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
   }
 
   function onSetGuests(guests) {
-    setFilterByToEdit(prev => ({ ...prev, ...guests }))
+    const total = Object.values(guests).reduce((acc, count) => acc + count, 0)
+    setFilterByToEdit(prev => ({ ...prev, ...guests, guestTotal: total }))
   }
 
   function handleSearch(ev) {
