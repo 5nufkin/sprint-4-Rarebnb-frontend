@@ -51,6 +51,7 @@
 .menu-container {
   position: relative;
   display: inline-block;
+  right: -6px;
 }
 
 .hamburger-menu li:nth-child(3),
@@ -95,7 +96,7 @@
 .menu-icon {
   width: 16px;
   height: 16px;
-  stroke: #222; 
+  stroke: #222;
 }
 
 // ===== Responsive: hide menu under 640px =====
