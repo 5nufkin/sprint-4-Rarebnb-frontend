@@ -1,31 +1,13 @@
-.payment-container {
-  display: flex;
-  flex-direction: row;
-  gap: 6.5rem;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-
-  .payment-left {
-    flex: 1;
-    max-width: 550px;
-  }
+.payment-page {
+  margin-top: 1em;
 }
+
 .back-to-detail {
   font-size: 2.3rem;
   font-weight: 700;
   margin: 0 0 20px 0;
   line-height: 1.5;
   color: $clr7;
-}
-
-.btn-request {
-  font-size: 1.25rem;
-  height: 3.5rem;
-  border-radius: 1rem;
-  width: 20em;
-  font-weight: 550;
-  background: $clr-brand-main;
 }
 
 ////////////////////////////////////////////

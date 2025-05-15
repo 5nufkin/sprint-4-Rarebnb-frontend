@@ -1,13 +1,97 @@
+// import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
+// import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
+// import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
+// import { useNavigate, useParams } from "react-router"
+// import { useEffect, useState } from "react"
+// import { stayService } from "../services/stay"
+// import { ReservationSuccess } from "../cmps/Icons"
+// import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
+
+// export function PaymentPage() {
+//   const [stay, setStay] = useState(null)
+//   const [isConfirmed, setIsConfirmed] = useState(false)
+//   const { stayId } = useParams()
+//   const navigate = useNavigate()
+
+//   useEffect(() => {
+//     async function loadStay() {
+//       try {
+//         const stay = await stayService.getById(stayId)
+//         setStay(stay)
+//       } catch (err) {
+//         console.error("Error fetching stay:", err)
+//       }
+//     }
+//     loadStay()
+//   }, [stayId])
+
+//   function onConfirmOrder() {
+//     setIsConfirmed(true)
+//   }
+
+//   if (!stay) return <div>Loading…</div>
+
+//   return (
+//     <section className="payment-page">
+//       <div className="main-payment-grid">
+//         <div className="booking-summary-wrapper">
+//           <BookingSummary />
+//           {isConfirmed && <RareFindDiamond />}
+//         </div>
+
+//         <div className="payment-left">
+//           {!isConfirmed ? (
+//             <>
+//               <h1 className="back-to-detail">Request to book</h1>
+//               <div className="payment-method-wrapper">
+//                 <PaymentMethod />
+//               </div>
+//               <MessageToHost />
+//               <div className="confirm-wrapper">
+//                 <button className="btn-request" onClick={onConfirmOrder}>
+//                   Request to book
+//                 </button>
+//               </div>
+//             </>
+//           ) : (
+//             <div className="confirmation-success">
+//               <h2 className="success-header">
+//                 <ReservationSuccess /> Reservation success!
+//               </h2>
+//               <div className="right-side-confirmation">
+//                 <p>
+//                   Your trip has been confirmed. We look forward to hosting you!
+//                 </p>
+//                 <button
+//                   className="btn-request"
+//                   onClick={() => navigate("/trips")}
+//                 >
+//                   Review Trips
+//                 </button>
+//               </div>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </section>
+//   )
+// }
+
 import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
 import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
 import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../services/stay"
+import { ReservationSuccess } from "../cmps/Icons"
+import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
+import { GlowButton } from "../cmps/PaymentPage/GlowButton"
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
+  const [isConfirmed, setIsConfirmed] = useState(false)
   const { stayId } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadStay() {
@@ -21,25 +105,57 @@ export function PaymentPage() {
     loadStay()
   }, [stayId])
 
+  function onConfirmOrder() {
+    setIsConfirmed(true)
+  }
+
   if (!stay) return <div>Loading…</div>
 
   return (
     <section className="payment-page">
-      <h1 className="back-to-detail">Request to book</h1>
-
+      {!isConfirmed && <h1 className="back-to-detail">Request to book</h1>}
       <div className="main-payment-grid">
+        {/* SIDE: RIGHT */}
         <div className="booking-summary-wrapper">
-          <BookingSummary />
+          <BookingSummary isConfirmed={isConfirmed} />
+          {!isConfirmed && <RareFindDiamond />}
         </div>
 
+        {/* SIDE: LEFT */}
         <div className="payment-left">
-          <div className="payment-method-wrapper">
-            <PaymentMethod />
-          </div>
-            <MessageToHost />
-          <div className="confirm-wrapper">
-            <button className="btn-request">Request to book</button>
-          </div>
+          {!isConfirmed ? (
+            <>
+              <div className="payment-method-wrapper">
+                <PaymentMethod />
+              </div>
+              <MessageToHost />
+              <div className="confirm-wrapper">
+                <GlowButton className="btn-request" onClick={onConfirmOrder}>
+                  Request to book
+                </GlowButton>
+              </div>
+            </>
+          ) : (
+            <div className="confirmation-success">
+              <h2 className="success-header">
+                <ReservationSuccess /> Reservation success!
+              </h2>
+              <div className="rare-find-confirmation">
+                <RareFindDiamond />
+              </div>
+              <div className="right-side-confirmation">
+                <p>
+                  Your trip has been confirmed. We look forward to hosting you!
+                </p>
+                <GlowButton
+                  className="btn-request"
+                  onClick={() => navigate("/trips")}
+                >
+                  Review Trips
+                </GlowButton>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

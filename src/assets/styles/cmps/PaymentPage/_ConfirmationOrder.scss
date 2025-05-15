@@ -1,0 +1,45 @@
+.confirmation-success {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.confirmation-success .rare-find {
+  display: flex;
+  align-items: center;
+  gap: 4em;
+  margin-top: 1em;
+}
+
+.rare-find-confirmation {
+  background-color: $clr-bg;
+  border: 1px solid $gray2;
+  border-radius: 1.3em;
+  padding: 1.1em;
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
+}
+
+.glow-button {
+  --mouse-x: 50;
+  --mouse-y: 50;
+  width: 100%;
+
+  // min-width: 300px;
+  padding: 1em;
+  background-size: 200% 200%;
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+    calc((100 - var(--mouse-y, 0)) * 1%);
+  background-image: radial-gradient(
+    circle,
+    $glow-button1 0%,
+    $glow-button2 100%
+  );
+  cursor: pointer;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 0.89em;
+  color: $clr-white;
+  font-family: "Raleway", sans-serif;
+  transition: background-position 0.05s ease;
+}
