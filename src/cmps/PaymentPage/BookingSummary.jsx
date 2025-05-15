@@ -87,10 +87,10 @@ export function BookingSummary() {
             <button className="btn-change">Change</button>
           </div>
           <div className="trip-info">
-            <p>
+            <p className="check-in-out">
               {checkInStr} – {checkOutStr}
             </p>
-            <p>{totalGuests(guests)} guests</p>
+            <p className="check-in-out">{totalGuests(guests)} guests</p>
           </div>
         </section>
 

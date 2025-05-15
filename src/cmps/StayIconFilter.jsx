@@ -468,7 +468,7 @@ export function StayIconFilter() {
                   alt={filter.label}
                 />
               )}
-              <span className="label">{filter.label}</span>
+              <span className="icon-label">{filter.label}</span>
             </div>
           ))}
         </div>

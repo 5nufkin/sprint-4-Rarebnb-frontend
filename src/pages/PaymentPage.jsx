@@ -36,13 +36,10 @@ export function PaymentPage() {
           <div className="payment-method-wrapper">
             <PaymentMethod />
           </div>
-          <div className="message-to-host">
             <MessageToHost />
+          <div className="confirm-wrapper">
+            <button className="btn-request">Request to book</button>
           </div>
-        </div>
-
-        <div className="confirm-wrapper">
-          <button className="btn-request">Request to book</button>
         </div>
       </div>
     </section>
