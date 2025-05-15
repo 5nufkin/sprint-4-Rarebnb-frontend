@@ -71,7 +71,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
   return (
     <section ref={filterBarRef} className={`filter-bar ${isFocused ? 'focused' : ''}`}>
       <button
-        className={`btn-location ${activeSection === 'location' ? 'active' : ''}`}
+        className={`btn-filter btn-location ${activeSection === 'location' ? 'active' : ''}`}
         onClick={() => setActiveSection('location')}
       >
         <div className="btn-content">
@@ -89,7 +89,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
       </button>
 
       <button
-        className={`btn-check-in ${activeSection === 'check-in' ? 'active' : ''}`}
+        className={`btn-filter btn-check-in ${activeSection === 'check-in' ? 'active' : ''}`}
         onClick={() => setActiveSection('check-in')}
       >
         <div className="btn-content">
@@ -99,7 +99,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
       </button>
 
       <button
-        className={`btn-check-out ${activeSection === 'check-out' ? 'active' : ''}`}
+        className={`btn-filter btn-check-out ${activeSection === 'check-out' ? 'active' : ''}`}
         onClick={() => setActiveSection('check-out')}
       >
         <div className="btn-content">
@@ -108,7 +108,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
         </div>
       </button>
 
-      <button className="btn-guests" onClick={() => setActiveSection('guests')}>
+      <button className={`btn-filter btn-guests ${activeSection === 'guests' ? 'active' : ''}`} onClick={() => setActiveSection('guests')}>
         <div className="btn-content">
           <span className="btn-label">Who</span>
           <span className="btn-value">
@@ -130,15 +130,14 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
         )
       }
 
-      {
-        activeSection === 'guests' && (
-          <Popover style={{ right: 0, width: '50%' }}>
-            <GuestPicker
-              onSetGuests={onSetGuests}
-              guests={{ adults, children, infants, pets }}
-            />
-          </Popover>
-        )
+      {activeSection === 'guests' && (
+        <Popover style={{ right: 0 }}>
+          <GuestPicker
+            onSetGuests={onSetGuests}
+            guests={{ adults, children, infants, pets }}
+          />
+        </Popover>
+      )
       }
     </section >
   )

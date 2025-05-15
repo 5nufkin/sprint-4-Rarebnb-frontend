@@ -2,14 +2,14 @@
   width: 100%;
 
   .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
-    background-color: $clr-white;
+    background-color: $clr-bg;
     color: $clr-text-primary;
     // border-radius: 50%;
   }
 
   .react-datepicker__day:not([aria-disabled=true]):hover {
     border-radius: 50%;
-    background-color: $clr-white;
+    background-color: $clr-bg;
   }
 
   .react-datepicker {
@@ -32,7 +32,7 @@
       width: 43%;
 
       .react-datepicker__header {
-        background-color: $clr-white;
+        background-color: $clr-bg;
         border-bottom: none;
         padding: 1rem 0 0.5rem;
       }
@@ -121,7 +121,7 @@
               color: $gray3;
 
               &:hover {
-                background-color: $clr-white;
+                background-color: $clr-bg;
               }
             }
 
