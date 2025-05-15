@@ -6,8 +6,7 @@ import { stayService } from "../../services/stay/index"
 import { useLocation } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 
-
-export function BookingSummary() {
+export function BookingSummary({isConfirmed}) {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const { state } = useLocation()
@@ -84,7 +83,10 @@ export function BookingSummary() {
         <section className="dates-check-in-out summary-section">
           <div className="section-header">
             <h4>Trip details</h4>
-            <button className="btn-change">Change</button>
+
+            {!isConfirmed && <button className="btn-change">Change</button>}
+            {/* <button className="btn-change">Change</button> */}
+
           </div>
           <div className="trip-info">
             <p className="check-in-out">
@@ -126,19 +128,6 @@ export function BookingSummary() {
           </a>
         </div>
       </aside>
-
-      {/* Rare Find Note */}
-      <div className="payment-summary-bottom">
-        <div className="diamond-icon">
-          <DiamondIcon />
-        </div>
-        <div className="diamond-text">
-          <p className="diamond-text-first-row">This is a rare find.</p>
-          <p className="diamond-text-second-row">
-            Amirs place is usually booked.
-          </p>
-        </div>
-      </div>
     </div>
   )
 }

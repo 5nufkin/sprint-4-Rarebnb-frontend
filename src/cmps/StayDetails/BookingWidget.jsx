@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { GuestsSelector } from './GuestsSelector.jsx'
 import { useNavigate } from 'react-router-dom'
+import { GlowButton } from '../PaymentPage/GlowButton.jsx'
 
 
 export function BookingWidget({ stay }) {
@@ -77,8 +78,10 @@ export function BookingWidget({ stay }) {
         </div>
       </div>
 
-      <button className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</button>
+      <GlowButton className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</GlowButton>
       <p className="note">You won’t be charged yet</p>
+      {/* <button className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</button>
+      <p className="note">You won’t be charged yet</p> */}
 
       {nights > 0 && (
         <div className="breakdown">

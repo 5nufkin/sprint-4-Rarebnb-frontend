@@ -1,32 +1,32 @@
 // import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route } from "react-router"
 
-import { StayIndex } from './pages/StayIndex.jsx'
-import { ReviewIndex } from './pages/ReviewIndex.jsx'
-import { ChatApp } from './pages/Chat.jsx'
-import { AdminIndex } from './pages/AdminIndex.jsx'
+import { StayIndex } from "./pages/StayIndex.jsx"
+import { ReviewIndex } from "./pages/ReviewIndex.jsx"
+import { ChatApp } from "./pages/Chat.jsx"
+import { AdminIndex } from "./pages/AdminIndex.jsx"
 
-import { PaymentPage } from './pages/PaymentPage.jsx'
-import { StayDetails } from './pages/StayDetails.jsx'
-import { UserDetails } from './pages/UserDetails'
+import { PaymentPage } from "./pages/PaymentPage.jsx"
+import { StayDetails } from "./pages/StayDetails.jsx"
+import { UserDetails } from "./pages/UserDetails"
 
-import { AppHeader } from './cmps/AppHeader'
-import { AppFooter } from './cmps/AppFooter'
-import { UserMsg } from './cmps/UserMsg.jsx'
-import { LoginSignup } from './pages/LoginSignup.jsx'
-import { Login } from './pages/Login.jsx'
-import { Signup } from './pages/Signup.jsx'
+import { AppHeader } from "./cmps/AppHeader"
+import { AppFooter } from "./cmps/AppFooter"
+import { UserMsg } from "./cmps/UserMsg.jsx"
+import { LoginSignup } from "./pages/LoginSignup.jsx"
+import { Login } from "./pages/Login.jsx"
+import { Signup } from "./pages/Signup.jsx"
 
 export function RootCmp() {
   return (
     <>
       <AppHeader />
       <UserMsg />
-      <main className='main-layout'>
+      <main className="main-layout">
         <Routes>
           <Route path="/" element={<StayIndex />} />
           <Route path="stay/:stayId" element={<StayDetails />} />
-          <Route path='stay/:stayId/payment' element={<PaymentPage />} />
+          <Route path="stay/:stayId/payment" element={<PaymentPage />} />
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="review" element={<ReviewIndex />} />
           <Route path="chat" element={<ChatApp />} />
@@ -41,5 +41,3 @@ export function RootCmp() {
     </>
   )
 }
-
-
