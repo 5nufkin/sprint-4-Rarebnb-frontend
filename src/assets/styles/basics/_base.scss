@@ -14,6 +14,12 @@ body {
   font-family: 'Airbnb Cereal', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   font-size: rem(18px);
+
+  main,
+  main.main-layout {
+    flex-grow: 1;
+    max-width: 100vw;
+  }
 }
 
 h1,

@@ -10,13 +10,13 @@ import { StayFilterMinimized } from "./StayFilterMinimized";
 
 
 export function AppHeader() {
-  const loggedInUser = useSelector(
-    (storeState) => storeState.userModule.loggedInUser
-  )
+  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
   const [isAtTop, setIsAtTop] = useState(true)
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
+  const [activeSection, setActiveSection] = useState('')
   const topRef = useRef()
 
   useEffect(() => {
@@ -27,10 +27,13 @@ export function AppHeader() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsAtTop(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsHeaderExpanded(false)
+        }
       },
       {
         root: null,
-        threshold: 0.1,
+        threshold: 0,
       }
     )
 
@@ -60,13 +63,18 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header full ${isAtTop ? "header-large" : "header-small"
+        className={`app-header main-layout full ${(isAtTop || isHeaderExpanded) ? "header-large" : "header-small"
           }`}
       >
 
-        <StayFilterMinimized filterBy={filterBy} isHidden={isAtTop} />
+        {!isHeaderExpanded && <StayFilterMinimized
+          filterBy={filterBy}
+          isHidden={isAtTop}
+          setIsHeaderExpanded={setIsHeaderExpanded}
+          setActiveSection={setActiveSection}
+        />}
 
-        <section className="header-content main-layout">
+        <section className="header-content ">
           <NavLink to="/" className="logo">
             <AirbnbLogoIcon className="logo-icon" />
             <AirbnbLogoFull className="logo-full" />
@@ -87,8 +95,18 @@ export function AppHeader() {
           )}
         </section>
 
-        <StayFilterExpanded filterBy={filterBy} setFilterBy={setFilterBy} />
+        {(isHeaderExpanded || isAtTop) && <StayFilterExpanded
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />}
+
       </header>
+      <div className={`header-backdrop ${(!isAtTop && isHeaderExpanded) ? 'visible' : ''}`} onClick={() => {
+        setIsHeaderExpanded(false)
+        setActiveSection('')
+      }}></div>
     </>
   )
 }

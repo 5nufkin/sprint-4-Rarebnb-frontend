@@ -6,9 +6,8 @@ import { MyDatePicker } from "./MyDatePicker"
 import { formatDate } from "../services/util.service"
 
 
-export function StayFilterExpanded({ filterBy, setFilterBy }) {
+export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setActiveSection }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-  const [activeSection, setActiveSection] = useState('')
   const isFocused = !!activeSection
   const filterBarRef = useRef()
   const locationInputRef = useRef()
@@ -33,6 +32,11 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
 
   }, [])
 
+  useEffect(() => {
+    if (activeSection === 'location' && locationInputRef.current) {
+      locationInputRef.current.focus()
+    }
+  }, [activeSection])
 
   function handleChange({ target }) {
     let { value, name: field, type } = target
@@ -57,6 +61,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy }) {
   function handleSearch(ev) {
     ev.preventDefault()
     ev.stopPropagation()
+    setActiveSection('')
     setFilterBy({ ...filterByToEdit })
   }
 
