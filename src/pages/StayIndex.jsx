@@ -42,9 +42,9 @@ export function StayIndex() {
   }
 
   return (
-    <main className="stay-index">
+    <section className="stay-index">
       <StayIconFilter />
       <StayList stays={stays} onUpdateStay={onUpdateStay} />
-    </main>
+    </section>
   )
 }

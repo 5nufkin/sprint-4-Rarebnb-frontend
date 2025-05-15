@@ -13,6 +13,7 @@
   background: linear-gradient(180deg, $clr-white 39.9%, $gray-3 100%);
   height: rem(200px);
   border-block-end: 1px solid #ebebeb;
+  margin-inline: 0;
 
   // transition: height .2s; //! Glitching 
 
@@ -86,5 +87,22 @@
         }
       }
     }
+  }
+}
+
+.header-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color: $clr-text-primary, $alpha: 0.25);
+  cursor: pointer;
+  z-index: 500;
+
+  transition: opacity .5s ease;
+  opacity: 0;
+  pointer-events: none;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
