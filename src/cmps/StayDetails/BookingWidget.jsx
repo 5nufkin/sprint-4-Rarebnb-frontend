@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { GuestsSelector } from './GuestSelector.jsx'
+import { GuestsSelector } from './GuestsSelector.jsx'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -41,9 +41,11 @@ export function BookingWidget({ stay }) {
     <div className="booking-widget">
       <div className="rare-banner"><span>💎</span>Rare find! This place is usually booked</div>
 
-      <div className="price-line">
-        <span className="price">₪{stay.price.toLocaleString()}</span> night
+      <div className="stay-price-line">
+        <span className="stay-price">₪{stay.price.toLocaleString()}</span>
+        <span className="stay-per">night</span>
       </div>
+
 
       <div className="field-grid">
         <div className="field-cell">
