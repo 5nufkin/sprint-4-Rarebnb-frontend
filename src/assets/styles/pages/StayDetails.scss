@@ -74,7 +74,7 @@
 /* ========= GRID LAYOUT ========= */
 .main-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 400px;
   gap: 40px;
   margin-top: 40px;
 }
@@ -158,6 +158,12 @@
   position: relative;
 }
 
+.booking-col > .booking-widget{
+  position:sticky;
+  top:120px;
+}
+
+
 .rare-banner {
   position: absolute;
   top: -20px;
@@ -175,23 +181,31 @@
   z-index: 10;
 }
 
-.price-line {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 16px;
+.stay-price-line{
+  display:flex;        
+  align-items:baseline;
+  gap:.15em;           
+  font-size:28px;      
+  margin-bottom:20px;
 }
 
-.price-line .price {
-  font-weight: 800;
+.stay-price-line .stay-price{
+  font-size:24px;      
+  font-weight:700;
 }
 
+.stay-price-line .stay-per{
+  font-size:18px;      
+  font-weight:400;
+  color:#222;         
+}
 
 .field-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid #b0b0b0;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .field-cell {
@@ -236,7 +250,9 @@
   background: linear-gradient(90deg, #ff385c, #bd1e59);
   color: #fff;
   font-weight: 600;
-  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  border-radius: 2rem;
   cursor: pointer;
 
   &:disabled {
@@ -285,39 +301,65 @@
   color: #717171;
 }
 
-.guests-btn {
-  width: 100%;
-  height: 40px;
-  padding: 0 12px;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 14px;
-  line-height: 40px;
+.guests-btn{
+  width:100%;
+  background:none;
+  border:none;
+  font:inherit;
+  color:#222;
+  padding:0 32px 0 0;
+  text-align:left;
+  cursor:pointer;
+  position:relative;
+}
+
+.guests-btn::after{
+  content:'';
+  position:absolute;
+  inset-inline-end:8px;
+  top:50%; translate:0 -50%;
+  width:10px;height:10px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform .2s;
+}
+.guests-btn.open::after{ transform:rotate(-135deg); }
+
+.guests-pop{
+  position:absolute;
+  inset-block-start:calc(100%);
+  inset-inline:0;                  
+  width:100%;                      
+  min-width:240px;                 
+  max-width:360px;                 
+
+  max-height:calc(100vh - 220px);
+  overflow:auto;
+
+  box-sizing:border-box;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 4px 16px rgba(0,0,0,.15);
+  z-index:100;
+  font-size:16px;
+  font-weight: 600;
   color: #222;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.guests-btn::after {
-  content: "";
-  font-size: 11px;
-  margin-left: 4px;
+.guests-pop::before{
+  content:'';
+  position:absolute;
+  top:-6px; left:40px;
+  width:12px;height:12px;
+  background:#fff;
+  border-left:1px solid #ddd;
+  border-top:1px solid #ddd;
+  transform:rotate(45deg);
 }
 
-.guests-pop {
-  position: absolute;
-  z-index: 1200;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
-  width: 360px;
-  padding: 24px;
-  font-size: 14px;
-}
 
 .guests-pop .row {
   display: flex;
@@ -328,8 +370,9 @@
 
 .guests-pop .lbl .sub {
   display: block;
-  font-size: 12px;
-  color: #717171;
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
 }
 
 .guests-pop .ctrls {
