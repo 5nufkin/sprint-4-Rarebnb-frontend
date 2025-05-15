@@ -59,13 +59,17 @@
 .hamburger-menu li:nth-child(7) {
   border-top: 1px solid #ebebeb;
 }
+.hamburger-menu li:first-child,
+.hamburger-menu li:nth-child(2) {
+  font-weight: 600;
+}
 
 // ===== New button design (combined user + menu) =====
 .user-menu-btn {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 8px;
+  padding: 0.3em 0.6em;
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 999px;

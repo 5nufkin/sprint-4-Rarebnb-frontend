@@ -28,7 +28,6 @@
   background: $clr-brand-main;
 }
 
-
 ////////////////////////////////////////////
 .main-payment-grid {
   display: grid;
@@ -58,9 +57,8 @@
 .confirm-wrapper {
   grid-area: footer;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
-
 
 ///////////////////////////
 @media (max-width: 950px) {
@@ -73,11 +71,10 @@
     justify-items: center;
   }
 
-    .payment-summary-bottom,
+  .payment-summary-bottom,
   .message-to-host {
     display: none !important;
   }
-  
 
   .booking-summary-wrapper,
   .payment-left,
