@@ -45,33 +45,34 @@ export function StayDetails() {
 
   return (
     <main className="stay-details">
+
       <div className="page-container">
+        <div className="scroll-area"> 
 
- 
-      <HeroGallery images={stay.imgUrls} />
-      <HeadingBar stay={stay} />
+        <HeroGallery images={stay.imgUrls} />
+        <HeadingBar stay={stay} />
 
-      <div className="main-grid">
-        <div className="left-col">
-          <Highlights highlights={demoHighlights} />
-          <div className="section-divider" />
+          <div className="main-grid">
+            <div className="left-col">
+              <Highlights highlights={demoHighlights} />
+              <div className="section-divider" />
 
-          <section><h2>About this space</h2><p>{stay.summary}</p></section>
+              <section><h2>About this space</h2><p>{stay.summary}</p></section>
 
-          <SleepingRooms rooms={demoRooms} />
-          <AmenitiesGrid amenities={stay.amenities} />
-          <ReviewsSection stay={stay} />
-          <LocationMap location={stay.loc} />
-          <HostCard host={stay.host} />
-          <div className="section-divider" />
-        </div>
+              <SleepingRooms rooms={demoRooms} />
+              <AmenitiesGrid amenities={stay.amenities} />
+            </div>
 
-        <aside className="booking-col">
-          <div className="booking-wrapper">
-            <BookingWidget stay={stay} />
+            <aside className="booking-col">
+                <BookingWidget stay={stay} />
+            </aside>
+            
           </div>
-        </aside>
-     </div>
+        </div>
+              <ReviewsSection stay={stay} />
+              <LocationMap location={stay.loc} />
+              <HostCard host={stay.host} />
+              <div className="section-divider" />
       </div>
     </main>
   )
