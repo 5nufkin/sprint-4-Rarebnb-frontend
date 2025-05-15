@@ -197,7 +197,7 @@ const gStays = [
     type: "Apartment",
     avgRating: 4.72,
     bedCount: 1,
-    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif'],
+    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif'],
     price: 110,
     summary: "Cozy downtown apartment near shopping district.",
     capacity: 2,
