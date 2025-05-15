@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { MinusIcon, PlusIcon } from "./Icons"
 
 
 export function GuestPicker({ guests, onSetGuests }) {
@@ -12,10 +13,10 @@ export function GuestPicker({ guests, onSetGuests }) {
   }
 
   return (
-    <section className="guests-filter">
+    <section className="guest-picker">
       {[
         { key: 'adults', label: 'Adults', desc: 'Ages 13 or above' },
-        { key: 'children', label: 'Children', desc: 'Ages 2-12' },
+        { key: 'children', label: 'Children', desc: 'Ages 2 - 12' },
         { key: 'infants', label: 'Infants', desc: 'Under 2' },
         { key: 'pets', label: 'Pets', desc: 'Bringing a service animal?' }
       ].map(({ key, label, desc }) => (
@@ -27,9 +28,9 @@ export function GuestPicker({ guests, onSetGuests }) {
           </div>
 
           <div className="guest-counter">
-            <button type="button" onClick={() => updateCount(key, -1)} disabled={guests[key] === 0}>–</button>
+            <button type="button" onClick={() => updateCount(key, -1)} disabled={guests[key] === 0}><MinusIcon /></button>
             <span className="guest-count">{guests[key]}</span>
-            <button type="button" onClick={() => updateCount(key, +1)}>+</button>
+            <button type="button" onClick={() => updateCount(key, +1)}><PlusIcon /></button>
           </div>
 
         </section>
