@@ -75,3 +75,10 @@
   overflow: clip;
   cursor: pointer;
 }
+
+@mixin search-icon() {
+  color: $clr-white;
+  background: $clr-brand-main;
+  padding: rem(16px);
+  border-radius: 50%;
+}

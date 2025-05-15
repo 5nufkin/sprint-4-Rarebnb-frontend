@@ -89,14 +89,10 @@
     }
 
     .search-icon {
+      @include search-icon;
       position: absolute;
       right: rem(12px);
       top: rem(8px);
-
-      color: $clr-white;
-      background: $clr-brand-main;
-      padding: rem(16px);
-      border-radius: 50%;
     }
 
     input[type="text"] {
@@ -117,7 +113,7 @@
       content: '';
       position: absolute;
       top: 50%;
-      left: 0; 
+      left: 0;
       transform: translateY(-50%);
       width: 1px;
       height: 50%;

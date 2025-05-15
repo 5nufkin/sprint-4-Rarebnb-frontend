@@ -100,30 +100,6 @@ export function AirbnbLogoIcon({ className }) {
   )
 }
 
-// export function MenuIcon({ className }) {
-//   return (
-//     <svg
-//       xmlns="http://www.w3.org/2000/svg"
-//       viewBox="0 0 32 32"
-//       aria-hidden="true"
-//       role="presentation"
-//       focusable="false"
-//       className={className}
-//       style={{
-//         display: "block",
-//         fill: "none",
-//         height: 16,
-//         width: 16,
-//         stroke: "currentColor",
-//         strokeWidth: 3,
-//         overflow: "visible",
-//       }}
-//     >
-//       <path d="M2 16h28M2 24h28M2 8h28" />
-//     </svg>
-//   )
-// }
-
 export function MenuIcon({ className = '' }) {
   return (
     <svg
@@ -254,7 +230,7 @@ export function RightIcon() {
   )
 }
 
-export function MagnifyingGlassIcon() {
+export function MagnifyingGlassIcon({ width = '16px', height = '16px' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -262,8 +238,8 @@ export function MagnifyingGlassIcon() {
       style={{
         display: "block",
         fill: "none",
-        height: "16px",
-        width: "16px",
+        height,
+        width,
         stroke: "currentColor",
         strokeWidth: 4,
         overflow: "visible",

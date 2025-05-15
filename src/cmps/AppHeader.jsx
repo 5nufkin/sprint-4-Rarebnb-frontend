@@ -60,12 +60,11 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header full ${
-          isAtTop ? "header-large" : "header-small"
-        }`}
+        className={`app-header full ${isAtTop ? "header-large" : "header-small"
+          }`}
       >
 
-        <StayFilterMinimized filterBy={filterBy} />
+        <StayFilterMinimized filterBy={filterBy} isHidden={isAtTop} />
 
         <section className="header-content main-layout">
           <NavLink to="/" className="logo">
