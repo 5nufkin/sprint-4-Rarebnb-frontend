@@ -17,29 +17,43 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-          color: #fff;
-          background: rgba(0, 0, 0, 0.3);
-          border-radius: 50%;
           width: 30px;
           height: 30px;
-          top: 50%;
-          transform: translateY(-50%);
+          top: 156px;
+          right: 13px;
+          border-radius: 50%;
+          color: $clr-text-primary;
+          background: $gray1;
+          opacity: 0;
 
-          &::after{
-            font-size: rem(16px);
+          transition: .2s;
+
+          &::after {
+            font-size: rem(10px);
+            font-weight: bold;
+          }
+        }
+
+        &:hover {
+
+          .swiper-button-next:not(.swiper-button-disabled),
+          .swiper-button-prev:not(.swiper-button-disabled) {
+            opacity: 1;
           }
         }
 
         .swiper-button-disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
+          opacity: 0;
+          pointer-events: all;
         }
 
         .swiper-pagination-bullets {
-          bottom: 10px;
+          bottom: 4px;
         }
 
         .swiper-pagination-bullet {
+          width: 6px;
+          height: 6px;
           background-color: #fff;
           opacity: 0.6;
         }
@@ -61,11 +75,12 @@
 
     .btn-like {
       position: absolute;
-      right: 1em;
-      top: 1em;
+      right: rem(16px);
+      top: rem(16px);
       padding: 0;
       margin: 0;
       background-color: transparent;
+      z-index: 100;
 
       svg.icon-like {
         color: $clr-btn-like;
