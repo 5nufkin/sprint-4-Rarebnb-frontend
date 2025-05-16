@@ -1,13 +1,11 @@
 .reservation-table {
-  padding: 1rem;
-  background-color: #fafafa;
+  padding: 0.2rem;
+  background-color: $gray10;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 
   h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    color: #333;
+    color: $gray4;
   }
 
   table {
@@ -16,14 +14,16 @@
     font-size: 0.95rem;
 
     thead {
-      background-color: #f7f7f7;
+      background-color: $gray0;
 
       th {
         text-align: left;
         padding: 0.75rem 1rem;
         color: #555;
         font-weight: 600;
-        border-bottom: 2px solid #e0e0e0;
+        border-bottom: 2px solid $gray9;
+        cursor: pointer;
+        user-select: none;
       }
     }
 
@@ -37,7 +37,7 @@
 
         td {
           padding: 0.75rem 1rem;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid $gray-1;
           color: #444;
 
           &.guest-cell {
@@ -55,6 +55,23 @@
 
             span {
               font-weight: 500;
+            }
+          }
+
+          &.status {
+            font-weight: 600;
+            text-transform: capitalize;
+
+            &.completed {
+              color: gray;
+            }
+
+            &.approved {
+              color: green;
+            }
+
+            &.rejected {
+              color: red;
             }
           }
 
@@ -84,23 +101,6 @@
 
             &:hover {
               background-color: #fbbbbb;
-            }
-          }
-
-          &.status {
-            font-weight: 600;
-            text-transform: capitalize;
-
-            &.completed {
-              color: #2e7d32;
-            }
-
-            &.refunded {
-              color: #c62828;
-            }
-
-            &.pending {
-              color: #f9a825;
             }
           }
         }

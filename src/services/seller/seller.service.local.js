@@ -47,7 +47,7 @@ export const sales = [
     customer: "Lior",
     price: 187.67,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "01/02/2024",
       checkIn: "08/02/2024",
       checkOut: "11/02/2024",
@@ -79,7 +79,7 @@ export const sales = [
     customer: "John",
     price: 285.57,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "05/12/2023",
       checkIn: "12/12/2023",
       checkOut: "15/12/2023",
@@ -95,7 +95,7 @@ export const sales = [
     customer: "Dana",
     price: 134.23,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "17/02/2023",
       checkIn: "24/02/2023",
       checkOut: "27/02/2023",
@@ -175,7 +175,7 @@ export const sales = [
     customer: "Moshe",
     price: 193.15,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "20/05/2023",
       checkIn: "27/05/2023",
       checkOut: "31/05/2023",
@@ -191,7 +191,7 @@ export const sales = [
     customer: "John",
     price: 195.33,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "02/12/2023",
       checkIn: "09/12/2023",
       checkOut: "11/12/2023",
@@ -207,7 +207,7 @@ export const sales = [
     customer: "Lea",
     price: 252.7,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "18/04/2023",
       checkIn: "25/04/2023",
       checkOut: "30/04/2023",
@@ -223,7 +223,7 @@ export const sales = [
     customer: "Rami",
     price: 237.87,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "10/09/2023",
       checkIn: "17/09/2023",
       checkOut: "21/09/2023",
@@ -239,7 +239,7 @@ export const sales = [
     customer: "Bob",
     price: 259.34,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "12/04/2023",
       checkIn: "19/04/2023",
       checkOut: "24/04/2023",
@@ -255,7 +255,7 @@ export const sales = [
     customer: "Bob",
     price: 267.33,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "06/04/2023",
       checkIn: "13/04/2023",
       checkOut: "18/04/2023",
@@ -271,7 +271,7 @@ export const sales = [
     customer: "John",
     price: 101.54,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "20/06/2023",
       checkIn: "27/06/2023",
       checkOut: "02/07/2023",
@@ -287,7 +287,7 @@ export const sales = [
     customer: "Moshe",
     price: 274.71,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "21/04/2023",
       checkIn: "28/04/2023",
       checkOut: "01/05/2023",
@@ -319,7 +319,7 @@ export const sales = [
     customer: "Lea",
     price: 245.2,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "06/05/2023",
       checkIn: "13/05/2023",
       checkOut: "18/05/2023",
@@ -351,7 +351,7 @@ export const sales = [
     customer: "Rami",
     price: 102.25,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "21/07/2023",
       checkIn: "28/07/2023",
       checkOut: "01/08/2023",
@@ -383,7 +383,7 @@ export const sales = [
     customer: "Tom",
     price: 107.95,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "22/06/2023",
       checkIn: "29/06/2023",
       checkOut: "02/07/2023",
@@ -767,7 +767,7 @@ export const sales = [
     customer: "Moshe",
     price: 222.85,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "02/09/2023",
       checkIn: "09/09/2023",
       checkOut: "11/09/2023",
@@ -783,7 +783,7 @@ export const sales = [
     customer: "Tom",
     price: 108.8,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "04/02/2023",
       checkIn: "11/02/2023",
       checkOut: "16/02/2023",
@@ -799,7 +799,7 @@ export const sales = [
     customer: "Tom",
     price: 285.14,
     bookingStatus: {
-      status: "refunded",
+      status: "completed",
       bookedAt: "22/05/2023",
       checkIn: "29/05/2023",
       checkOut: "02/06/2023",
@@ -811,8 +811,11 @@ export const sales = [
   },
 ]
 
+
+
 function query(filterBy) {
-  return storageService.query("order")
+  // return storageService.query("order")
+  return Promise.resolve(sales)
 }
 
 async function remove(reject) {
