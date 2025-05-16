@@ -6,15 +6,19 @@ export function HeatMap({ dataByCountry }) {
   const [isMapReady, setIsMapReady] = useState(false)
 
   useEffect(() => {
-    fetch("/maps/world.geo.json")
-      .then((res) => res.json())
-      .then((geoJson) => {
+    const fetchMap = async () => {
+      try {
+        const res = await fetch("/maps/world.geo.json")
+        const geoJson = await res.json()
         echarts.registerMap("world", geoJson)
         setIsMapReady(true)
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Failed to load world map:", err)
-      })
+        throw err
+      }
+    }
+
+    fetchMap()
   }, [])
 
   if (!isMapReady || !Array.isArray(dataByCountry) || !dataByCountry.length) {
@@ -25,7 +29,7 @@ export function HeatMap({ dataByCountry }) {
     title: {
       text: "Sales Heatmap by Country",
       left: "center",
-      textStyle: { fontSize: 18 },
+      textStyle: { fontSize: 24 },
     },
     tooltip: {
       trigger: "item",

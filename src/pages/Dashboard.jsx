@@ -6,6 +6,7 @@ import { sellerService } from "../services/seller/index"
 import { StatsCards } from "../cmps/DashboardPage/StatsCards"
 import { DashboardOverviewSales } from "../cmps/DashboardPage/Overview"
 import { HeatMap } from "../cmps/DashboardPage/HeatMap"
+import { ReservationTable } from "../cmps/DashboardPage/ReserationTable"
 
 export function Dashboard() {
   const [stats, setStats] = useState(null)
@@ -31,6 +32,9 @@ export function Dashboard() {
       </section>
       <section className="heat-chart">
          <HeatMap dataByCountry={countryData} />
+      </section>
+      <section className="reservation-table">
+        <ReservationTable stats={stats} />
       </section>
     </section>
   )

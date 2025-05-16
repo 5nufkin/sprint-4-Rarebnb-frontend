@@ -1,30 +1,26 @@
-// HamburgerMenu.jsx
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export function HamburgerMenu({ onClose }) {
-  
   return (
     <div className="hamburger-menu">
       <ul>
         <li>
-          <NavLink to="/wishlists">Wishlists</NavLink>
+          <Link to="/wishlists" onClick={onClose}>Wishlists</Link>
         </li>
         <li>
-          <NavLink to="/trips">Trips</NavLink>
+          <Link to="/trips" onClick={onClose}>Trips</Link>
         </li>
         <li>
-          <NavLink to="/messages">Messages</NavLink>
+          <Link to="/messages" onClick={onClose}>Messages</Link>
         </li>
         <li>
-          <NavLink to="/profile">Profile</NavLink>
+          <Link to="/profile" onClick={onClose}>Profile</Link>
         </li>
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <Link to="/dashboard" onClick={onClose}>Dashboard</Link>
         </li>
         <li>
-          <button className="logout-btn" onClick={onClose}>
-            Log out
-          </button>
+          <Link to="/logout" onClick={onClose}>Log out</Link>
         </li>
       </ul>
     </div>

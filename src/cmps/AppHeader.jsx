@@ -6,17 +6,19 @@ import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
 import { stayService } from "../services/stay"
 import { loadStays } from "../store/actions/stay.actions"
 import { HamburgerMenu } from "./HamburgerMenu"
-import { StayFilterMinimized } from "./StayFilterMinimized";
-
+import { StayFilterMinimized } from "./StayFilterMinimized"
 
 export function AppHeader() {
-  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
+  const loggedInUser = useSelector(
+    (storeState) => storeState.userModule.loggedInUser
+  )
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
-  const [activeSection, setActiveSection] = useState('')
+  const [activeSection, setActiveSection] = useState("")
+  const menuRef = useRef()
   const topRef = useRef()
 
   useEffect(() => {
@@ -59,20 +61,35 @@ export function AppHeader() {
     setIsMenuOpen((prev) => !prev)
   }
 
+  useEffect(() => {
+    function handleClickOutside(ev) {
+      if (menuRef.current && !menuRef.current.contains(ev.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isMenuOpen])
+
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header main-layout full ${(isAtTop || isHeaderExpanded) ? "header-large" : "header-small"
-          }`}
+        className={`app-header main-layout full ${
+          isAtTop || isHeaderExpanded ? "header-large" : "header-small"
+        }`}
       >
-
-        {!isHeaderExpanded && <StayFilterMinimized
-          filterBy={filterBy}
-          isHidden={isAtTop}
-          setIsHeaderExpanded={setIsHeaderExpanded}
-          setActiveSection={setActiveSection}
-        />}
+        {!isHeaderExpanded && (
+          <StayFilterMinimized
+            filterBy={filterBy}
+            isHidden={isAtTop}
+            setIsHeaderExpanded={setIsHeaderExpanded}
+            setActiveSection={setActiveSection}
+          />
+        )}
 
         <section className="header-content ">
           <NavLink to="/" className="logo">
@@ -90,23 +107,34 @@ export function AppHeader() {
                   alt={loggedInUser?.fullname}
                 />
               </button>
-              {isMenuOpen && <HamburgerMenu onClose={toggleMenu} />}
+
+              {isMenuOpen && (
+                <div ref={menuRef}>
+                  <HamburgerMenu onClose={toggleMenu} />
+                </div>
+              )}
             </div>
           )}
         </section>
 
-        {(isHeaderExpanded || isAtTop) && <StayFilterExpanded
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-        />}
-
+        {(isHeaderExpanded || isAtTop) && (
+          <StayFilterExpanded
+            filterBy={filterBy}
+            setFilterBy={setFilterBy}
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+          />
+        )}
       </header>
-      <div className={`header-backdrop ${(!isAtTop && isHeaderExpanded) ? 'visible' : ''}`} onClick={() => {
-        setIsHeaderExpanded(false)
-        setActiveSection('')
-      }}></div>
+      <div
+        className={`header-backdrop ${
+          !isAtTop && isHeaderExpanded ? "visible" : ""
+        }`}
+        onClick={() => {
+          setIsHeaderExpanded(false)
+          setActiveSection("")
+        }}
+      ></div>
     </>
   )
 }
