@@ -7,10 +7,12 @@ import { StatsCards } from "../cmps/DashboardPage/StatsCards"
 import { DashboardOverviewSales } from "../cmps/DashboardPage/Overview"
 import { HeatMap } from "../cmps/DashboardPage/HeatMap"
 import { ReservationTable } from "../cmps/DashboardPage/ReserationTable"
+import { sales } from "../services/seller/seller.service.local"
 
 export function Dashboard() {
   const [stats, setStats] = useState(null)
    const [countryData, setCountryData] = useState([])
+ 
 
   useEffect(() => {
     sellerService.getDashboardStats().then(setStats)
@@ -34,7 +36,7 @@ export function Dashboard() {
          <HeatMap dataByCountry={countryData} />
       </section>
       <section className="reservation-table">
-        <ReservationTable stats={stats} />
+        <ReservationTable sales={sales}/>
       </section>
     </section>
   )

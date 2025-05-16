@@ -29,7 +29,7 @@ export function HeatMap({ dataByCountry }) {
     title: {
       text: "Sales Heatmap by Country",
       left: "center",
-      textStyle: { fontSize: 24 },
+      textStyle: { fontSize: 32 },
     },
     tooltip: {
       trigger: "item",
