@@ -138,9 +138,3 @@ export function AppHeader() {
     </>
   )
 }
-
-//*Homes img
-{
-  /*
-<img src="https://res.cloudinary.com/dbbj46yzt/image/upload/v1747242745/4aae4ed7-5939-4e76-b100-e69440ebeae4.png_im_w_240_zptu40.avif" alt="" /> */
-}

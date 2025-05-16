@@ -10,7 +10,6 @@ export const stayService = {
   save,
   remove,
   addStayMsg,
-  getStayAddressStr,
 }
 
 const gStays = [
@@ -1282,12 +1281,4 @@ function _createStays() {
   if (!stays || !stays.length) {
     saveToStorage(STORAGE_KEY, gStays)
   }
-}
-
-function getStayAddressStr(stay) {
-  if (!stay.loc) return ""
-  const { city, country } = stay.loc
-  return stay.type
-    ? `${stay.type} in ${city}, ${country}`
-    : `${city}, ${country} `
 }

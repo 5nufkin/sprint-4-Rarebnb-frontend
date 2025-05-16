@@ -13,7 +13,7 @@ const initialState = {
   count: 10,
   // user: userService.getLoggedInUser(),
   //*Development only
-  loggedInUser: userService.getFakeLoggedInUser(),
+  // loggedInUser: userService.getFakeLoggedInUser(),
   users: [],
   watchedUser: null
 }

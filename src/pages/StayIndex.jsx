@@ -8,6 +8,8 @@ import { StayIconFilter } from '../cmps/StayIconFilter'
 export function StayIndex() {
   const stays = useSelector(storeState => storeState.stayModule.stays)
 
+  console.log('stays in index:', stays)
+
   async function onRemoveStay(stayId) {
     try {
       await removeStay(stayId)
