@@ -11,13 +11,10 @@ export function HamburgerMenu({ onClose }) {
           <Link to="/trips" onClick={onClose}>Trips</Link>
         </li>
         <li>
-          <Link to="/messages" onClick={onClose}>Messages</Link>
-        </li>
-        <li>
-          <Link to="/profile" onClick={onClose}>Profile</Link>
-        </li>
-        <li>
           <Link to="/dashboard" onClick={onClose}>Dashboard</Link>
+        </li>
+        <li>
+          <Link to="/listing" onClick={onClose}>Listings</Link>
         </li>
         <li>
           <Link to="/logout" onClick={onClose}>Log out</Link>

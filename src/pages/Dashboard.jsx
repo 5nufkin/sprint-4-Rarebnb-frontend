@@ -76,10 +76,6 @@ export function Dashboard() {
       <section className="heat-chart">
         <HeatMap dataByCountry={countryData} />
       </section>
-
-      <section className="reservation-table">
-        <ReservationTable sales={sales} setStats={setStats} />
-      </section>
     </section>
   )
 }
