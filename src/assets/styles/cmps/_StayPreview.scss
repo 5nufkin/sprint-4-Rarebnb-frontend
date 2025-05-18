@@ -17,10 +17,11 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-          width: 30px;
-          height: 30px;
-          top: 156px;
+          width: rem(30px);
+          height: rem(30px);
+          top: 50%;
           right: 13px;
+          transform: translateY(50%);
           border-radius: 50%;
           color: $clr-text-primary;
           background: $gray1;
@@ -87,8 +88,8 @@
         stroke: $clr-white;
       }
 
-      &:hover {
-        scale: 1.08;
+      &:active {
+        scale: 0.92;
       }
     }
 
