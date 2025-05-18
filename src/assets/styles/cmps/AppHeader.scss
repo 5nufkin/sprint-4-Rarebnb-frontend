@@ -106,3 +106,10 @@
     pointer-events: auto;
   }
 }
+
+/* קובץ גלובלי (נטען פעם אחת באפליקציה) */
+body:has(main.stay-details) .app-header .header-content{
+  max-width:1120px;      /* אותו רוחב כמו page-container */
+  margin-inline:auto;    /* מרכז אופקית */
+  padding-inline:24px;
+}
