@@ -106,3 +106,9 @@
     pointer-events: auto;
   }
 }
+
+
+body:has(main.stay-details) .app-header .header-content{
+  max-width:1120px;
+  margin-inline:auto;
+}
