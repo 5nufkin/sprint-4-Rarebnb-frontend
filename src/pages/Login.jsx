@@ -2,7 +2,7 @@ import { useState } from "react"
 import { login } from "../store/actions/user.actions"
 import { SignupModal } from "../cmps/SignupModal"
 
-export function LoginModal({ onClose }) {
+export function LoginModal({ onClose, onLoginSuccess }) {
   const [credentials, setCredentials] = useState({ username: "", password: "" })
   const [isSignup, setIsSignup] = useState(false)
 
@@ -10,6 +10,7 @@ export function LoginModal({ onClose }) {
     ev.preventDefault()
     if (!credentials.username || !credentials.password) return
     await login(credentials)
+    onLoginSuccess()
     onClose()
   }
 
@@ -23,7 +24,9 @@ export function LoginModal({ onClose }) {
     <div className="modal-screen" onClick={onClose}>
       <div className="modal login-form" onClick={(ev) => ev.stopPropagation()}>
         {isSignup ? (
-          <SignupModal onClose={onClose} onBack={() => setIsSignup(false)} />
+          <SignupModal onClose={onClose} onBack={() => setIsSignup(false)}
+          onLoginSuccess={onLoginSuccess}
+           />
         ) : (
           <>
             <h2>Login</h2>

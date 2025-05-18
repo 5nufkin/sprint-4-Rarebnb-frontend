@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { AirbnbLogoFull, AirbnbLogoIcon, MenuIcon } from "./Icons"
+import { AirbnbLogoFull, AirbnbLogoIcon, MenuIcon, UserGuestIcon } from "./Icons"
 import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
 import { stayService } from "../services/stay"
 import { loadStays } from "../store/actions/stay.actions"
@@ -101,11 +101,12 @@ export function AppHeader() {
             <div className="menu-container">
               <button className="user-menu-btn" onClick={toggleMenu}>
                 <MenuIcon className="menu-icon" />
-                <img
+                <UserGuestIcon />
+                {/* <img
                   className="user-img"
                   src={loggedInUser?.imgUrl}
                   alt={loggedInUser?.fullname}
-                />
+                /> */}
               </button>
 
               {isMenuOpen && (

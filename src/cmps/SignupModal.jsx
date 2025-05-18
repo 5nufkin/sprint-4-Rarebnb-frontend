@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { userService } from "../services/user/index"
+import { login } from "../store/actions/user.actions"
 
-export function SignupModal({ onClose, onBack }) {
+export function SignupModal({ onClose, onBack, onLoginSuccess }) {
   const [credentials, setCredentials] = useState({
     fullname: "",
     username: "",
@@ -12,10 +14,21 @@ export function SignupModal({ onClose, onBack }) {
     setCredentials((prev) => ({ ...prev, [name]: value }))
   }
 
-  function onSignup(ev) {
+  // function onSignup(ev) {
+  //   ev.preventDefault()
+  //   console.log("Signing up with:", credentials)
+  //   onClose()
+  // }
+  async function onSignup(ev) {
     ev.preventDefault()
-    console.log("Signing up with:", credentials)
-    onClose()
+
+    try {
+      await userService.signup(credentials)
+      await login(credentials) 
+      onClose() 
+    } catch (err) {
+      console.error("Signup failed", err)
+    }
   }
 
   return (

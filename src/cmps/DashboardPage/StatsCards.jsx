@@ -41,11 +41,11 @@ export function StatsCards({ stats }) {
     <section className="stats-cards">
       {displayStats.map((stat, idx) => (
         <article key={idx} className="stat-card">
-          <div className="stat-header">
-            <h4>{stat.label}</h4>
-            {stat.icon}
-          </div>
-
+        <div className="stat-header">
+        <h4>{stat.label}</h4>
+        {stat.icon}
+        </div>
+        
           <p className="value">{stat.value}</p>
 
           {typeof stat.diff === "number" && (
