@@ -1,19 +1,35 @@
 .dashboard-main {
-  padding: 2rem 1rem;
-  background-color: #f9fafb;
 }
 
 .dashboard-container {
-  max-width: 1200px;
+  display: grid;
+  grid-template-columns: minmax(1fr, 20px) minmax(auto, 1120px) minmax(
+      1fr,
+      20px
+    );
+  padding: 2rem 1rem;
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1rem minmax(0, 1fr) 1rem;
+  }
   margin: 0 auto;
   padding-inline: 1rem;
-  display: flex;
-  flex-direction: column;
   gap: 2rem;
 
   h4 {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
+  }
+
+  .dashboard-second-line {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1em;
+    align-items: stretch;
+
+    > section {
+      flex: 1 1 0;
+    }
   }
 }

@@ -7,9 +7,20 @@ export function ListingsPage() {
   const [stats, setStats] = useState(null)
 
   useEffect(() => {
-    sellerService.getDashboardStats().then(setStats)
-    sellerService.query().then(setSales)
+    async function loadDashboardData() {
+      try {
+        const stats = await sellerService.getDashboardStats()
+        const sales = await sellerService.query()
+
+        setStats(stats)
+        setSales(sales)
+      } catch (err) {
+        console.error("Failed to load dashboard stats or sales:", err)
+      }
+    }
+    loadDashboardData()
   }, [])
+
   if (!stats) return <p>Loading...</p>
 
   return (

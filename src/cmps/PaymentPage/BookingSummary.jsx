@@ -85,7 +85,6 @@ export function BookingSummary({isConfirmed}) {
             <h4>Trip details</h4>
 
             {!isConfirmed && <button className="btn-change">Change</button>}
-            {/* <button className="btn-change">Change</button> */}
 
           </div>
           <div className="trip-info">

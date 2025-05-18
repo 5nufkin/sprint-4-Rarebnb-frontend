@@ -9,7 +9,7 @@
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
   background: linear-gradient(180deg, $clr-white 39.9%, $gray-3 100%);
   height: rem(200px);
   border-block-end: 1px solid #ebebeb;

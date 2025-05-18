@@ -1,4 +1,4 @@
-import { StarIcon } from "../Icons"
+import { EmptyStarIcon, StarIcon } from "../Icons"
 
 export function ReviewsSection({ stay }) {
   const avgRating = stay.reviews?.length
@@ -9,7 +9,7 @@ export function ReviewsSection({ stay }) {
   return (
     <section className="reviews-section">
       <h2>
-        <StarIcon /> {avgRating.toFixed(1)} · {stay.reviews.length} reviews
+        <div><StarIcon /></div>{avgRating.toFixed(1)} · {stay.reviews.length} reviews
       </h2>
 
       <div className="reviews-grid">
@@ -30,19 +30,16 @@ export function ReviewsSection({ stay }) {
               </div>
             </div>
 
+            {/* Review stars and date  */}
             <div className="review-date">
               {Array.from({ length: +review.rate }, (_, i) => (
-                <span className="star" key={"full-" + i} style={{ color: "black" }}>
-                  ★
-                </span>
+                <StarIcon key={"full-" + i} />
               ))}
               {Array.from({ length: 5 - +review.rate }, (_, i) => (
-                <span className="star" key={"empty-" + i} style={{ color: "#ccc" }}>
-                  ★
-                </span>
+                <EmptyStarIcon key={"empty-" + i} />
               ))}
               <span className="separating-dot">·</span>
-              <span> {review.date || "Oct 2024"} </span>
+              <span>{review.date || "Oct 2024"}</span>
             </div>
 
             <p className="review-text">{review.txt}</p>
