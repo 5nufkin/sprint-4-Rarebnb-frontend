@@ -4,6 +4,8 @@ import {
   FaHotTub, FaFireExtinguisher, FaFirstAid, FaBolt
 } from 'react-icons/fa'
 
+import { FaElevator } from "react-icons/fa6";
+
 export const amenityIcons = {
   'Wifi': FaWifi,
   'TV': FaTv,
@@ -22,4 +24,5 @@ export const amenityIcons = {
   'Fireplace': FaFireExtinguisher,
   'Lake Access': FaSwimmingPool,
   'Coffee Maker': FaUtensils,
+  'Elevator': FaElevator,
 }

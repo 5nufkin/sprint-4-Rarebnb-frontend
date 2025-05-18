@@ -1,5 +1,4 @@
-// src/cmps/StayDetails/AmenitiesGrid.jsx
-import { amenityIcons } from './amenity-icons.js'
+import { amenityIcons } from '../../consts/amenity-icons.js'
 
 export function AmenitiesGrid({ amenities = [] }) {
   return (
