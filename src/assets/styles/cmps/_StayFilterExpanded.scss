@@ -72,6 +72,14 @@
 
     &:hover {
       background-color: $gray1;
+
+      &::before {
+        display: none;
+      }
+
+      &+button::before{
+        display: none;
+      }
     }
 
     .btn-content {
