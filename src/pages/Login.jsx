@@ -21,7 +21,7 @@ export function LoginModal({ onClose }) {
 
 return (
   <div className="modal-screen" onClick={onClose}>
-    <div className="modal" onClick={(ev) => ev.stopPropagation()}>
+    <div className="modal login-form" onClick={(ev) => ev.stopPropagation()}>
       {isSignup ? (
         <SignupModal onClose={onClose} onBack={() => setIsSignup(false)} />
       ) : (
