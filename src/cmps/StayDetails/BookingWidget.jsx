@@ -78,7 +78,7 @@ export function BookingWidget({ stay }) {
         </div>
       </div>
 
-      <GlowButton className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</GlowButton>
+      <GlowButton className="reserve-btn glow-buton" disabled={!nights} onClick={onReserve}>Reserve</GlowButton>
       <p className="note">You won’t be charged yet</p>
       {/* <button className="reserve-btn" disabled={!nights} onClick={onReserve}>Reserve</button>
       <p className="note">You won’t be charged yet</p> */}

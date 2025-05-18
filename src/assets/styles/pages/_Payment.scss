@@ -11,6 +11,11 @@
   color: $clr7;
 }
 
+.success-header {
+  display: flex;
+  align-items: center;
+}
+
 ////////////////////////////////////////////
 .main-payment-grid {
   display: grid;

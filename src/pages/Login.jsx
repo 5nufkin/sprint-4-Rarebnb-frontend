@@ -19,43 +19,42 @@ export function LoginModal({ onClose }) {
     setCredentials({ ...credentials, [field]: value })
   }
 
-return (
-  <div className="modal-screen" onClick={onClose}>
-    <div className="modal login-form" onClick={(ev) => ev.stopPropagation()}>
-      {isSignup ? (
-        <SignupModal onClose={onClose} onBack={() => setIsSignup(false)} />
-      ) : (
-        <>
-          <h2>Login in or sign up</h2>
-          <form className="login-form" onSubmit={onLogin}>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={credentials.username}
-              onChange={handleChange}
-            />
+  return (
+    <div className="modal-screen" onClick={onClose}>
+      <div className="modal login-form" onClick={(ev) => ev.stopPropagation()}>
+        {isSignup ? (
+          <SignupModal onClose={onClose} onBack={() => setIsSignup(false)} />
+        ) : (
+          <>
+            <h2>Login</h2>
+            <form className="login-form" onSubmit={onLogin}>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={credentials.username}
+                onChange={handleChange}
+              />
 
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={credentials.password}
-              onChange={handleChange}
-            />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={credentials.password}
+                onChange={handleChange}
+              />
 
-            <button type="submit">Login</button>
-          </form>
+              <button type="submit">Login</button>
+            </form>
 
-          <div>
-            <button className="signup-btn" onClick={() => setIsSignup(true)}>
-              Sign up
-            </button>
-          </div>
-        </>
-      )}
+            <div>
+              <button className="signup-btn" onClick={() => setIsSignup(true)}>
+                Sign up
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
-  </div>
-)
-
+  )
 }

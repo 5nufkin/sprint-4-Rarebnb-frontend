@@ -3,6 +3,11 @@
   border-top: 1px solid #ddd;
   font-size: 1.2em;
 
+  .reviews-list-header {
+    display: flex;
+    align-items: center;
+  }
+
   h2 {
     font-size: 1.23em;
     margin-bottom: 2rem;

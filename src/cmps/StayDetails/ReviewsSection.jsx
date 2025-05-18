@@ -1,4 +1,4 @@
-import { EmptyStarIcon, StarIcon } from "../Icons"
+import { EmptyStarIcon, StarIcon, StarIconHeader } from "../Icons"
 
 export function ReviewsSection({ stay }) {
   const avgRating = stay.reviews?.length
@@ -8,10 +8,13 @@ export function ReviewsSection({ stay }) {
 
   return (
     <section className="reviews-section">
-      <h2>
-        <div><StarIcon /></div>{avgRating.toFixed(1)} · {stay.reviews.length} reviews
+
+      {/* Reviews header  */}
+      <h2 className="reviews-list-header">
+        <StarIconHeader />{avgRating.toFixed(1)} · {stay.reviews.length} reviews
       </h2>
 
+      {/* Reviews list  */}
       <div className="reviews-grid">
         {stay.reviews.map((review, idx) => (
           <article key={idx} className="review-card">
