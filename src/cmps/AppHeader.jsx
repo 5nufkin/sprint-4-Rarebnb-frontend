@@ -79,6 +79,8 @@ export function AppHeader() {
     }
   }, [isMenuOpen])
 
+  console.log("loggedInUser:", loggedInUser)
+
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
@@ -104,16 +106,17 @@ export function AppHeader() {
           <div className="spacer"></div>
           {isScreenWide && (
             <div className="menu-container">
+
               <button className="user-menu-btn" onClick={toggleMenu}>
                 <MenuIcon className="menu-icon" />
-                {loggedInUser ? (
+                {!loggedInUser ? (
+                  <UserGuestIcon />
+                ) : (
                   <img
                     className="user-img"
                     src={loggedInUser.imgUrl}
                     alt={loggedInUser.fullname}
                   />
-                ) : (
-                  <UserGuestIcon />
                 )}
               </button>
 

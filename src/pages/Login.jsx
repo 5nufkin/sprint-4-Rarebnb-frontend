@@ -11,7 +11,7 @@ export function LoginModal({ onClose, onLoginSuccess }) {
 
   async function onQuickLogin(user) {
   try {
-    await login({ username: user.username, password: user.password || "user" }) // או סיסמה שאתה קובע
+    await login({ username: user.username, password: user.password || "user" }) 
     onLoginSuccess()
     onClose()
   } catch (err) {

@@ -40,11 +40,6 @@ if (!localStorage.getItem("users")) {
   localStorage.setItem("users", JSON.stringify(demoUsers))
 }
 
-function getUsers() {
-  const users = JSON.parse(localStorage.getItem("users")) || []
-  return Promise.resolve(users)
-}
-
 // async function getUsers() {
 //   const users = await storageService.query('user')
 //   return users.map(user => {
@@ -52,6 +47,10 @@ function getUsers() {
 //     return user
 //   })
 // }
+function getUsers() {
+  const users = JSON.parse(localStorage.getItem("users")) || []
+  return Promise.resolve(users)
+}
 
 async function getById(userId) {
   return await storageService.get("user", userId)
@@ -86,15 +85,9 @@ function login({ username, password }) {
   )
   if (!user) return Promise.reject("Invalid credentials")
 
-  if (!user.imgUrl) {
-    user.imgUrl = `https://i.pravatar.cc/150?u=${user._id || user.username}`
-  }
-
   localStorage.setItem("loggedInUser", JSON.stringify(user))
   return Promise.resolve(user)
 }
-
-
 
 async function signup(userCred) {
   if (!userCred.imgUrl)
@@ -109,8 +102,8 @@ async function signup(userCred) {
 // async function logout() {
 //   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 // }
-async function logout() {
-  localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+function logout() {
+  localStorage.removeItem("loggedInUser")
 }
 
 // function getLoggedInUser() {
@@ -118,10 +111,8 @@ async function logout() {
 // }
 function getLoggedInUser() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"))
-  if (user && !user.imgUrl) {
-    user.imgUrl = `https://i.pravatar.cc/150?u=${user._id || user.username}`
-  }
-  return user
+  console.log("getLoggedInUser loaded:", user)
+  return user || null
 }
 
 
@@ -137,10 +128,6 @@ function getLoggedInUser() {
 //   return user
 // }
 function saveLoggedInUser(user) {
-  if (!user.imgUrl) {
-    user.imgUrl = `https://i.pravatar.cc/150?u=${user._id || user.username}`
-  }
-
   user = {
     _id: user._id,
     fullname: user.fullname,
@@ -149,10 +136,9 @@ function saveLoggedInUser(user) {
     isAdmin: user.isAdmin,
   }
 
-  localStorage.setItem("loggedInUser", JSON.stringify(user)) // תקן ל־localStorage
+  localStorage.setItem("loggedInUser", JSON.stringify(user))
   return user
 }
-
 
 // To quickly create an admin user, uncomment the next line
 // _createAdmin()

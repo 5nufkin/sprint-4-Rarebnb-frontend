@@ -80,21 +80,11 @@ import { logout } from "../store/actions/user.actions"
 
 export function HamburgerMenu({ onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [loggedInUser, setLoggedInUser] = useState(
-    userService.getLoggedInUser()
-  )
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      const user = userService.getLoggedInUser()
-      setLoggedInUser(user)
-    }
-
-    window.addEventListener("userChanged", handleStorageChange)
-
-    return () => {
-      window.removeEventListener("userChanged", handleStorageChange)
-    }
+    const user = userService.getLoggedInUser()
+    setLoggedInUser(user)
   }, [])
 
   function handleLoginSuccess() {
