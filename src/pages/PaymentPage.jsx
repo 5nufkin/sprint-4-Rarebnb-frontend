@@ -7,12 +7,16 @@ import { stayService } from "../services/stay"
 import { ReservationSuccess } from "../cmps/Icons"
 import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
 import { GlowButton } from "../cmps/PaymentPage/GlowButton"
+import { placeOrder } from "../store/actions/order.actions"
+import { useSelector } from "react-redux"
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
   const [isConfirmed, setIsConfirmed] = useState(false)
   const { stayId } = useParams()
   const navigate = useNavigate()
+  const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
+
 
   useEffect(() => {
     async function loadStay() {
@@ -28,6 +32,7 @@ export function PaymentPage() {
 
   function onConfirmOrder() {
     setIsConfirmed(true)
+    placeOrder(orderToSave)
   }
 
   if (!stay) return <div>Loading…</div>

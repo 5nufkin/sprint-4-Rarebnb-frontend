@@ -1,6 +1,6 @@
 import { StayPreview } from './StayPreview'
 
-export function StayList({ stays}) {
+export function StayList({ stays }) {
 
   return <section>
     <ul className="list">

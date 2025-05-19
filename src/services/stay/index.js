@@ -28,8 +28,16 @@ function getDefaultFilter() {
   }
 }
 
+function getStayAddressStr(stay) {
+  if (!stay.loc) return ""
+  const { city, country } = stay.loc
+  return stay.type
+    ? `${stay.type} in ${city}, ${country}`
+    : `${city}, ${country} `
+}
+
 const service = (VITE_LOCAL === 'true') ? local : remote
-export const stayService = { getEmptyStay, getDefaultFilter, ...service }
+export const stayService = { getEmptyStay, getDefaultFilter, getStayAddressStr, ...service }
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

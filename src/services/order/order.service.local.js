@@ -2,17 +2,18 @@ import { storageService } from "../async-storage.service"
 import { loadFromStorage, makeId, saveToStorage } from "../util.service"
 import { userService } from "../user"
 
-const STORAGE_KEY = "stayDB"
+const STORAGE_KEY = "orderDB"
 
-export const stayService = {
+export const orderService = {
   query,
   getById,
   save,
   remove,
-  addStayMsg,
+  addOrderMsg,
+  getOrderAddressStr,
 }
 
-const gStays = [
+const gOrders = [
   // {
   //   _id: 's101',
   //   name: 'Ribeira Charming Duplex',
@@ -47,17 +48,12 @@ const gStays = [
     type: "",
     avgRating: 4.88,
     bedCount: 2,
-    imgUrls: [
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/1_nehz8n.avif",
-      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/a380d857-f48a-42fa-aa8c-dc817c37a885.jpeg?im_w=720",
-      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/2039c695-7161-43b9-be49-d311eaac0d70.jpeg?im_w=720",
-      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/604ecd1b-87c4-4bc9-a976-4ba281a09ee5.jpeg?im_w=720",
-    ],
+    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/1_nehz8n.avif', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/a380d857-f48a-42fa-aa8c-dc817c37a885.jpeg?im_w=720', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/2039c695-7161-43b9-be49-d311eaac0d70.jpeg?im_w=720', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/604ecd1b-87c4-4bc9-a976-4ba281a09ee5.jpeg?im_w=720'],
     price: 184,
     summary: "Near Jerusalem Beach, Tel Aviv",
     capacity: 8,
     amenities: ["TV", "Wifi", "Kitchen"],
-    labels: ["Trending", "OMG!"],
+    labels: ["Trending", "Top of the world"],
     host: {
       _id: "u101",
       fullname: "Davit Pok",
@@ -158,7 +154,7 @@ const gStays = [
       },
       {
         id: "r018",
-        txt: "Would definitely stay here again!",
+        txt: "Would definitely order here again!",
         rate: 5,
         by: {
           _id: "u218",
@@ -201,15 +197,7 @@ const gStays = [
     type: "Apartment",
     avgRating: 4.72,
     bedCount: 1,
-    imgUrls: [
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
-    ],
+    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif'],
     price: 110,
     summary: "Cozy downtown apartment near shopping district.",
     capacity: 2,
@@ -247,7 +235,7 @@ const gStays = [
         rate: 4,
         by: {
           _id: "u226",
-          fullname: "Adi",
+          fullname: "Yoram",
           imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
           location: "Jerusalem, Israel",
         },
@@ -298,13 +286,7 @@ const gStays = [
     type: "Cabin",
     avgRating: 5.0,
     bedCount: 1,
-    imgUrls: [
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
-      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
-    ],
+    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif'],
     price: 205,
     summary: "Relax in a lush tropical escape.",
     capacity: 4,
@@ -393,7 +375,7 @@ const gStays = [
     reviews: [
       {
         id: "r001",
-        txt: "Amazing stay! Super clean and well located.",
+        txt: "Amazing order! Super clean and well located.",
         rate: 5,
         by: {
           _id: "u201",
@@ -523,7 +505,7 @@ const gStays = [
       "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747046118/9_b3te7l.avif",
     ],
     price: 200,
-    summary: "Live among the trees in this sustainable stay.",
+    summary: "Live among the trees in this sustainable order.",
     capacity: 2,
     amenities: ["Compost toilet", "Solar power"],
     labels: ["Eco", "Play"],
@@ -555,7 +537,7 @@ const gStays = [
       },
       {
         id: "r035",
-        txt: "We had a lovely time staying here.",
+        txt: "We had a lovely time ordering here.",
         rate: 5,
         by: {
           _id: "u205",
@@ -900,7 +882,7 @@ const gStays = [
       },
       {
         id: "r056",
-        txt: "We had a lovely time staying here.",
+        txt: "We had a lovely time ordering here.",
         rate: 3,
         by: {
           _id: "u226",
@@ -1222,93 +1204,90 @@ const gStays = [
   },
 ]
 
-window.cs = stayService
-_createStays()
+window.cs = orderService
+_createOrders()
 
-async function query(filterBy = {}) {
-  var stays = await storageService.query(STORAGE_KEY)
+async function query(filterBy = { country: "" }) {
+  var orders = await storageService.query(STORAGE_KEY)
 
-  if (filterBy.label) {
-    stays = stays.filter((stay) => stay.labels?.includes(filterBy.label))
+  if (filterBy.country) {
+    const regex = new RegExp(filterBy.country, "i")
+    orders = orders.filter(
+      (order) => regex.test(order.loc?.country) || regex.test(order.loc?.city)
+    )
   }
+  // if (minPrice) {
+  //   orders = orders.filter(order => order.price >= minPrice)
+  // }
+  // if (sortField === 'name') {
+  //   orders.sort((order1, order2) =>
+  //     order1[sortField].localeCompare(order2[sortField]) * +sortDir)
+  // }
+  // if (sortField === 'price') {
+  //   orders.sort((order1, order2) =>
+  //     (order1[sortField] - order2[sortField]) * +sortDir)
+  // }
 
-  return stays
+  // orders = orders.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
+  return orders
 }
 
-// async function query(filterBy = { country: "" }) {
-// console.log(filterBy)
-//   var stays = await storageService.query(STORAGE_KEY)
-
-//   if (filterBy.country) {
-//     const regex = new RegExp(filterBy.country, "i")
-//     stays = stays.filter(
-//       (stay) => regex.test(stay.loc?.country) || regex.test(stay.loc?.city)
-//     )
-//   }
-//   // if (minPrice) {
-//   //   stays = stays.filter(stay => stay.price >= minPrice)
-//   // }
-//   // if (sortField === 'name') {
-//   //   stays.sort((stay1, stay2) =>
-//   //     stay1[sortField].localeCompare(stay2[sortField]) * +sortDir)
-//   // }
-//   // if (sortField === 'price') {
-//   //   stays.sort((stay1, stay2) =>
-//   //     (stay1[sortField] - stay2[sortField]) * +sortDir)
-//   // }
-
-//   // stays = stays.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
-//   return stays
-// }
-
-function getById(stayId) {
-  return storageService.get(STORAGE_KEY, stayId)
+function getById(orderId) {
+  return storageService.get(STORAGE_KEY, orderId)
 }
 
-async function remove(stayId) {
+async function remove(orderId) {
   // throw new Error('Nope')
-  await storageService.remove(STORAGE_KEY, stayId)
+  await storageService.remove(STORAGE_KEY, orderId)
 }
 
-async function save(stay) {
-  var savedStay
-  if (stay._id) {
-    const stayToSave = {
-      _id: stay._id,
-      price: stay.price,
+async function save(order) {
+  var savedOrder
+  if (order._id) {
+    const orderToSave = {
+      _id: order._id,
+      price: order.price,
     }
-    savedStay = await storageService.put(STORAGE_KEY, stayToSave)
+    savedOrder = await storageService.put(STORAGE_KEY, orderToSave)
   } else {
-    const stayToSave = {
-      name: stay.name,
-      price: stay.price,
+    const orderToSave = {
+      name: order.name,
+      price: order.price,
       // Later, owner is set by the backend
       owner: userService.getLoggedInUser(),
       msgs: [],
     }
-    savedStay = await storageService.post(STORAGE_KEY, stayToSave)
+    savedOrder = await storageService.post(STORAGE_KEY, orderToSave)
   }
-  return savedStay
+  return savedOrder
 }
 
-async function addStayMsg(stayId, txt) {
+async function addOrderMsg(orderId, txt) {
   // Later, this is all done by the backend
-  const stay = await getById(stayId)
+  const order = await getById(orderId)
 
   const msg = {
     id: makeId(),
     by: userService.getLoggedInUser(),
     txt,
   }
-  stay.msgs.push(msg)
-  await storageService.put(STORAGE_KEY, stay)
+  order.msgs.push(msg)
+  await storageService.put(STORAGE_KEY, order)
 
   return msg
 }
 
-function _createStays() {
-  let stays = loadFromStorage(STORAGE_KEY)
-  if (!stays || !stays.length) {
-    saveToStorage(STORAGE_KEY, gStays)
+function _createOrders() {
+  let orders = loadFromStorage(STORAGE_KEY)
+  if (!orders || !orders.length) {
+    saveToStorage(STORAGE_KEY, gOrders)
   }
+}
+
+function getOrderAddressStr(order) {
+  if (!order.loc) return ""
+  const { city, country } = order.loc
+  return order.type
+    ? `${order.type} in ${city}, ${country}`
+    : `${city}, ${country} `
 }

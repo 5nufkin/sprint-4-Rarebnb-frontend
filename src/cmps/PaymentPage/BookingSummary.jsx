@@ -3,26 +3,28 @@ import { DiamondIcon, StarIcon } from "../Icons"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/index"
-import { useLocation } from "react-router-dom"
+//! import { useLocation } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { useSelector } from "react-redux"
 
-export function BookingSummary({isConfirmed}) {
+export function BookingSummary({ isConfirmed }) {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
-  const { state } = useLocation()
+  //! const { state } = useLocation() 
+  const orderDetails = useSelector(storeState => storeState.orderModule.orderToSave)
   const {
-    checkIn,
-    checkOut,
-    guests,
-    nights,
+    startDate,
+    endDate,
+    guestCountMap,
+    numOfNights,
     pricePerNight,
     cleaningFee,
     serviceFee,
-    total,
-  } = state
+    totalPrice,
+  } = orderDetails
 
-  const checkInStr = checkIn ? checkIn.toLocaleDateString() : "––"
-  const checkOutStr = checkOut ? checkOut.toLocaleDateString() : "––"
+  const checkInStr = startDate ? startDate.toLocaleDateString() : "––"
+  const checkOutStr = endDate ? endDate.toLocaleDateString() : "––"
 
   function totalGuests(guests) {
     return guests.adults + guests.children + guests.infants + guests.pets
@@ -48,8 +50,8 @@ export function BookingSummary({isConfirmed}) {
   const avgRating =
     reviews.length > 0
       ? (
-          reviews.reduce((sum, review) => sum + review.rate, 0) / reviews.length
-        ).toFixed(2)
+        reviews.reduce((sum, review) => sum + review.rate, 0) / reviews.length
+      ).toFixed(2)
       : "–"
   return (
     <div className="payment-right">
@@ -91,7 +93,7 @@ export function BookingSummary({isConfirmed}) {
             <p className="check-in-out">
               {checkInStr} – {checkOutStr}
             </p>
-            <p className="check-in-out">{totalGuests(guests)} guests</p>
+            <p className="check-in-out">{totalGuests(guestCountMap)} guests</p>
           </div>
         </section>
 
@@ -100,23 +102,23 @@ export function BookingSummary({isConfirmed}) {
           <h4>Price details</h4>
           <div className="price-line">
             <span>
-              ₪{pricePerNight} x {nights} nights
+              ${pricePerNight} x {numOfNights} nights
             </span>
-            <span>₪{(nights * stay.price).toFixed(2)}</span>
+            <span>${(numOfNights * stay.price).toFixed(2)}</span>
           </div>
           <div className="price-line">
             <span>Cleaning fee</span>
-            <span>₪{cleaningFee}</span>
+            <span>${cleaningFee.toFixed(2)}</span>
           </div>
           <div className="price-line">
             <span>Airbnb service fee</span>
-            <span>₪{serviceFee.toFixed(2)}</span>
+            <span>${serviceFee.toFixed(2)}</span>
           </div>
           <div className="price-total summary-section">
             <span className="price-link">
-              Total <span className="currency">ILS</span>
+              Total <span className="currency">USD</span>
             </span>
-            <span>₪{total}</span>
+            <span>${totalPrice.toFixed(2)}</span>
           </div>
         </section>
 
