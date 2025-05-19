@@ -67,9 +67,9 @@ export async function addOrderMsg(orderId, txt) {
   }
 }
 
-export function setEmptyOrderToSave(stayId) {
+export function setEmptyOrderToSave(stay) {
   try {
-    const emptyOrder = orderService.getEmptyOrder(stayId)
+    const emptyOrder = orderService.getEmptyOrder(stay)
     store.dispatch(getCmdSetEmptyOrderToSave(emptyOrder))
     return emptyOrder
   } catch (err) {

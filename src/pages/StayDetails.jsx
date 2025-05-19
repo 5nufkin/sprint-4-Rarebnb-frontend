@@ -20,7 +20,6 @@ export function StayDetails() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
-  console.log(orderToSave)
 
   useEffect(() => {
     async function loadStay() {
@@ -29,7 +28,7 @@ export function StayDetails() {
         setStay(stay)
 
         try {
-          setEmptyOrderToSave(stay._id)
+          setEmptyOrderToSave(stay)
         } catch (err) {
           console.error('Error setting empty order:', err)
         }

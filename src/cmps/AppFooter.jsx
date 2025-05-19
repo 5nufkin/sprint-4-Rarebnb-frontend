@@ -18,7 +18,7 @@ export function AppFooter() {
 
       <div className="footer-right">
         <a className="language">{<GlobeIcon />}English (US)</a>
-        <a>$ ILS</a>
+        <a>$ USD</a>
         <a href="#"> Support & resources</a>
       </div>
     </footer>
