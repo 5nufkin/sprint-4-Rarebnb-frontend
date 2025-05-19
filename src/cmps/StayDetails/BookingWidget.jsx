@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { GuestsSelector } from './GuestsSelector.jsx'
 import { useNavigate } from 'react-router-dom'
 import { GlowButton } from '../PaymentPage/GlowButton.jsx'
+import { FaFlag } from "react-icons/fa";
 
 
 export function BookingWidget({ stay }) {
@@ -95,7 +96,9 @@ export function BookingWidget({ stay }) {
 
       
     </div>
-    <a className="report-link" href="#">🏳 Report this listing</a>
+    <a className="report-link" href="#">
+      <FaFlag size={14} style={{ marginRight: 6 }} />
+      Report this listing</a>
     </>
   )
 }
