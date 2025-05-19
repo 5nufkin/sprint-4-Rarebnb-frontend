@@ -8,10 +8,10 @@ export function ReviewsSection({ stay }) {
 
   return (
     <section className="reviews-section">
-
       {/* Reviews header  */}
       <h2 className="reviews-list-header">
-        <StarIconHeader />{avgRating.toFixed(1)} · {stay.reviews.length} reviews
+        <StarIconHeader />
+        {avgRating.toFixed(1)} · {stay.reviews.length} reviews
       </h2>
 
       {/* Reviews list  */}
@@ -25,10 +25,10 @@ export function ReviewsSection({ stay }) {
                 className="review-avatar"
               />
               <div>
-                <h4>{review.by.fullname}</h4>
-                <p className="review-location">
-                  {review.by.location || "Traveler"}
-                </p>
+                  <h4>{review.by.fullname}</h4>
+                  <p className="review-location">
+                    {review.by.location || "Traveler"}
+                  </p>
                 <p className="review-location">{review.by.country}</p>
               </div>
             </div>

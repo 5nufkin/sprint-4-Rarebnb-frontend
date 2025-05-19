@@ -1,0 +1,47 @@
+.skeleton {
+  animation: pulse 1.5s infinite ease-in-out;
+  background-color: $gray12;
+  border-radius: 1rem;
+}
+
+.stay-card.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+  max-width: 17em;
+}
+
+.img-placeholder {
+  height: 10em;
+  background-color: $gray13;
+  border-radius: 0.75rem;
+}
+
+.row.line {
+  height: 14px;
+  border-radius: 7px;
+  background-color: $gray9;
+}
+
+.row.short {
+  width: 40%;
+}
+.row.medium {
+  width: 65%;
+}
+.row.long {
+  width: 85%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
