@@ -51,11 +51,14 @@
   font-weight: 600;
   cursor: pointer;
   border: 1px solid #222;
-  
   box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
 }
 
 /* ========= HEADING ========= */
+.asset-details {
+  align-items: center;
+}
+
 .heading-bar {
   margin-top: 24px;
 }
@@ -67,7 +70,6 @@
 
 .heading-bar .meta {
   color: #222;
-  margin-top: 4px;
   font-weight: 600;
 }
 .heading-bar .rating {
@@ -86,7 +88,6 @@
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 40px;
-  margin-top: 40px;
 }
 
 .booking-col {
@@ -181,8 +182,8 @@
 
   .glow-button {
     border-radius: 30px;
-    height: 3.85em;
     font-size: 1.15em;
+    margin-top: 16px;
   }
 }
 
@@ -269,24 +270,6 @@
   width: 100%;
   padding: 0;
   outline: none;
-}
-
-.reserve-btn {
-  width: 100%;
-  margin-top: 16px;
-  padding: 14px 0;
-  background: linear-gradient(90deg, #ff385c, #bd1e59);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.25rem;
-  border-radius: 2rem;
-  cursor: pointer;
-
-  &:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-  }
 }
 
 .note {
