@@ -79,8 +79,6 @@ export function AppHeader() {
     }
   }, [isMenuOpen])
 
-  console.log("loggedInUser:", loggedInUser)
-
   return (
     <>
       <div className="observer-top" ref={topRef}></div>

@@ -48,12 +48,17 @@ const gStays = [
     type: "",
     avgRating: 4.88,
     bedCount: 2,
-    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/1_nehz8n.avif', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/a380d857-f48a-42fa-aa8c-dc817c37a885.jpeg?im_w=720', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/2039c695-7161-43b9-be49-d311eaac0d70.jpeg?im_w=720', 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/604ecd1b-87c4-4bc9-a976-4ba281a09ee5.jpeg?im_w=720'],
+    imgUrls: [
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/1_nehz8n.avif",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/a380d857-f48a-42fa-aa8c-dc817c37a885.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/2039c695-7161-43b9-be49-d311eaac0d70.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/604ecd1b-87c4-4bc9-a976-4ba281a09ee5.jpeg?im_w=720",
+    ],
     price: 184,
     summary: "Near Jerusalem Beach, Tel Aviv",
     capacity: 8,
     amenities: ["TV", "Wifi", "Kitchen"],
-    labels: ["Trending", "Top of the world"],
+    labels: ["Trending", "OMG!"],
     host: {
       _id: "u101",
       fullname: "Davit Pok",
@@ -197,7 +202,15 @@ const gStays = [
     type: "Apartment",
     avgRating: 4.72,
     bedCount: 1,
-    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif'],
+    imgUrls: [
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif",
+    ],
     price: 110,
     summary: "Cozy downtown apartment near shopping district.",
     capacity: 2,
@@ -286,7 +299,13 @@ const gStays = [
     type: "Cabin",
     avgRating: 5.0,
     bedCount: 1,
-    imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif'],
+    imgUrls: [
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
+      "https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/3_v40rnl.avif",
+    ],
     price: 205,
     summary: "Relax in a lush tropical escape.",
     capacity: 4,
@@ -1207,30 +1226,43 @@ const gStays = [
 window.cs = stayService
 _createStays()
 
-async function query(filterBy = { country: "" }) {
+async function query(filterBy = {}) {
+  console.log("filterBy:", filterBy)
+
   var stays = await storageService.query(STORAGE_KEY)
 
-  if (filterBy.country) {
-    const regex = new RegExp(filterBy.country, "i")
-    stays = stays.filter(
-      (stay) => regex.test(stay.loc?.country) || regex.test(stay.loc?.city)
-    )
+  if (filterBy.label) {
+    stays = stays.filter((stay) => stay.labels?.includes(filterBy.label))
   }
-  // if (minPrice) {
-  //   stays = stays.filter(stay => stay.price >= minPrice)
-  // }
-  // if (sortField === 'name') {
-  //   stays.sort((stay1, stay2) =>
-  //     stay1[sortField].localeCompare(stay2[sortField]) * +sortDir)
-  // }
-  // if (sortField === 'price') {
-  //   stays.sort((stay1, stay2) =>
-  //     (stay1[sortField] - stay2[sortField]) * +sortDir)
-  // }
 
-  // stays = stays.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
   return stays
 }
+
+// async function query(filterBy = { country: "" }) {
+// console.log(filterBy)
+//   var stays = await storageService.query(STORAGE_KEY)
+
+//   if (filterBy.country) {
+//     const regex = new RegExp(filterBy.country, "i")
+//     stays = stays.filter(
+//       (stay) => regex.test(stay.loc?.country) || regex.test(stay.loc?.city)
+//     )
+//   }
+//   // if (minPrice) {
+//   //   stays = stays.filter(stay => stay.price >= minPrice)
+//   // }
+//   // if (sortField === 'name') {
+//   //   stays.sort((stay1, stay2) =>
+//   //     stay1[sortField].localeCompare(stay2[sortField]) * +sortDir)
+//   // }
+//   // if (sortField === 'price') {
+//   //   stays.sort((stay1, stay2) =>
+//   //     (stay1[sortField] - stay2[sortField]) * +sortDir)
+//   // }
+
+//   // stays = stays.map(({ _id, name, price, host, imgUrls }) => ({ _id, name, price, host, imgUrls }))
+//   return stays
+// }
 
 function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId)

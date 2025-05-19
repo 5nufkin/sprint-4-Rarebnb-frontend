@@ -111,7 +111,6 @@ function logout() {
 // }
 function getLoggedInUser() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"))
-  console.log("getLoggedInUser loaded:", user)
   return user || null
 }
 

@@ -43,6 +43,8 @@ import {
   YurtsIcon,
 } from "../../src/cmps/Icons"
 
+import { loadStays } from "../store/actions/stay.actions"
+
 export function StayIconFilter() {
   const scrollContainerRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -233,6 +235,7 @@ export function StayIconFilter() {
 
   function onLabelClick(label) {
     setSelectedLabel(label)
+    loadStays({label})
   }
 
   return (
@@ -264,20 +267,6 @@ export function StayIconFilter() {
               )}
               <span className="icon-label">{filter.label}</span>
             </div>
-
-            // <div className="filter-item" key={idx}>
-            //   {filter.icon ? (
-            //     <filter.icon className="icon-img" />
-            //   ) : (
-            //     <img
-            //       className="icon-img"
-            //       src={filter.iconUrl}
-            //       alt={filter.label}
-            //     />
-            //   )}
-            //   <span className="icon-label">{filter.label}</span>
-            // </div>
-
           ))}
         </div>
 
