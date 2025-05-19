@@ -106,13 +106,26 @@ export function AppHeader() {
             <div className="menu-container">
               <button className="user-menu-btn" onClick={toggleMenu}>
                 <MenuIcon className="menu-icon" />
+                {loggedInUser ? (
+                  <img
+                    className="user-img"
+                    src={loggedInUser.imgUrl}
+                    alt={loggedInUser.fullname}
+                  />
+                ) : (
+                  <UserGuestIcon />
+                )}
+              </button>
+
+              {/* <button className="user-menu-btn" onClick={toggleMenu}>
+                <MenuIcon className="menu-icon" />
                 <UserGuestIcon />
-                {/* <img
+                <img
                   className="user-img"
                   src={loggedInUser?.imgUrl}
                   alt={loggedInUser?.fullname}
-                /> */}
-              </button>
+                />
+              </button> */}
 
               {isMenuOpen && (
                 <div ref={menuRef}>
