@@ -1,10 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { LoginModal } from "../pages/Login"
+import { userService } from "../services/user/index"
+import { logout } from "../store/actions/user.actions"
 
 export function HamburgerMenu({ onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isloggedIn, setLoggedIn] = useState(false)
+  const [loggedInUser, setLoggedInUser] = useState(null)
+
+  useEffect(() => {
+    const user = userService.getLoggedInUser()
+    setLoggedInUser(user)
+  }, [])
+
+  function handleLoginSuccess() {
+    const user = userService.getLoggedInUser()
+    setLoggedInUser(user)
+    window.dispatchEvent(new Event("userChanged"))
+  }
 
   function openLogin() {
     setIsModalOpen(true)
@@ -14,15 +27,22 @@ export function HamburgerMenu({ onClose }) {
     setIsModalOpen(false)
   }
 
+  async function onLogout() {
+    await logout()
+    setLoggedInUser(null)
+    window.dispatchEvent(new Event("userChanged"))
+    onClose()
+  }
+
   return (
     <div className="hamburger-menu">
       <ul>
-        {!isloggedIn && (
+        {!loggedInUser && (
           <li className="login-link" onClick={openLogin}>
             Login
           </li>
         )}
-        {isloggedIn && (
+        {loggedInUser && (
           <>
             <li>
               <Link to="/wishlists" onClick={onClose}>
@@ -44,11 +64,16 @@ export function HamburgerMenu({ onClose }) {
                 Listings
               </Link>
             </li>
+            <li className="logout-link" onClick={onLogout}>
+              Logout
+            </li>
           </>
         )}
       </ul>
-      {isModalOpen && <LoginModal onClose={closeLogin} />}
 
+      {isModalOpen && (
+        <LoginModal onClose={closeLogin} onLoginSuccess={handleLoginSuccess} />
+      )}
     </div>
   )
 }

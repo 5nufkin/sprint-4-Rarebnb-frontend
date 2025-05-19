@@ -25,7 +25,6 @@ export function ListingsPage() {
 
   return (
     <section className="listings-main">
-      <h1>Listings</h1>
       <section className="reservation-table">
         <ReservationTable sales={sales} setStats={setStats} />
       </section>

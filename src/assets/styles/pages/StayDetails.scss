@@ -6,7 +6,7 @@
     "main main side1 side2"
     "main main side3 side4";
   grid-auto-rows: 200px;
-  gap: 4px;
+  gap: 8px;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -37,19 +37,76 @@
   grid-area: side4;
 }
 
+.hero-img,
+.btn-show-all{
+  cursor:pointer;
+}
+
 .btn-show-all {
+  display: flex;
+  align-items:center;
   position: absolute;
   bottom: 16px;
   right: 16px;
   background: #fff;
+  color: #222;
   padding: 8px 14px;
   border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  border: 1px solid #222;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
 }
 
+  .photos-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:1100;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.photos-modal__inner{
+  width:90vw;
+  max-width:1400px;
+  max-height:90vh;
+  overflow:auto;
+  position:relative;
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+
+.photos-grid{
+  display:grid;
+  gap:8px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  cursor: pointer;
+}
+
+.photos-grid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+
 /* ========= HEADING ========= */
+.asset-details {
+  align-items: center;
+}
+
 .heading-bar {
   margin-top: 24px;
 }
@@ -60,8 +117,11 @@
 }
 
 .heading-bar .meta {
-  color: #717171;
-  margin-top: 4px;
+  color: #222;
+  font-weight: 600;
+}
+.heading-bar .rating {
+  text-decoration: underline;
 }
 
 .icon-btn {
@@ -76,13 +136,13 @@
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 40px;
-  margin-top: 40px;
 }
 
 .booking-col {
   position: sticky;
   top: 120px;
   height: max-content;
+  margin: 20px auto;
 }
 
 @media (max-width: 1024px) {
@@ -170,8 +230,8 @@
 
   .glow-button {
     border-radius: 30px;
-    height: 3.85em;
     font-size: 1.15em;
+    margin-top: 16px;
   }
 }
 
@@ -179,10 +239,6 @@
   position: relative;
 }
 
-.booking-col > .booking-widget{
-  position:sticky;
-  top:120px;
-}
 
 
 .rare-banner {
@@ -264,24 +320,6 @@
   outline: none;
 }
 
-.reserve-btn {
-  width: 100%;
-  margin-top: 16px;
-  padding: 14px 0;
-  background: linear-gradient(90deg, #ff385c, #bd1e59);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.25rem;
-  border-radius: 2rem;
-  cursor: pointer;
-
-  &:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-  }
-}
-
 .note {
   text-align: center;
   margin: 8px 0 0;
@@ -320,6 +358,8 @@
   text-align: center;
   font-size: 14px;
   color: #717171;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .guests-btn{
@@ -494,3 +534,4 @@
   margin: 0 0 4px 0;
   font-weight: 600;
 }
+

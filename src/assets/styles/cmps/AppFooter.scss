@@ -38,3 +38,8 @@
     }
   }
 }
+
+body:has(main.stay-details) .app-footer{
+  max-width:1120px;
+  margin-inline:auto;
+}

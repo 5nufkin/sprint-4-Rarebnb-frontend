@@ -7,6 +7,7 @@ import { GlowButton } from '../PaymentPage/GlowButton.jsx'
 import { updateOrderToSave } from '../../store/actions/order.actions.js'
 import { useSelector } from 'react-redux'
 import { orderService } from '../../services/order/index.js'
+import { FaFlag } from "react-icons/fa";
 
 
 export function BookingWidget({ stay }) {
@@ -127,7 +128,9 @@ export function BookingWidget({ stay }) {
         )}
       </div>
 
-      <a className="report-link" href="#">🏳 Report this listing</a>
+      <a className="report-link" href="#">
+        <FaFlag size={14} style={{ marginRight: 6 }} />
+        Report this listing</a>
     </>
   )
 }

@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2000;
 }
 
 .modal {
@@ -18,15 +19,16 @@
   flex-direction: column;
   gap: 1rem;
   animation: fadeIn 0.2s ease;
-  z-index: 10000;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  z-index: 2001;
+  position: relative;
 
-  h2 {
+  h2, h3 {
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
@@ -85,4 +87,67 @@
   background-color: #fff;
   color: black;
   border: 1px solid black;
+}
+
+.error-msg {
+  color: red;
+  background-color: #ffe0e0;
+  border: 1px solid red;
+  padding: 10px;
+  margin-top: 1em;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.error-msg {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  color: red;
+  background-color: #ffe0e0;
+  border: 1px solid red;
+  padding: 10px;
+  margin-top: 1em;
+  border-radius: 4px;
+  text-align: center;
+}
+.error-msg.fade-out {
+  opacity: 0;
+}
+
+////////////////////////////////////////
+.user-list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.user-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 3rem;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.user-preview:hover {
+  background-color: #f0f0f0;
+}
+
+.user-preview img {
+  width: 2.7em;
+  height: 2.7em;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.6em;
+}
+
+.host-label {
+  font-size: 0.75em;
+  color: #e63946;
 }

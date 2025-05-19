@@ -811,8 +811,6 @@ export const sales = [
   },
 ]
 
-
-
 function query(filterBy) {
   // return storageService.query("order")
   return Promise.resolve(sales)
@@ -822,27 +820,47 @@ async function remove(reject) {
   await storageService.remove("order", reject)
 }
 
-function getDashboardStats() {
-  const totalRevenue = sales.reduce((sum, sale) => sum + sale.price, 0)
-  const completedSales = sales.filter(
-    (sale) => sale.bookingStatus?.status === "completed"
-  )
-  const refundedSales = sales.filter(
-    (sale) => sale.bookingStatus?.status === "refunded"
-  )
+// function getDashboardStats() {
+//   const totalRevenue = sales.reduce((sum, sale) => sum + sale.price, 0)
+//   const completedSales = sales.filter(
+//     (sale) => sale.bookingStatus?.status === "completed"
+//   )
+//   const refundedSales = sales.filter(
+//     (sale) => sale.bookingStatus?.status === "refunded"
+//   )
+//   const totalSales = completedSales.reduce((sum, sale) => sum + sale.price, 0)
+//   const avgRevenue = totalSales / completedSales.length || 0
+//   const customers = [...new Set(completedSales.map((sale) => sale.customer))]
+
+//   return Promise.resolve({
+//     totalSales: completedSales.length,
+//     totalRevenue: totalRevenue,
+//     totalCustomers: customers.length,
+//     refunded: refundedSales.length,
+//     avgRevenue: avgRevenue.toFixed(2),
+//     staysInList: sales.length,
+//   })
+// }
+
+function getDashboardStats(userId) {
+  const userSales = sales.filter(sale => sale.sellerId === userId)
+
+  const completedSales = userSales.filter(sale => sale.status === "completed")
+  const refundedSales = userSales.filter(sale => sale.status === "refunded")
   const totalSales = completedSales.reduce((sum, sale) => sum + sale.price, 0)
   const avgRevenue = totalSales / completedSales.length || 0
-  const customers = [...new Set(completedSales.map((sale) => sale.customer))]
+  const customers = [...new Set(completedSales.map(sale => sale.customer))]
 
   return Promise.resolve({
     totalSales: completedSales.length,
-    totalRevenue: totalRevenue,
+    totalRevenue: totalSales,
     totalCustomers: customers.length,
     refunded: refundedSales.length,
     avgRevenue: avgRevenue.toFixed(2),
-    staysInList: sales.length,
+    staysInList: userSales.length,
   })
 }
+
 
 function getSalesByCountry() {
   const map = {}

@@ -68,8 +68,9 @@
 .user-menu-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0.3em 0.6em;
+  gap: 1.2em;
+  // gap: 18px;
+  padding: 0.34em 0.44em;
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 999px;
@@ -101,6 +102,7 @@
   width: 16px;
   height: 16px;
   stroke: #222;
+  margin-left: 0.7em;
 }
 
 // ===== Responsive: hide menu under 640px =====
