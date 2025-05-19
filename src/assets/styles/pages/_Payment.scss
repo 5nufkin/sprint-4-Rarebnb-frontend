@@ -1,5 +1,6 @@
 .payment-page {
   margin-top: 1em;
+
 }
 
 .back-to-detail {
@@ -8,6 +9,11 @@
   margin: 0 0 20px 0;
   line-height: 1.5;
   color: $clr7;
+}
+
+.success-header {
+  display: flex;
+  align-items: center;
 }
 
 ////////////////////////////////////////////

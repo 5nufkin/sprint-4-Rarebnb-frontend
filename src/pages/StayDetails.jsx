@@ -12,17 +12,28 @@ import '../assets/styles/pages/StayDetails.scss'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay/index.js'
+import { setEmptyOrderToSave } from '../store/actions/order.actions.js'
+import { useSelector } from 'react-redux'
 
 
 export function StayDetails() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
+  const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
+  console.log(orderToSave)
 
   useEffect(() => {
-    async function  loadStay() {
+    async function loadStay() {
       try {
-        const stay = await stayService.getById(stayId)        
+        const stay = await stayService.getById(stayId)
         setStay(stay)
+
+        try {
+          setEmptyOrderToSave(stay._id)
+        } catch (err) {
+          console.error('Error setting empty order:', err)
+        }
+
       } catch (err) {
         console.error('Error fetching stay:', err)
       }
@@ -47,10 +58,10 @@ export function StayDetails() {
     <main className="stay-details">
 
       <div className="page-container">
-        <div className="scroll-area"> 
+        <div className="scroll-area">
 
-        <HeroGallery images={stay.imgUrls} />
-        <HeadingBar stay={stay} />
+          <HeroGallery images={stay.imgUrls} />
+          <HeadingBar stay={stay} />
 
           <div className="main-grid">
             <div className="left-col">
@@ -64,15 +75,15 @@ export function StayDetails() {
             </div>
 
             <aside className="booking-col">
-                <BookingWidget stay={stay} />
+              <BookingWidget stay={stay} />
             </aside>
-            
+
           </div>
         </div>
-              <ReviewsSection stay={stay} />
-              <LocationMap location={stay.loc} />
-              <HostCard host={stay.host} />
-              <div className="section-divider" />
+        <ReviewsSection stay={stay} />
+        <LocationMap location={stay.loc} />
+        <HostCard host={stay.host} />
+        <div className="section-divider" />
       </div>
     </main>
   )

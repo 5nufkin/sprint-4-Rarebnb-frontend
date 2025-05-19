@@ -10,16 +10,21 @@
 .stat-card {
   background-color: $clr-white;
   width: 18.5rem;
-  padding: 1.7rem;
+  padding: 1.8em 0.8em;
   border-radius: 16px;
   border: 1px solid $gray-1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: $gray10;
+
+  h4 {
+    font-size: 0.88em;
+  }
 }
 
 .stat-card .value {
   font-size: 1.6rem;
   font-weight: 600;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
 }
 
 .stat-card .diff {
@@ -34,13 +39,13 @@
 }
 
 .stat-icon-circle {
-  width: 2.2em;
-  height: 2.2em;
+  width: 2em;
+  height: 2em;
 
   background-color: $clr10;
   color: $clr-white;
   border-radius: 50%;
-  padding: 0.5em;
+  padding: 0.45em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -49,5 +54,32 @@
 .stat-header {
   display: flex;
   justify-content: space-between;
-  
+}
+
+.stat-card .diff {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.5em;
+  color: $gray4; 
+}
+
+.stat-card .diff span {
+  font-size: 0.85rem;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.stat-card .positive {
+  background-color: #d1f3dc; 
+  color: $clr8;
+}
+
+.stat-card .negative {
+  background-color: #ffd8d8; 
+  color: $clr-brand-main;
 }

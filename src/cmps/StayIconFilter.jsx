@@ -4,6 +4,7 @@ import {
   aFramesIcon,
   AmazingPoolIcon,
   AmazingViewIcon,
+  barnsIcon,
   BeachFrontIcon,
   BeachIcon,
   bedAndBreakfastIcon,
@@ -16,6 +17,7 @@ import {
   containersIcon,
   countrySideIcon,
   creativeSpaces,
+  cycldicIcon,
   dammusiIcon,
   desertIcon,
   designHomesIcon,
@@ -32,6 +34,7 @@ import {
   LeftIcon,
   luxeIcon,
   mansionIcon,
+  minsusIcon,
   nationalParkIcon,
   newHomeIcon,
   offTheGridIcon,
@@ -55,6 +58,7 @@ import {
   trulliIcon,
   vineyardsIcon,
   windmillsIcon,
+  YurtsIcon,
 } from "../../src/cmps/Icons"
 
 export function StayIconFilter() {
@@ -354,8 +358,7 @@ export function StayIconFilter() {
     },
     {
       label: "Barns",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087473/asset_48_dnsnpz.png",
+      icon: barnsIcon
     },
     {
       label: "Ryokans",
@@ -365,19 +368,15 @@ export function StayIconFilter() {
     },
     {
       label: "Cycldic homes",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747078135/asset_58_cpnm9t.png",
+      icon: cycldicIcon
     },
     {
       label: "Grand pianos",
       icon: grandPianosIcon
-      // iconUrl:
-      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747087475/asset_51_tb4sov.png",
     },
     {
       label: "Yurts",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076706/asset_53_oq1fcf.png",
+      icon: YurtsIcon
     },
     {
       label: "Shepherd's huts",
@@ -410,8 +409,9 @@ export function StayIconFilter() {
     },
     {
       label: "Minsus",
-      iconUrl:
-        "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076708/asset_59_gklgvt.png",
+      icon: minsusIcon
+      // iconUrl:
+      //   "https://res.cloudinary.com/dkdlwoien/image/upload/v1747076708/asset_59_gklgvt.png",
     },
     {
       label: "Casas particulares",

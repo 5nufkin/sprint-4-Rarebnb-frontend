@@ -167,6 +167,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
   font-size: 14px;
   position: relative;
+
+  .glow-button {
+    border-radius: 30px;
+    height: 3.85em;
+    font-size: 1.15em;
+  }
 }
 
 .booking-wrapper {
@@ -463,17 +469,20 @@
 }
 
 /* ========= PAGE LAYOUT ========= */
-.page-container{
-  max-width: 1120px;
-  margin-inline: auto;
-  padding-inline: 24px;
+.page-container {
+  display: grid;
+  grid-template-columns: minmax(20px,1fr) minmax(auto, 1120px) minmax(20px, 1fr);
 }
 
-@media (max-width: 600px){
-  .page-container{
-    padding-inline: 16px;
-  }
+.page-container > * {
+  grid-column: 2;
 }
+
+// @media (max-width: 600px){
+//   .page-container{
+//     padding-inline: 16px;
+//   }
+// }
 
 
 /* ========= REVIEWS ========= */
