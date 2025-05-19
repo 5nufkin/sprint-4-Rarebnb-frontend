@@ -248,7 +248,7 @@ const gStays = [
         rate: 4,
         by: {
           _id: "u226",
-          fullname: "Yoram",
+          fullname: "Adi",
           imgUrl: "https://randomuser.me/api/portraits/women/26.jpg",
           location: "Jerusalem, Israel",
         },

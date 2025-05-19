@@ -46,7 +46,7 @@ export function ReviewsSection({ stay }) {
             </div>
 
             <p className="review-text">{review.txt}</p>
-            {review.txt.length > 100 && (
+            {review.txt.length > 150 && (
               <button className="btn-show-more">Show more</button>
             )}
           </article>
