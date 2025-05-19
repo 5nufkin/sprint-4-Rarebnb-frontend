@@ -46,7 +46,7 @@
       white-space: nowrap;
       padding: 12px 0;
 
-      :hover{
+      :hover {
         color: $clr7;
       }
 
@@ -87,16 +87,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 4.45em;
     cursor: pointer;
     color: $gray5;
     flex: 0 0 auto;
     position: relative;
+    gap: 0.4em;
+    padding: 0 0.95em;
 
-    &:hover {
+    &:hover, &:active {
+      color:black;
+      
       svg,
       .icon-img {
-        filter: brightness(0); 
+        filter: brightness(0);
+      }
+      
+      &::after {
+        opacity: 1;
       }
     }
 

@@ -362,6 +362,8 @@ export function MagnifyingGlassIcon({ width = "16px", height = "16px" }) {
   )
 }
 
+//////////////////// Filter Icons ///////////////////////////
+
 export function BeachIcon() {
   return (
     <svg
@@ -1736,6 +1738,8 @@ export function riadsIcon() {
     </svg>
   )
 }
+
+////////////////////////////////////////////////////////////////////////
 
 export function ReservationSuccess() {
   return (

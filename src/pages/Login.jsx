@@ -5,13 +5,24 @@ import { SignupModal } from "../cmps/SignupModal"
 export function LoginModal({ onClose, onLoginSuccess }) {
   const [credentials, setCredentials] = useState({ username: "", password: "" })
   const [isSignup, setIsSignup] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("")
 
   async function onLogin(ev) {
     ev.preventDefault()
     if (!credentials.username || !credentials.password) return
-    await login(credentials)
-    onLoginSuccess()
-    onClose()
+
+    try {
+      await login(credentials)
+      onLoginSuccess()
+      onClose()
+    } catch (err) {
+      console.error("Login failed:", err)
+      setErrorMsg("Login failed, try again!")
+
+      setTimeout(() => {
+        setErrorMsg("")
+      },1500)
+    }
   }
 
   function handleChange(ev) {
@@ -24,9 +35,11 @@ export function LoginModal({ onClose, onLoginSuccess }) {
     <div className="modal-screen" onClick={onClose}>
       <div className="modal login-form" onClick={(ev) => ev.stopPropagation()}>
         {isSignup ? (
-          <SignupModal onClose={onClose} onBack={() => setIsSignup(false)}
-          onLoginSuccess={onLoginSuccess}
-           />
+          <SignupModal
+            onClose={onClose}
+            onBack={() => setIsSignup(false)}
+            onLoginSuccess={onLoginSuccess}
+          />
         ) : (
           <>
             <h2>Login</h2>
@@ -48,6 +61,8 @@ export function LoginModal({ onClose, onLoginSuccess }) {
               />
 
               <button type="submit">Login</button>
+
+              {errorMsg && <div className="error-msg">{errorMsg}</div>}
             </form>
 
             <div>

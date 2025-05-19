@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { AirbnbLogoFull, AirbnbLogoIcon, MenuIcon, UserGuestIcon } from "./Icons"
+import {
+  AirbnbLogoFull,
+  AirbnbLogoIcon,
+  MenuIcon,
+  UserGuestIcon,
+} from "./Icons"
 import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
 import { stayService } from "../services/stay"
 import { loadStays } from "../store/actions/stay.actions"
