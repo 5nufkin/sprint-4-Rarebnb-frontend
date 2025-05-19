@@ -1,7 +1,7 @@
-.skeleton {
-  animation: pulse 1.5s infinite ease-in-out;
-  background-color: $gray12;
-  border-radius: 1rem;
+.first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .stay-card.skeleton {
@@ -13,7 +13,7 @@
 }
 
 .img-placeholder {
-  height: 10em;
+  height: 12em;
   background-color: $gray13;
   border-radius: 0.75rem;
 }
@@ -25,10 +25,10 @@
 }
 
 .row.short {
-  width: 40%;
+  width: 20%;
 }
 .row.medium {
-  width: 65%;
+  width: 60%;
 }
 .row.long {
   width: 85%;
@@ -45,3 +45,107 @@
     opacity: 1;
   }
 }
+
+//////////////////////////////////////////////////////
+.stay-details-skeleton {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  animation: pulse 1.6s infinite ease-in-out;
+
+  .img-grid {
+    display: grid;
+    grid-template-areas:
+      "main main sub1 sub2"
+      "main main sub3 sub4";
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-rows: repeat(2, 200px);
+    gap: 0.5rem;
+
+    .img {
+      background: #e4e4e4;
+      border-radius: 8px;
+    }
+
+    .main {
+      grid-area: main;
+    }
+
+    .sub1 {
+      grid-area: sub1;
+    }
+
+    .sub2 {
+      grid-area: sub2;
+    }
+
+    .sub3 {
+      grid-area: sub3;
+    }
+
+    .sub4 {
+      grid-area: sub4;
+    }
+  }
+
+  .desc-placeholder {
+    background: #e4e4e4;
+    border-radius: 6px;
+    height: 14px;
+
+    &.short {
+      width: 15%;
+    }
+
+    &.medium {
+      width: 40%;
+    }
+
+    &.long {
+      width: 90%;
+    }
+  }
+}
+
+@keyframes pulse {
+  100% {
+    background-color: #e4e4e4;
+  }
+}
+
+////////////////////////////////////////////
+.stay-skeleton-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 2rem;
+}
+
+.stay-card.skeleton.icon-skeleton {
+  flex: 0 0 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+
+  .img-placeholder {
+    width: 2rem;
+    height: 2rem;
+    background-color: $gray13;
+    border-radius: 50%;
+  }
+
+  .row.line {
+    height: 6px;
+    background-color: $gray9;
+    border-radius: 3px;
+  }
+
+  .row.medium {
+    width: 60%;
+  }
+}
+

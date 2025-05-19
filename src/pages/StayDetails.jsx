@@ -12,6 +12,7 @@ import '../assets/styles/pages/StayDetails.scss'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay/index.js'
+import { StayDetailsSkeleton } from '../cmps/StaySkeleton.jsx'
 
 
 export function StayDetails() {
@@ -30,8 +31,11 @@ export function StayDetails() {
     loadStay()
   }, [stayId])
 
+  useEffect(() => {
+    stayService.getById(stayId).then(setStay)
+  }, [stayId])
 
-  if (!stay) return <div>Loading…</div>
+  if (!stay) return <StayDetailsSkeleton />
 
   const demoHighlights = [
     'Your very own island',

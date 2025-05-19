@@ -1227,8 +1227,6 @@ window.cs = stayService
 _createStays()
 
 async function query(filterBy = {}) {
-  console.log("filterBy:", filterBy)
-
   var stays = await storageService.query(STORAGE_KEY)
 
   if (filterBy.label) {

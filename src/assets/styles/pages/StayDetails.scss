@@ -512,6 +512,7 @@
 .page-container {
   display: grid;
   grid-template-columns: minmax(20px,1fr) minmax(auto, 1120px) minmax(20px, 1fr);
+  margin-top: 1em;
 }
 
 .page-container > * {

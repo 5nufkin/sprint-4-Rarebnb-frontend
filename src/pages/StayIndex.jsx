@@ -5,7 +5,7 @@ import { stayService } from "../services/stay/"
 import { StayList } from "../cmps/StayList"
 import { StayIconFilter } from "../cmps/StayIconFilter"
 import { useEffect, useState } from "react"
-import { StaySkeleton } from "../cmps/StaySkeleton"
+import { StaySkeleton, StaySkeletonIconRow } from "../cmps/StaySkeleton"
 
 export function StayIndex() {
   const stays = useSelector((storeState) => storeState.stayModule.stays)
@@ -61,26 +61,47 @@ export function StayIndex() {
     }
   }
 
+  // return (
+  //   <section className="stay-index">
+
+  //     {isLoading ? (
+  //       <>
+  //         <StaySkeletonIconRow />
+  //         <div className="stay-list grid">
+  //           {Array.from({ length: 13 }).map((_, idx) => (
+  //             <StaySkeleton key={idx} />
+  //           ))}
+  //         </div>
+  //       </>
+  //     ) : (
+  //       <>
+  //         <StayIconFilter />
+  //         <StayList stays={stays} />
+  //       </>
+  //     )}
+  //   </section>
+  // )
+
   return (
     <section className="stay-index">
-      <StayIconFilter />
-
       {isLoading ? (
-        <div className="stay-list grid">
-          {Array.from({ length: 10 }).map((_, idx) => (
-            <StaySkeleton key={idx} />
-          ))}
-        </div>
+        <>
+          <div className="stay-filter-skeleton">
+              <StaySkeletonIconRow />
+          </div>
+
+          <div className="stay-list grid">
+            {Array.from({ length: 13 }).map((_, idx) => (
+              <StaySkeleton key={idx} />
+            ))}
+          </div>
+        </>
       ) : (
-        <StayList stays={stays} />
+        <>
+          <StayIconFilter />
+          <StayList stays={stays} />
+        </>
       )}
     </section>
   )
-
-  // return (
-  //   <section className="stay-index">
-  //     <StayIconFilter />
-  //     <StayList stays={stays} onUpdateStay={onUpdateStay} />
-  //   </section>
-  // )
 }
