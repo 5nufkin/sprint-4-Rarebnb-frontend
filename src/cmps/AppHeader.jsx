@@ -13,6 +13,7 @@ import { loadStays } from "../store/actions/stay.actions"
 import { HamburgerMenu } from "./HamburgerMenu"
 import { StayFilterMinimized } from "./StayFilterMinimized"
 import { getFilterFromSearchParams } from "../services/util.service"
+import { LoginModal } from "../pages/Login"
 
 export function AppHeader() {
   const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)

@@ -9,6 +9,7 @@ import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
 import { GlowButton } from "../cmps/PaymentPage/GlowButton"
 import { placeOrder } from "../store/actions/order.actions"
 import { useSelector } from "react-redux"
+import { SOCKET_EMIT_PLACE_ORDER, socketService } from "../services/socket.service"
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
@@ -33,6 +34,7 @@ export function PaymentPage() {
   function onConfirmOrder() {
     setIsConfirmed(true)
     placeOrder(orderToSave)
+    socketService.emit(SOCKET_EMIT_PLACE_ORDER, '123')
   }
 
   if (!stay) return <div>Loading…</div>
