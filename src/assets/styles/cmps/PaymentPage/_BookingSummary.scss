@@ -144,3 +144,26 @@
   font-size: 0.8em;
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  .booking-summary {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    .stay-header {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .stay-img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.75rem;
+      }
+    }
+
+    .summary-section {
+      padding-top: 1rem;
+    }
+  }
+}

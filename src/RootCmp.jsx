@@ -44,7 +44,7 @@ export function RootCmp() {
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="trips" element={<Trips />} />
-          <Route path="listing" element={<ListingsPage />} />
+          <Route path="reservation" element={<ListingsPage />} />
           <Route path="review" element={<ReviewIndex />} />
           <Route path="chat" element={<ChatApp />} />
           <Route path="admin" element={<AdminIndex />} />

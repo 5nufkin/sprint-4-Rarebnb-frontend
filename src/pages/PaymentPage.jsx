@@ -1,22 +1,28 @@
-import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
-import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
-import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
-import { useNavigate, useParams } from "react-router"
-import { useEffect, useState } from "react"
-import { stayService } from "../services/stay"
-import { ReservationSuccess } from "../cmps/Icons"
-import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
-import { GlowButton } from "../cmps/PaymentPage/GlowButton"
-import { placeOrder } from "../store/actions/order.actions"
-import { useSelector } from "react-redux"
+import { BookingSummary } from '../cmps/PaymentPage/BookingSummary'
+import { MessageToHost } from '../cmps/PaymentPage/MessageToHost'
+import { PaymentMethod } from '../cmps/PaymentPage/PaymentMethod'
+import { useNavigate, useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import { stayService } from '../services/stay'
+import { ReservationSuccess } from '../cmps/Icons'
+import { RareFindDiamond } from '../cmps/PaymentPage/RareFindDiamond'
+import { GlowButton } from '../cmps/PaymentPage/GlowButton'
+import { placeOrder } from '../store/actions/order.actions'
+import { useSelector } from 'react-redux'
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
   const [isConfirmed, setIsConfirmed] = useState(false)
   const { stayId } = useParams()
   const navigate = useNavigate()
-  const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
-
+  const orderToSave = useSelector(
+    (storeState) => storeState.orderModule.orderToSave
+  )
+  useEffect(() => {
+    if (orderToSave) {
+      localStorage.setItem('orderToSave', JSON.stringify(orderToSave))
+    }
+  }, [orderToSave])
 
   useEffect(() => {
     async function loadStay() {
@@ -24,7 +30,7 @@ export function PaymentPage() {
         const stay = await stayService.getById(stayId)
         setStay(stay)
       } catch (err) {
-        console.error("Error fetching stay:", err)
+        console.error('Error fetching stay:', err)
       }
     }
     loadStay()
@@ -75,7 +81,7 @@ export function PaymentPage() {
                 </p>
                 <GlowButton
                   className="btn-request"
-                  onClick={() => navigate("/trips")}
+                  onClick={() => navigate('/trips')}
                 >
                   Review Trips
                 </GlowButton>
