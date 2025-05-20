@@ -20,9 +20,11 @@ export function AppHeader() {
   // const pageIdx = useSelector(storeState => storeState.stayModule.pageIdx)
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
   const [activeSection, setActiveSection] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+
   const menuRef = useRef()
   const topRef = useRef()
 
@@ -67,13 +69,9 @@ export function AppHeader() {
       setIsScreenWide(window.innerWidth > 639)
     }
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  function toggleMenu() {
-    setIsMenuOpen((prev) => !prev)
-  }
 
   useEffect(() => {
     function handleClickOutside(ev) {
@@ -82,18 +80,36 @@ export function AppHeader() {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isMenuOpen])
+
+  function toggleMenu() {
+    setIsMenuOpen((prev) => !prev)
+  }
+
+  function closeHamburgerMenu() {
+    setIsMenuOpen(false)
+  }
+
+  function openLoginModal() {
+    closeHamburgerMenu()
+    setIsLoginModalOpen(true)
+  }
+
+  function closeLoginModal() {
+    setIsLoginModalOpen(false)
+  }
 
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? "header-large" : "header-small"
-          }`}
+        className={`app-header main-layout full ${
+          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
+        }`}
       >
         {!isHeaderExpanded && (
           <StayFilterMinimized
@@ -127,8 +143,18 @@ export function AppHeader() {
 
               {isMenuOpen && (
                 <div ref={menuRef}>
-                  <HamburgerMenu onClose={toggleMenu} />
+                  <HamburgerMenu
+                    onClose={closeHamburgerMenu}
+                    onOpenLogin={openLoginModal}
+                  />
                 </div>
+              )}
+
+              {isLoginModalOpen && (
+                <LoginModal
+                  onClose={closeLoginModal}
+                  onLoginSuccess={closeLoginModal}
+                />
               )}
             </div>
           )}
@@ -144,11 +170,12 @@ export function AppHeader() {
         )}
       </header>
       <div
-        className={`header-backdrop ${!isAtTop && isHeaderExpanded ? "visible" : ""
-          }`}
+        className={`header-backdrop ${
+          !isAtTop && isHeaderExpanded ? 'visible' : ''
+        }`}
         onClick={() => {
           setIsHeaderExpanded(false)
-          setActiveSection("")
+          setActiveSection('')
         }}
       ></div>
     </>
