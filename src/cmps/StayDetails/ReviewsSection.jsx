@@ -1,20 +1,18 @@
 import { EmptyStarIcon, StarIcon, StarIconHeader } from "../Icons"
 
 export function ReviewsSection({ stay }) {
-  const avgRating = stay.reviews?.length
-    ? stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
-      stay.reviews.length
-    : 0
+  // const avgRating = stay.reviews?.length
+  //   ? stay.reviews.reduce((sum, review) => sum + review.rate, 0) /
+  //     stay.reviews.length
+  //   : 0
 
   return (
     <section className="reviews-section">
 
-      {/* Reviews header  */}
       <h2 className="reviews-list-header">
-        <StarIconHeader />{avgRating.toFixed(1)} · {stay.reviews.length} reviews
+        <StarIconHeader /> {stay.avgRating.toFixed(2)} · {stay.reviews.length} reviews
       </h2>
 
-      {/* Reviews list  */}
       <div className="reviews-grid">
         {stay.reviews.map((review, idx) => (
           <article key={idx} className="review-card">
@@ -33,7 +31,6 @@ export function ReviewsSection({ stay }) {
               </div>
             </div>
 
-            {/* Review stars and date  */}
             <div className="review-date">
               {Array.from({ length: +review.rate }, (_, i) => (
                 <StarIcon key={"full-" + i} />

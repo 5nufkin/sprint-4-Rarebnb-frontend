@@ -199,7 +199,7 @@ const gStays = [
     bedCount: 1,
     imgUrls: ['https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif', 'https://res.cloudinary.com/dbbj46yzt/image/upload/v1747032872/2_ywv1u9.avif'],
     price: 110,
-    summary: "Cozy downtown apartment near shopping district.",
+    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet orci consequat, rutrum tellus sed, efficitur purus. Cras et orci in nisi dapibus tristique id in tellus. Aenean tempus ipsum in ligula viverra tristique. Nunc malesuada turpis maximus, sagittis nisl quis, pulvinar dolor. Aenean scelerisque, lacus vitae bibendum vulputate, neque quam feugiat quam, eget tincidunt arcu enim vel dolor. Phasellus quis euismod augue, vel pharetra ligula. Nunc vulputate lectus id purus vehicula, ac sagittis arcu fermentum. Mauris eu massa hendrerit, elementum metus sed, suscipit dolor. Praesent eget feugiat odio. Maecenas tincidunt pharetra vestibulum. Ut non sollicitudin turpis, a mollis dui. Vivamus non interdum ante. ",
     capacity: 2,
     amenities: ["AC", "Wifi", "Elevator"],
     labels: ["City vibes"],
@@ -207,6 +207,7 @@ const gStays = [
       _id: "u102",
       fullname: "Lina Mor",
       imgUrl: "https://i.pravatar.cc/100?img=10",
+      isSuperhost: true,
     },
     loc: {
       country: "Germany",

@@ -5,6 +5,7 @@ import { GuestsSelector } from './GuestsSelector.jsx'
 import { useNavigate } from 'react-router-dom'
 import { GlowButton } from '../PaymentPage/GlowButton.jsx'
 import { FaFlag } from "react-icons/fa";
+import { IoDiamond } from "react-icons/io5";
 
 
 export function BookingWidget({ stay }) {
@@ -41,7 +42,10 @@ export function BookingWidget({ stay }) {
   return (
     <>
     <div className="booking-widget">
-      <div className="rare-banner"><span>💎</span>Rare find! This place is usually booked</div>
+      <div className="rare-banner">
+        <IoDiamond />
+        Rare find! This place is usually booked
+      </div>
 
       <div className="stay-price-line">
         <span className="stay-price">₪{stay.price.toLocaleString()}</span>
@@ -86,7 +90,7 @@ export function BookingWidget({ stay }) {
 
       {nights > 0 && (
         <div className="breakdown">
-          <div><a>₪{stay.price} × {nights} night{nights > 1 && 's'}</a><span>₪{subtotal.toLocaleString()}</span></div>
+          <div><a>₪{stay.price} X {nights} night{nights > 1 && 's'}</a><span>₪{subtotal.toLocaleString()}</span></div>
           <div><a>Airbnb service fee</a><span>₪{serviceFee.toLocaleString()}</span></div>
           <div><a>Cleaning & Service fee</a><span>₪{cleaningFee.toLocaleString()}</span></div>
           <hr />
