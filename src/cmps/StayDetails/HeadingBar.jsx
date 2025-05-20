@@ -2,7 +2,7 @@ import { IoMdStar } from "react-icons/io";
 
 export function HeadingBar({ stay }) {
 
-  const rating  = stay.avgRating  ?? 4.88;
+  const rating  = stay.avgRating ?? 4.88;
   const reviews = stay.reviews?.length ?? 0;
 
   return (

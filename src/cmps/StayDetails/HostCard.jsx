@@ -37,7 +37,7 @@ export function HostCard({ host }) {
               <span>Reviews</span>
             </li>
             <li>
-              <strong>{host.avgRating ?? 4.9}</strong>
+              <strong>{host.avgRating.toFix(2) ?? 4.9}</strong>
               <span>Rating</span>
             </li>
             <li>
