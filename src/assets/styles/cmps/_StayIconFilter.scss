@@ -18,6 +18,7 @@
     width: 2.5em;
     height: 2.5em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: $clr-text-primary;
 
     &:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -77,78 +78,80 @@
       right: 0;
       mask-image: linear-gradient(to left, black 60%, transparent);
       -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
+
       .filter-fade-left {
         background: red;
       }
     }
   }
 
-.filter-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  color: $gray5;
-  flex: 0 0 auto;
-  position: relative;
-  gap: 0.4em;
-  padding: 0 0.95em;
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: $gray5;
+    flex: 0 0 auto;
+    position: relative;
+    gap: 0.4em;
+    padding: 0 0.95em;
 
-  &:hover,
-  &:active {
-    color: black;
+    &:hover,
+    &:active {
+      color: black;
 
-    svg,
+      svg,
+      .icon-img {
+        filter: brightness(0);
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      color: black;
+
+      svg,
+      .icon-img {
+        filter: brightness(0);
+      }
+    }
+
     .icon-img {
-      filter: brightness(0);
+      width: 1.2em;
+      height: 1.2em;
+      object-fit: contain;
+    }
+
+    .icon-label {
+      font-size: 0.6em;
+      font-weight: 700;
     }
 
     &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: black;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &:hover::after {
+      opacity: 0.4;
+    }
+
+    &.active::after {
       opacity: 1;
     }
   }
 
-  &.active {
-    color: black;
-
-    svg,
-    .icon-img {
-      filter: brightness(0);
-    }
-  }
-
-  .icon-img {
-    width: 1.2em;
-    height: 1.2em;
-    object-fit: contain;
-  }
-
-  .icon-label {
-    font-size: 0.6em;
-    font-weight: 700;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    background-color: black;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  &:hover::after {
-    opacity: 0.4;
-  }
-
-  &.active::after {
-    opacity: 1;
-  }
 }
 
-}
 .scroll-btn {
   z-index: 3;
 }

@@ -3,10 +3,24 @@ import { StayList } from "../cmps/StayList"
 import { StayIconFilter } from "../cmps/StayIconFilter"
 
 import { StaySkeleton, StaySkeletonIconRow } from "../cmps/StaySkeleton"
+import { useSearchParams } from "react-router-dom"
+import { LeftArrow, RightArrow } from "../cmps/Icons"
 
 export function StayIndex() {
   const stays = useSelector((storeState) => storeState.stayModule.stays)
+  const totalPages = useSelector(store => store.stayModule.totalPages)
   const isLoading = useSelector((storeState) => storeState.systemModule.isLoading)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const pageIdx = +searchParams.get('pageIdx' || 0)
+
+  function handlePageChange(diff) {
+    const nextPage = pageIdx + diff
+    if (nextPage < 0) return
+    searchParams.set('pageIdx', nextPage)
+    setSearchParams(searchParams)
+  }
+
+  if (!stays) return <div>Loading</div>
 
   return (
     <section className="stay-index main-layout">
@@ -25,6 +39,12 @@ export function StayIndex() {
       ) : (
         <>
           <StayIconFilter />
+
+          <section className="pagination-controls flex justify-end">
+            <button onClick={() => handlePageChange(-1)} disabled={pageIdx === 0}><LeftArrow /></button>
+            <button onClick={() => handlePageChange(1)} disabled={pageIdx === totalPages - 1}><RightArrow /></button>
+          </section>
+
           <StayList stays={stays} />
         </>
       )}
