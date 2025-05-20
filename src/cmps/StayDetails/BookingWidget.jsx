@@ -8,6 +8,7 @@ import { updateOrderToSave } from '../../store/actions/order.actions.js'
 import { useSelector } from 'react-redux'
 import { orderService } from '../../services/order/index.js'
 import { FaFlag } from "react-icons/fa";
+import { IoDiamond } from "react-icons/io5";
 
 
 export function BookingWidget({ stay }) {
@@ -66,8 +67,11 @@ export function BookingWidget({ stay }) {
 
   return (
     <>
-      <div className="booking-widget">
-        <div className="rare-banner"><span>💎</span>Rare find! This place is usually booked</div>
+    <div className="booking-widget">
+      <div className="rare-banner">
+        <IoDiamond />
+        Rare find! This place is usually booked
+      </div>
 
         <div className="stay-price-line">
           <span className="stay-price">${stay.price.toLocaleString()}</span>

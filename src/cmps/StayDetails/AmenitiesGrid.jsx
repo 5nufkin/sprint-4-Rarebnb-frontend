@@ -3,7 +3,7 @@ import { amenityIcons } from '../../consts/amenity-icons.js'
 export function AmenitiesGrid({ amenities = [] }) {
   return (
     <section>
-      <h2>Amenities</h2>
+      <h2 className='section-title'>What this place offers</h2>
 
       <ul className="amenities-grid">
         {amenities.map(name => {
