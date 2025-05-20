@@ -12,7 +12,6 @@ export function BookingSummary({ isConfirmed }) {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const orderDetails = useSelector(storeState => storeState.orderModule.orderToSave)
-  
   console.log(orderDetails);
 
   if (!orderDetails) return <div>Loading…</div>

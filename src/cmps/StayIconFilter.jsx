@@ -80,6 +80,7 @@ export function StayIconFilter() {
     {
       label: "OMG!",
       icon: OMGIcon,
+      // img: "/pic/OMG.jpg"
     },
     {
       label: "Beachfront",
@@ -261,7 +262,8 @@ export function StayIconFilter() {
               ) : (
                 <img
                   className="icon-img"
-                  src={filter.iconUrl}
+                  src={filter.img}
+                  // src={filter.iconUrl}
                   alt={filter.label}
                 />
               )}
