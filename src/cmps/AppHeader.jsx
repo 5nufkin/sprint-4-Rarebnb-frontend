@@ -31,7 +31,6 @@ export function AppHeader() {
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
   const defaultFilter = stayService.getDefaultFilter()
-
   const filterBy = getFilterFromSearchParams(searchParams)
 
 
@@ -107,9 +106,8 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header main-layout full ${
-          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
-        }`}
+        className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
+          }`}
       >
         {!isHeaderExpanded && (
           <StayFilterMinimized
@@ -170,9 +168,8 @@ export function AppHeader() {
         )}
       </header>
       <div
-        className={`header-backdrop ${
-          !isAtTop && isHeaderExpanded ? 'visible' : ''
-        }`}
+        className={`header-backdrop ${!isAtTop && isHeaderExpanded ? 'visible' : ''
+          }`}
         onClick={() => {
           setIsHeaderExpanded(false)
           setActiveSection('')

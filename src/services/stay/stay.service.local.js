@@ -3,6 +3,7 @@ import { loadFromStorage, makeId, saveToStorage } from "../util.service"
 import { userService } from "../user"
 
 const STORAGE_KEY = "stayDB"
+const PAGE_SIZE = 6
 
 export const stayService = {
   query,
@@ -1228,12 +1229,22 @@ _createStays()
 
 async function query(filterBy = {}) {
   var stays = await storageService.query(STORAGE_KEY)
+  const totalCount = gStays.length
+  const pageIdx = +filterBy.pageIdx || 0
 
+
+  if (filterBy.country) {
+    const regExp = new regExp(filterBy.country, 'i')
+    stays = stays.filter(stay => regExp.text(stay.loc.country))
+  }
   if (filterBy.label) {
     stays = stays.filter((stay) => stay.labels?.includes(filterBy.label))
   }
 
-  return stays
+  // return stays
+  return {
+    stays, totalCount, totalPages: Math.ceil(totalCount / PAGE_SIZE), pageIdx
+  }
 }
 
 // async function query(filterBy = { country: "" }) {
