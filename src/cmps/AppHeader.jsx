@@ -1,25 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink, useSearchParams } from "react-router-dom"
 import {
   AirbnbLogoFull,
   AirbnbLogoIcon,
   MenuIcon,
   UserGuestIcon,
-} from './Icons'
-import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
-import { stayService } from '../services/stay'
-import { loadStays } from '../store/actions/stay.actions'
-import { HamburgerMenu } from './HamburgerMenu'
-import { StayFilterMinimized } from './StayFilterMinimized'
-import { LoginModal } from '../pages/Login'
-// import { LoginModal } from '../pages/Login'
+} from "./Icons"
+import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
+import { stayService } from "../services/stay"
+import { loadStays } from "../store/actions/stay.actions"
+import { HamburgerMenu } from "./HamburgerMenu"
+import { StayFilterMinimized } from "./StayFilterMinimized"
+import { getFilterFromSearchParams } from "../services/util.service"
+import {LoginModal} from "../pages/Login"
 
 export function AppHeader() {
-  const loggedInUser = useSelector(
-    (storeState) => storeState.userModule.loggedInUser
-  )
-  const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
+  // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+  // const pageIdx = useSelector(storeState => storeState.stayModule.pageIdx)
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
@@ -30,9 +29,20 @@ export function AppHeader() {
   const menuRef = useRef()
   const topRef = useRef()
 
+  const [searchParams, setSearchParams] = useSearchParams()
+  const dispatch = useDispatch()
+  const defaultFilter = stayService.getDefaultFilter()
+  const filterBy = getFilterFromSearchParams(searchParams)
+
+
   useEffect(() => {
     loadStays(filterBy)
-  }, [filterBy])
+  }, [searchParams])
+
+  useEffect(() => {
+    const filterBy = Object.fromEntries(searchParams.entries())
+    filterBy.pageIdx = +filterBy.pageIdx || 0
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,10 +52,7 @@ export function AppHeader() {
           setIsHeaderExpanded(false)
         }
       },
-      {
-        root: null,
-        threshold: 0,
-      }
+      { root: null, threshold: 0, }
     )
 
     if (topRef.current) {
@@ -100,9 +107,8 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header main-layout full ${
-          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
-        }`}
+        className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
+          }`}
       >
         {!isHeaderExpanded && (
           <StayFilterMinimized
@@ -156,16 +162,15 @@ export function AppHeader() {
         {(isHeaderExpanded || isAtTop) && (
           <StayFilterExpanded
             filterBy={filterBy}
-            setFilterBy={setFilterBy}
+            // setFilterBy={setFilterBy}
             activeSection={activeSection}
             setActiveSection={setActiveSection}
           />
         )}
       </header>
       <div
-        className={`header-backdrop ${
-          !isAtTop && isHeaderExpanded ? 'visible' : ''
-        }`}
+        className={`header-backdrop ${!isAtTop && isHeaderExpanded ? 'visible' : ''
+          }`}
         onClick={() => {
           setIsHeaderExpanded(false)
           setActiveSection('')

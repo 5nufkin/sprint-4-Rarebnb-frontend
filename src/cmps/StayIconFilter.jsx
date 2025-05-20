@@ -19,7 +19,7 @@ import {
   hanoksIcon,
   islandsIcon,
   lakeFrontIcon,
-  LeftIcon,
+  LeftArrow,
   luxeIcon,
   mansionIcon,
   minsusIcon,
@@ -27,7 +27,7 @@ import {
   OMGIcon,
   playHomeIcon,
   riadsIcon,
-  RightIcon,
+  RightArrow,
   roomIcon,
   skiingIcon,
   skiInOutIcon,
@@ -242,7 +242,7 @@ export function StayIconFilter() {
     <section className="filter-carousel">
       {canScrollLeft && (
         <button className="scroll-btn left" onClick={onScrollLeft}>
-          <LeftIcon className="left-scroll" />
+          <LeftArrow className="left-scroll" />
         </button>
       )}
 
@@ -276,7 +276,7 @@ export function StayIconFilter() {
 
       {canScrollRight && (
         <button className="scroll-btn right" onClick={onScrollRight}>
-          <RightIcon />
+          <RightArrow />
         </button>
       )}
     </section>

@@ -4,6 +4,7 @@ import { Popover } from "./Popover"
 import { MagnifyingGlassIcon } from "./Icons"
 import { MyDatePicker } from "./MyDatePicker"
 import { formatDate } from "../services/util.service"
+import { useSearchParams } from "react-router-dom"
 
 
 export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setActiveSection }) {
@@ -11,6 +12,7 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
   const isFocused = !!activeSection
   const filterBarRef = useRef()
   const locationInputRef = useRef()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
     function handleClickOutside(ev) {
@@ -62,7 +64,19 @@ export function StayFilterExpanded({ filterBy, setFilterBy, activeSection, setAc
     ev.preventDefault()
     ev.stopPropagation()
     setActiveSection('')
-    setFilterBy({ ...filterByToEdit })
+
+    const params = new URLSearchParams()
+
+    for (const key in filterByToEdit) {
+      const val = filterByToEdit[key]
+      if (val !== '' && val !== 0) {
+        params.set(key, val)
+      }
+    }
+
+    params.set('pageIdx', 0)
+
+    setSearchParams(params)
   }
 
   const { country, checkIn, checkOut, adults, children, infants, pets } = filterByToEdit
