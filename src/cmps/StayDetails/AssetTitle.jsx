@@ -1,4 +1,4 @@
-import { LuShare2 }      from 'react-icons/lu'      // share-icon
+import { LuShare2 }      from 'react-icons/lu'
 import { AiOutlineHeart } from 'react-icons/ai'
 
 export function AssetTitle({ title }) {

@@ -309,10 +309,10 @@ export function fullLeftArrow() {
   )
 }
 
-export function LeftIcon() {
+export function LeftArrow() {
   return (
     <svg
-      fill="#000000"
+      fill="currentColor"
       width="32px"
       height="32px"
       viewBox="-78.5 0 512 512"
@@ -324,10 +324,10 @@ export function LeftIcon() {
   )
 }
 
-export function RightIcon() {
+export function RightArrow() {
   return (
     <svg
-      fill="#000000"
+      fill="currentColor"
       width="32px"
       height="32px"
       viewBox="-77 0 512 512"

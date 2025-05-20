@@ -23,8 +23,6 @@ export function StayDetails() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
-  stay.host.avgRating  = stay.avgRating
-  stay.host.reviews    = stay.reviews
 
   useEffect(() => {
     async function loadStay() {
@@ -50,6 +48,12 @@ export function StayDetails() {
   }, [stayId])
 
   if (!stay) return <StayDetailsSkeleton />
+
+    const hostWithStats = {
+    ...stay.host,
+    avgRating : stay.avgRating,
+    reviews   : stay.reviews,
+  };
 
   const demoHighlights = [
     'Your very own island',
@@ -97,7 +101,7 @@ export function StayDetails() {
               <ReviewsSection stay={stay} />
               <div className="section-divider" />
               <LocationMap location={stay.loc} />
-              <HostCard host={stay.host} />
+              <HostCard host={hostWithStats} />
               <div className="section-divider" />
       </div>
     </main>
