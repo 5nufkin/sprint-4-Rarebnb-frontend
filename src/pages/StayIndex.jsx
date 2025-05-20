@@ -20,8 +20,6 @@ export function StayIndex() {
     setSearchParams(searchParams)
   }
 
-  if (!stays) return <div>Loading</div>
-
   return (
     <section className="stay-index main-layout">
       {isLoading ? (
