@@ -26,6 +26,7 @@ export function StaySkeleton() {
       </div>
       <div className="row line long"></div>
       <div className="row line short"></div>
+      <div className="row line short"></div>
     </div>
   )
 }
@@ -43,7 +44,7 @@ export function StaySkeletonIconFilter() {
 export function StaySkeletonIconRow() {
   return (
     <div className="stay-skeleton-row">
-      {Array.from({ length: 13 }).map((_, idx) => (
+      {Array.from({ length: 10 }).map((_, idx) => (
         <StaySkeletonIconFilter key={idx} />
       ))}
     </div>

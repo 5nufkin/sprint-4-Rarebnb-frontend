@@ -25,7 +25,7 @@ export function AppHeader() {
   const [activeSection, setActiveSection] = useState("")
   const menuRef = useRef()
   const topRef = useRef()
-
+  
   useEffect(() => {
     loadStays(filterBy)
   }, [filterBy])
@@ -104,7 +104,6 @@ export function AppHeader() {
           <div className="spacer"></div>
           {isScreenWide && (
             <div className="menu-container">
-
               <button className="user-menu-btn" onClick={toggleMenu}>
                 <MenuIcon className="menu-icon" />
                 {!loggedInUser ? (
@@ -117,16 +116,6 @@ export function AppHeader() {
                   />
                 )}
               </button>
-
-              {/* <button className="user-menu-btn" onClick={toggleMenu}>
-                <MenuIcon className="menu-icon" />
-                <UserGuestIcon />
-                <img
-                  className="user-img"
-                  src={loggedInUser?.imgUrl}
-                  alt={loggedInUser?.fullname}
-                />
-              </button> */}
 
               {isMenuOpen && (
                 <div ref={menuRef}>

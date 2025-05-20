@@ -6,8 +6,20 @@ export const UPDATE_STAY = 'UPDATE_STAY'
 export const ADD_STAY_MSG = 'ADD_STAY_MSG'
 
 const initialState = {
+    isLoading: false,
     stays: [],
     stay: null
+}
+
+export function systemReducer(state = initialState, action) {
+  switch (action.type) {
+    case 'LOADING_START':
+      return { ...state, isLoading: true }
+    case 'LOADING_DONE':
+      return { ...state, isLoading: false }
+    default:
+      return state
+  }
 }
 
 export function stayReducer(state = initialState, action) {

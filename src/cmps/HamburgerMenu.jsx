@@ -19,7 +19,7 @@ export function HamburgerMenu({ onClose }) {
     window.dispatchEvent(new Event("userChanged"))
   }
 
-  function openLogin() {
+  async function openLogin() {
     setIsModalOpen(true)
   }
 
@@ -70,6 +70,15 @@ export function HamburgerMenu({ onClose }) {
           </>
         )}
       </ul>
+
+      {/* {isModalOpen && (
+        <LoginModal
+          onClose={() => setIsModalOpen(false)}
+          onLoginSuccess={() => {
+            setIsModalOpen(false)
+          }}
+        />
+      )} */}
 
       {isModalOpen && (
         <LoginModal onClose={closeLogin} onLoginSuccess={handleLoginSuccess} />

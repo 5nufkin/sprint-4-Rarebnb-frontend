@@ -4,29 +4,15 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service"
 import { stayService } from "../services/stay/"
 import { StayList } from "../cmps/StayList"
 import { StayIconFilter } from "../cmps/StayIconFilter"
-import { useEffect, useState } from "react"
+
 import { StaySkeleton, StaySkeletonIconRow } from "../cmps/StaySkeleton"
 
 export function StayIndex() {
   const stays = useSelector((storeState) => storeState.stayModule.stays)
-  const [setStays] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    loadStays()
-  }, [])
-
-  async function loadStays() {
-    setIsLoading(true)
-    try {
-      const stays = await stayService.query()
-      setStays(stays)
-    } catch (err) {
-      console.error("Failed to load stays", err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const isLoading = useSelector(
+    (storeState) => storeState.systemModule.isLoading
+  )
 
   async function onRemoveStay(stayId) {
     try {
@@ -61,12 +47,38 @@ export function StayIndex() {
     }
   }
 
+
+  return (
+    <section className="stay-index main-layout">
+      {isLoading ? (
+        <>
+          <div className="stay-filter-icon-skeleton">
+            <StaySkeletonIconRow />
+          </div>
+
+          <div className="stay-list grid">
+            {Array.from({ length:13 }).map((_, idx) => (
+              <StaySkeleton key={idx} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <StayIconFilter />
+          <StayList stays={stays} />
+        </>
+      )}
+    </section>
+  )
+
   // return (
   //   <section className="stay-index">
-
   //     {isLoading ? (
   //       <>
-  //         <StaySkeletonIconRow />
+  //         <div className="stay-filter-skeleton">
+  //           <StaySkeletonIconRow />
+  //         </div>
+
   //         <div className="stay-list grid">
   //           {Array.from({ length: 13 }).map((_, idx) => (
   //             <StaySkeleton key={idx} />
@@ -81,27 +93,4 @@ export function StayIndex() {
   //     )}
   //   </section>
   // )
-
-  return (
-    <section className="stay-index">
-      {isLoading ? (
-        <>
-          <div className="stay-filter-skeleton">
-              <StaySkeletonIconRow />
-          </div>
-
-          <div className="stay-list grid">
-            {Array.from({ length: 13 }).map((_, idx) => (
-              <StaySkeleton key={idx} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <StayIconFilter />
-          <StayList stays={stays} />
-        </>
-      )}
-    </section>
-  )
 }
