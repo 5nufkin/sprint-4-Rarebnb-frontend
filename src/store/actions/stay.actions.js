@@ -9,11 +9,9 @@ import { LOADING_START, LOADING_DONE } from "../reducers/system.reducer"
 // }
 
 export async function loadStays(filterBy) {
-  console.log('filterBy:', filterBy)
   store.dispatch({ type: LOADING_START })
   try {
     const res = await stayService.query(filterBy)
-    console.log(res)
     store.dispatch(getCmdSetStays(res.stays))
     store.dispatch(getCmdSetPagination(res.pageIdx, res.totalPages))
   } catch (err) {

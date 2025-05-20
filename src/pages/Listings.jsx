@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { ReservationTable } from "../cmps/DashboardPage/ReserationTable"
 import { sellerService } from "../services/seller/index"
+import { SOCKET_EVENT_ORDER_ADDED, socketService } from "../services/socket.service"
+import { showSuccessMsg } from "../services/event-bus.service"
 
 export function ListingsPage() {
   const [sales, setSales] = useState([])
@@ -19,6 +21,16 @@ export function ListingsPage() {
       }
     }
     loadDashboardData()
+  }, [])
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+      showSuccessMsg(`New reservation at ${order.stay.name}!`)
+      console.log('NEW ORDER _ IT WORKED!')
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+    }
   }, [])
 
   if (!stats) return <p>Loading...</p>
