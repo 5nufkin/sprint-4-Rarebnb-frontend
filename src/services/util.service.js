@@ -1,3 +1,5 @@
+import { stayService } from "./stay"
+
 export function makeId(length = 6) {
   var txt = ''
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -71,4 +73,16 @@ export function saveToStorage(key, value) {
 export function loadFromStorage(key) {
   const data = localStorage.getItem(key)
   return (data) ? JSON.parse(data) : undefined
+}
+
+export function getFilterFromSearchParams(searchParams) {
+  return {
+    country: searchParams.get('country') || '',
+    // labels: searchParams.getAll('labels') || [],
+    // sortBy: {
+    //   type: searchParams.get('sortType') || '',
+    //   sortDir: +searchParams.get('sortDir') || 1,
+    // },
+    pageIdx: +searchParams.get('pageIdx') || 0,
+  }
 }

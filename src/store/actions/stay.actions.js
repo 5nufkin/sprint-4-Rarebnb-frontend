@@ -7,6 +7,7 @@ import {
   SET_STAY,
   UPDATE_STAY,
   ADD_STAY_MSG,
+  SET_PAGINATION,
 } from "../reducers/stay.reducer"
 import { LOADING_START, LOADING_DONE } from "../reducers/system.reducer"
 
@@ -16,10 +17,13 @@ import { LOADING_START, LOADING_DONE } from "../reducers/system.reducer"
 // }
 
 export async function loadStays(filterBy) {
+  console.log('filterBy:', filterBy)
+  store.dispatch({ type: LOADING_START })
   try {
-    store.dispatch({ type: LOADING_START })
-    const stays = await stayService.query(filterBy)
-    store.dispatch({ type: SET_STAYS, stays })
+    const res = await stayService.query(filterBy)
+    console.log(res)
+    store.dispatch(getCmdSetStays(res.stays))
+    store.dispatch(getCmdSetPagination(res.pageIdx, res.totalPages))
   } catch (err) {
     console.error("Cannot load stays", err)
   } finally {
@@ -101,6 +105,13 @@ function getCmdSetStay(stay) {
   return {
     type: SET_STAY,
     stay,
+  }
+}
+function getCmdSetPagination(pageIdx, totalPages) {
+  return {
+    type: SET_PAGINATION,
+    pageIdx,
+    totalPages
   }
 }
 function getCmdRemoveStay(stayId) {
