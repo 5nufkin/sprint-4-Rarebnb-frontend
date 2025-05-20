@@ -1,17 +1,19 @@
-import { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import {
   AirbnbLogoFull,
   AirbnbLogoIcon,
   MenuIcon,
   UserGuestIcon,
-} from "./Icons"
-import { StayFilterExpanded } from "../cmps/StayFilterExpanded"
-import { stayService } from "../services/stay"
-import { loadStays } from "../store/actions/stay.actions"
-import { HamburgerMenu } from "./HamburgerMenu"
-import { StayFilterMinimized } from "./StayFilterMinimized"
+} from './Icons'
+import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
+import { stayService } from '../services/stay'
+import { loadStays } from '../store/actions/stay.actions'
+import { HamburgerMenu } from './HamburgerMenu'
+import { StayFilterMinimized } from './StayFilterMinimized'
+import { LoginModal } from '../pages/Login'
+// import { LoginModal } from '../pages/Login'
 
 export function AppHeader() {
   const loggedInUser = useSelector(
@@ -20,12 +22,14 @@ export function AppHeader() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
-  const [activeSection, setActiveSection] = useState("")
+  const [activeSection, setActiveSection] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+
   const menuRef = useRef()
   const topRef = useRef()
-  
+
   useEffect(() => {
     loadStays(filterBy)
   }, [filterBy])
@@ -58,13 +62,9 @@ export function AppHeader() {
       setIsScreenWide(window.innerWidth > 639)
     }
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  function toggleMenu() {
-    setIsMenuOpen((prev) => !prev)
-  }
 
   useEffect(() => {
     function handleClickOutside(ev) {
@@ -73,18 +73,35 @@ export function AppHeader() {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isMenuOpen])
+
+  function toggleMenu() {
+    setIsMenuOpen((prev) => !prev)
+  }
+
+  function closeHamburgerMenu() {
+    setIsMenuOpen(false)
+  }
+
+  function openLoginModal() {
+    closeHamburgerMenu()
+    setIsLoginModalOpen(true)
+  }
+
+  function closeLoginModal() {
+    setIsLoginModalOpen(false)
+  }
 
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
         className={`app-header main-layout full ${
-          isAtTop || isHeaderExpanded ? "header-large" : "header-small"
+          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
         }`}
       >
         {!isHeaderExpanded && (
@@ -119,8 +136,18 @@ export function AppHeader() {
 
               {isMenuOpen && (
                 <div ref={menuRef}>
-                  <HamburgerMenu onClose={toggleMenu} />
+                  <HamburgerMenu
+                    onClose={closeHamburgerMenu}
+                    onOpenLogin={openLoginModal}
+                  />
                 </div>
+              )}
+
+              {isLoginModalOpen && (
+                <LoginModal
+                  onClose={closeLoginModal}
+                  onLoginSuccess={closeLoginModal}
+                />
               )}
             </div>
           )}
@@ -137,11 +164,11 @@ export function AppHeader() {
       </header>
       <div
         className={`header-backdrop ${
-          !isAtTop && isHeaderExpanded ? "visible" : ""
+          !isAtTop && isHeaderExpanded ? 'visible' : ''
         }`}
         onClick={() => {
           setIsHeaderExpanded(false)
-          setActiveSection("")
+          setActiveSection('')
         }}
       ></div>
     </>

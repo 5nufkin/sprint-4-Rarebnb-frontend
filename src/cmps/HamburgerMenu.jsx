@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { LoginModal } from "../pages/Login"
-import { userService } from "../services/user/index"
-import { logout } from "../store/actions/user.actions"
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { LoginModal } from '../pages/Login'
+import { userService } from '../services/user/index'
+import { logout } from '../store/actions/user.actions'
 
-export function HamburgerMenu({ onClose }) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+export function HamburgerMenu({ onClose, onOpenLogin }) {
   const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
@@ -13,32 +12,23 @@ export function HamburgerMenu({ onClose }) {
     setLoggedInUser(user)
   }, [])
 
-  function handleLoginSuccess() {
-    const user = userService.getLoggedInUser()
-    setLoggedInUser(user)
-    window.dispatchEvent(new Event("userChanged"))
-  }
-
-  async function openLogin() {
-    setIsModalOpen(true)
-  }
-
-  function closeLogin() {
-    setIsModalOpen(false)
-  }
-
   async function onLogout() {
     await logout()
     setLoggedInUser(null)
-    window.dispatchEvent(new Event("userChanged"))
+    window.dispatchEvent(new Event('userChanged'))
     onClose()
+  }
+
+  function handleLoginClick() {
+    onClose()
+    onOpenLogin()
   }
 
   return (
     <div className="hamburger-menu">
       <ul>
         {!loggedInUser && (
-          <li className="login-link" onClick={openLogin}>
+          <li className="login-link" onClick={handleLoginClick}>
             Login
           </li>
         )}
@@ -70,19 +60,6 @@ export function HamburgerMenu({ onClose }) {
           </>
         )}
       </ul>
-
-      {/* {isModalOpen && (
-        <LoginModal
-          onClose={() => setIsModalOpen(false)}
-          onLoginSuccess={() => {
-            setIsModalOpen(false)
-          }}
-        />
-      )} */}
-
-      {isModalOpen && (
-        <LoginModal onClose={closeLogin} onLoginSuccess={handleLoginSuccess} />
-      )}
     </div>
   )
 }
