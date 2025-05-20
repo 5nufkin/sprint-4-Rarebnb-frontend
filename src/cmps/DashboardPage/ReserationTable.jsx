@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
 export function ReservationTable({ sales = [], setStats }) {
   const [sortBy, setSortBy] = useState({ field: null, asc: true })
   const [statuses, setStatuses] = useState([])
 
-
   useEffect(() => {
-    setStatuses(sales.map((sale) => sale.bookingStatus?.status || "Unknown"))
+    setStatuses(sales.map((sale) => sale.bookingStatus?.status || 'Unknown'))
   }, [sales])
 
   function toggleSort(field) {
@@ -17,30 +16,30 @@ export function ReservationTable({ sales = [], setStats }) {
 
   function formatDDMMYYYY(dateStr) {
     if (!dateStr) return null
-    const [day, month, year] = dateStr.split("/")
+    const [day, month, year] = dateStr.split('/')
     if (!day || !month || !year) return null
     return new Date(`${year}-${month}-${day}`)
   }
 
   function renderArrow(field) {
-    if (sortBy.field !== field) return "⇅"
-    return sortBy.asc ? "↑" : "↓"
+    if (sortBy.field !== field) return '⇅'
+    return sortBy.asc ? '↑' : '↓'
   }
 
   function sortSales(data) {
     if (!sortBy.field) return data
 
-    const validFields = ["checkIn", "checkOut", "bookedAt", "price"]
+    const validFields = ['checkIn', 'checkOut', 'bookedAt', 'price']
     if (!validFields.includes(sortBy.field)) return data
 
     return [...data].sort((a, b) => {
       let valA, valB
-      if (["checkIn", "checkOut", "bookedAt"].includes(sortBy.field)) {
-        const dateA = formatDDMMYYYY(a.bookingStatus?.[sortBy.field] || "")
-        const dateB = formatDDMMYYYY(b.bookingStatus?.[sortBy.field] || "")
+      if (['checkIn', 'checkOut', 'bookedAt'].includes(sortBy.field)) {
+        const dateA = formatDDMMYYYY(a.bookingStatus?.[sortBy.field] || '')
+        const dateB = formatDDMMYYYY(b.bookingStatus?.[sortBy.field] || '')
         valA = dateA?.getTime?.() || 0
         valB = dateB?.getTime?.() || 0
-      } else if (sortBy.field === "price") {
+      } else if (sortBy.field === 'price') {
         valA = a.price || 0
         valB = b.price || 0
       }
@@ -56,18 +55,18 @@ export function ReservationTable({ sales = [], setStats }) {
 
       if (setStats) {
         if (
-          newStatus === "Rejected" &&
-          prevStatus !== "Rejected" &&
-          originalStatus !== "Rejected"
+          newStatus === 'Rejected' &&
+          prevStatus !== 'Rejected' &&
+          originalStatus !== 'Rejected'
         ) {
           setStats((prevStats) => ({
             ...prevStats,
             refunded: prevStats.refunded + 1,
           }))
         } else if (
-          newStatus === "Approved" &&
-          prevStatus === "Rejected" &&
-          originalStatus !== "Rejected"
+          newStatus === 'Approved' &&
+          prevStatus === 'Rejected' &&
+          originalStatus !== 'Rejected'
         ) {
           setStats((prevStats) => ({
             ...prevStats,
@@ -81,8 +80,6 @@ export function ReservationTable({ sales = [], setStats }) {
     })
   }
 
-
-
   if (!sales.length) return <p>No reservations to show.</p>
 
   return (
@@ -92,18 +89,18 @@ export function ReservationTable({ sales = [], setStats }) {
         <thead>
           <tr>
             <th>Guest</th>
-            <th onClick={() => toggleSort("checkIn")}>
-              Check-in {renderArrow("checkIn")}
+            <th onClick={() => toggleSort('checkIn')}>
+              Check-in {renderArrow('checkIn')}
             </th>
-            <th onClick={() => toggleSort("checkOut")}>
-              Checkout {renderArrow("checkOut")}
+            <th onClick={() => toggleSort('checkOut')}>
+              Checkout {renderArrow('checkOut')}
             </th>
-            <th onClick={() => toggleSort("bookedAt")}>
-              Booked {renderArrow("bookedAt")}
+            <th onClick={() => toggleSort('bookedAt')}>
+              Booked {renderArrow('bookedAt')}
             </th>
             <th>Listing</th>
-            <th onClick={() => toggleSort("price")}>
-              Total Payout {renderArrow("price")}
+            <th onClick={() => toggleSort('price')}>
+              Total Payout {renderArrow('price')}
             </th>
             <th>Status</th>
             <th>To do</th>
@@ -116,7 +113,7 @@ export function ReservationTable({ sales = [], setStats }) {
                 <img
                   src={
                     sale.guestImgUrl ||
-                    "https://randomuser.me/api/portraits/lego/1.jpg"
+                    'https://randomuser.me/api/portraits/lego/1.jpg'
                   }
                   alt="Guest"
                 />
@@ -132,13 +129,13 @@ export function ReservationTable({ sales = [], setStats }) {
               </td>
               <td>
                 <button
-                  onClick={() => updateStatus(idx, "Approved")}
+                  onClick={() => updateStatus(idx, 'Approved')}
                   className="approve-btn"
                 >
                   Approve
                 </button>
                 <button
-                  onClick={() => updateStatus(idx, "Rejected")}
+                  onClick={() => updateStatus(idx, 'Rejected')}
                   className="reject-btn"
                 >
                   Reject
