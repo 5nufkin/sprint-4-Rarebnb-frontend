@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { LoginModal } from '../pages/Login'
+// import { LoginModal } from '../pages/Login'
 import { userService } from '../services/user/index'
 import { logout } from '../store/actions/user.actions'
 
@@ -50,8 +50,8 @@ export function HamburgerMenu({ onClose, onOpenLogin }) {
               </Link>
             </li>
             <li>
-              <Link to="/listing" onClick={onClose}>
-                Listings
+              <Link to="/reservation" onClick={onClose}>
+                Reservation
               </Link>
             </li>
             <li className="logout-link" onClick={onLogout}>

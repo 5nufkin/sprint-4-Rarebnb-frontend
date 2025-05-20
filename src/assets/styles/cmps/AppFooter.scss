@@ -1,15 +1,10 @@
 .app-footer {
-  // position: fixed;
-  // bottom: 0;
-  // left: 0;
   width: 100%;
   z-index: 1000;
-  max-height: 20px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5em 3em;
+  padding: 1.5em 2em;
   background-color: $clr-bg;
   font-size: 0.91rem;
   border-top: 1px solid $gray2;
@@ -20,7 +15,7 @@
     align-items: center;
     gap: 0.4em;
     flex-wrap: wrap;
-    line-height: 18px;
+    line-height: 1.4;
   }
 
   .footer-left {
@@ -28,18 +23,75 @@
   }
 
   .footer-right {
-    gap: 0.7em;
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
     font-weight: 430;
 
     .language {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+
+  .lng-cur {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2em;
+
+    .lng-cur {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+    }
+
+    .footer-left,
+    .footer-right {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .footer-right {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6em;
+    }
+
+    .footer-left {
+      order: 2;
+    }
+
+    .footer-right {
+      order: 1;
+    }
+
+    .help-section-fotter {
+      display: flex;
+      flex-direction: row;
+      gap: 0.4em;
     }
   }
 }
 
-body:has(main.stay-details) .app-footer{
-  max-width:1120px;
-  margin-inline:auto;
+.social-icons {
+  display: flex;
+  gap: 1.2em;
+
+  a {
+    color: #222;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #ff385c; 
+    }
+  }
 }
+
