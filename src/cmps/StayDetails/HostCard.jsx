@@ -33,11 +33,11 @@ export function HostCard({ host }) {
 
           <ul className="stats">
             <li>
-              <strong>{host.reviews?.length ?? 0}</strong>
+              <strong>{reviewsCount ?? 0}</strong>
               <span>Reviews</span>
             </li>
             <li>
-              <strong>{host.avgRating.toFix(2) ?? 4.9}</strong>
+              <strong>{rating ?? 4.9}</strong>
               <span>Rating</span>
             </li>
             <li>

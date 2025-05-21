@@ -1205,3 +1205,35 @@ $bp-desktop: 1280px;
         font-size: 1rem;
     }
 }
+
+html, body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+.hero-gallery,
+.main-grid,
+.page-container,
+.host-card,
+.sleeping-scroll,
+.amenities-grid,
+.title-row,
+.title-actions,
+.rating-line,
+.host-summary,
+.highlight-row {
+  max-width: 100%;
+  overflow-x: clip;
+  flex-wrap: wrap;
+}
+
+.grid, .flex {
+  min-width: 0;
+  max-width: 100%;
+}
