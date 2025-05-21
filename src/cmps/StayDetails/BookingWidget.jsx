@@ -33,8 +33,6 @@ export function BookingWidget({ stay }) {
     updatePricing(stay.price, numOfNights)
   }, [startDate, endDate])
 
-  console.log(orderToSave)
-
   const navigate = useNavigate()
 
   function updatePricing(price, numOfNights) {
@@ -62,16 +60,17 @@ export function BookingWidget({ stay }) {
 
   function handleDateChange(dateType, date) {
     const key = dateType === 'checkIn' ? 'startDate' : 'endDate'
+    console.log(date)
     updateOrderToSave(key, date)
   }
 
   return (
     <>
-    <div className="booking-widget">
-      <div className="rare-banner">
-        <IoDiamond />
-        Rare find! This place is usually booked
-      </div>
+      <div className="booking-widget">
+        <div className="rare-banner">
+          <IoDiamond />
+          Rare find! This place is usually booked
+        </div>
 
         <div className="stay-price-line">
           <span className="stay-price">${stay.price.toLocaleString()}</span>
