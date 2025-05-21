@@ -6,7 +6,7 @@ export function SleepingRooms({ rooms = [] }) {
         {rooms.map((room, idx) => (
           <div className="sleeping-card" key={idx}>
             <img src={room.imgUrl} alt={room.type} />
-            <p>{room.type} · {room.beds.length} beds</p>
+            <p><b>{room.type} ·</b> {room.beds.length} beds</p>
           </div>
         ))}
       </div>
