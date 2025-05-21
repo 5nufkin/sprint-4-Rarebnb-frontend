@@ -1,43 +1,77 @@
 .reservations {
+  .btn-approve,
+  .btn-reject {
+    padding: 5px 12px;
+    border: 1px solid;
+    border-radius: 99px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-inline: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: $clr-white;
+  }
+
+  // Approve button
+  .btn-approve {
+    color: $approve-reservation;
+    border-color: $approve-reservation;
+    &:hover {
+      background-color: $approve-reservation;
+      color: $clr-white;
+    }
+    &.active {
+      background-color: $approve-reservation;
+      color: $clr-white;
+    }
+  }
+  // Reject button 
+  .btn-reject {
+    color: $reject-reservation;
+    border-color: $reject-reservation;
+    &:hover {
+      background-color: $reject-reservation;
+      color: $clr-white;
+    }
+    &.active {
+      background-color: $reject-reservation;
+      color: $clr-white;
+    }
+  }
 
   table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
     font-size: rem(14px);
-
     thead {
       background-color: $gray0;
-
       th {
         &:first-child {
-          width: 15%
+          width: 15%;
         }
-
         &:nth-child(2),
         &:nth-child(3),
         &:nth-child(4) {
           width: 10%;
         }
-
-        &:nth-child(7){
+        &:nth-child(7) {
           width: 7%;
         }
       }
-
-
     }
 
     tbody {
       tr {
         padding-block: rem(10px);
-
         td {
           text-align: center;
+          padding: 0.7em 0.9em;
         }
-
         &:nth-child(even) {
           background-color: $gray12;
+        }
+        &:nth-child(even):hover {
+          background-color: $gray11;
         }
       }
 
@@ -57,113 +91,24 @@
   }
 }
 
-// .reservations {
-//   padding: 0.2rem;
-//   background-color: $gray10;
-//   border-radius: 6px;
-//   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+// Order Status 
+.status {
+  font-weight: 600;
+  text-transform: capitalize;
 
-//   h2 {
-//     color: $gray4;
-//   }
+  &.pending {
+    color: $pending-reservation;
+  }
 
-//   table {
-//     width: 100%;
-//     border-collapse: collapse;
-//     font-size: 0.95rem;
+  &.approved {
+    color: $approve-reservation;
+  }
 
-//     thead {
-//       background-color: $gray0;
+  &.rejected {
+    color: $reject-reservation;
+  }
+}
 
-//       th {
-//         text-align: left;
-//         padding: 0.75rem 1rem;
-//         color: #555;
-//         font-weight: 600;
-//         border-bottom: 2px solid $gray9;
-//         cursor: pointer;
-//         user-select: none;
-//       }
-//     }
-
-//     tbody {
-//       tr {
-//         transition: background 0.2s ease;
-
-//         &:hover {
-//           background-color: #f0f8ff;
-//         }
-
-//         td {
-//           padding: 0.75rem 1rem;
-//           border-bottom: 1px solid $gray-1;
-//           color: #444;
-
-//           &.guest-cell {
-//             display: flex;
-//             align-items: center;
-//             gap: 0.75rem;
-
-//             img {
-//               width: 36px;
-//               height: 36px;
-//               border-radius: 50%;
-//               object-fit: cover;
-//               border: 1px solid #ccc;
-//             }
-
-//             span {
-//               font-weight: 500;
-//             }
-//           }
-
-//           &.status {
-//             font-weight: 600;
-//             text-transform: capitalize;
-
-//             &.completed {
-//               color: gray;
-//             }
-
-//             &.approved {
-//               color: green;
-//             }
-
-//             &.rejected {
-//               color: red;
-//             }
-//           }
-
-//           .btn-approve,
-//           .btn-reject {
-//             padding: 0.4rem 0.8rem;
-//             border-radius: 6px;
-//             font-size: 0.85rem;
-//             cursor: pointer;
-//             border: none;
-//             transition: background-color 0.2s ease;
-//           }
-
-//           .btn-approve {
-//             background-color: #e6f9ed;
-//             color: $approve-reservation;
-
-//             &:hover {
-//               background-color: #c8f1d7;
-//             }
-//           }
-
-//           .btn-reject {
-//             background-color: #ffeaea;
-//             color: $reject-reservation;
-//             margin-left: 0.5rem;
-
-//             &:hover {
-//               background-color: #fbbbbb;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+tr:hover {
+  background-color: $gray11;
+}

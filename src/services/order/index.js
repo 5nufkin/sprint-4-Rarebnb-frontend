@@ -14,7 +14,6 @@ function getEmptyOrder(stay) {
     stayId: stay._id,
     startDate: '',
     endDate: '',
-    startDate: '',
     guestCountMap: { adults: 1, children: 0, infants: 0, pets: 0 },
     pricePerNight: stay.price,
     subTotal: 0,
