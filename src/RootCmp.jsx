@@ -18,8 +18,10 @@ import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { Dashboard } from './pages/Dashboard.jsx'
-import { ListingsPage } from './pages/Listings.jsx'
 import { Trips } from './pages/Trips.jsx'
+import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_STATUS_CHANGED, socketService } from './services/socket.service.js'
+import { showSuccessMsg } from './services/event-bus.service.js'
+import { Reservations } from './pages/Reservations.jsx'
 // import { LoginSignup } from "./pages/LoginSignup.jsx"
 // import { Login } from "./pages/Login.jsx"
 // import { Signup } from "./pages/Signup.jsx"
@@ -30,6 +32,27 @@ export function RootCmp() {
   useEffect(() => {
     const user = userService.getLoggedInUser()
     if (user) dispatch({ type: 'SET_USER', user })
+  }, [])
+
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+      showSuccessMsg(`New reservation at ${order.stay.name}!`)
+      console.log('NEW ORDER _ IT WORKED!')
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+    }
+  }, [])
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_STATUS_CHANGED, (order) => {
+      showSuccessMsg(`New order status for ${order.stay.name}!`)
+      console.log('NEW STATUS WORKED!')
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_STATUS_CHANGED)
+    }
   }, [])
 
   return (
@@ -44,7 +67,7 @@ export function RootCmp() {
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="trips" element={<Trips />} />
-          <Route path="reservation" element={<ListingsPage />} />
+          <Route path="reservation" element={<Reservations />} />
           <Route path="review" element={<ReviewIndex />} />
           <Route path="chat" element={<ChatApp />} />
           <Route path="admin" element={<AdminIndex />} />

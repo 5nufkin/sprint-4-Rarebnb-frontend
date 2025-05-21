@@ -12,6 +12,7 @@ export const SOCKET_EVENT_REVIEW_REMOVED = 'review-removed'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 export const SOCKET_EMIT_PLACE_ORDER = 'order-placed'
 export const SOCKET_EVENT_ORDER_ADDED = 'order-added'
+export const SOCKET_EVENT_STATUS_CHANGED = 'status-changed'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'

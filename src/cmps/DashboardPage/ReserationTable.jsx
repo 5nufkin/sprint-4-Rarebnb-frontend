@@ -127,7 +127,7 @@ export function ReservationTable({ sales = [], setStats }) {
               <td className={`status ${statuses[idx]?.toLowerCase()}`}>
                 {statuses[idx]}
               </td>
-              <td>
+              <td className="btn-actions">
                 <button
                   onClick={() => updateStatus(idx, 'Approved')}
                   className="approve-btn"

@@ -23,6 +23,7 @@
 @import "pages/Dashboard";
 @import "pages/Trips";
 @import "pages/StayIndex";
+@import "pages/Reservations";
 
 // Components
 @import "cmps/StayList";
@@ -56,4 +57,3 @@
 @import "cmps/Dashboard/StatsCards.scss";
 @import "cmps/Dashboard/OverviewSales.scss";
 @import "cmps/Dashboard/HeatMap.scss";
-@import "cmps/Dashboard/ReservationTable.scss";

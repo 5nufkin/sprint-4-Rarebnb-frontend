@@ -51,7 +51,7 @@ export function HamburgerMenu({ onClose, onOpenLogin }) {
             </li>
             <li>
               <Link to="/reservation" onClick={onClose}>
-                Reservation
+                Reservations
               </Link>
             </li>
             <li className="logout-link" onClick={onLogout}>
