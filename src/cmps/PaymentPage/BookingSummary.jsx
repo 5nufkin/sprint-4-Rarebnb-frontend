@@ -3,15 +3,18 @@ import { DiamondIcon, StarIcon } from "../Icons"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/index"
-//! import { useLocation } from "react-router-dom"
+// import { useLocation } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 
 export function BookingSummary({ isConfirmed }) {
+  // const { state } = useLocation() 
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
-  //! const { state } = useLocation() 
   const orderDetails = useSelector(storeState => storeState.orderModule.orderToSave)
+
+  if (!orderDetails) return <div>Loading…</div>
+
   const {
     startDate,
     endDate,
@@ -41,7 +44,6 @@ export function BookingSummary({ isConfirmed }) {
         console.error("Error fetching stay:", err)
       }
     }
-
     loadStay()
   }, [stayId])
 

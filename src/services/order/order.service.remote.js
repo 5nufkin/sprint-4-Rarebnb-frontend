@@ -8,7 +8,7 @@ export const orderService = {
   addOrderMsg
 }
 
-async function query(filterBy = { txt: '', minPrice: 0 }) {
+async function query(filterBy = {}) {
   return httpService.get(`order`, filterBy)
 }
 
