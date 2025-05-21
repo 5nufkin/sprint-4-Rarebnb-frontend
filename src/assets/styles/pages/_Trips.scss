@@ -1,45 +1,204 @@
-.trips-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th {
-    text-align: left;
-    padding: 0.75rem;
-    color: #6b7280;
-    font-weight: 500;
-    font-size: 0.875rem;
-    cursor: pointer;
+.trips-main {
+  padding: 2em;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1em;
   }
 
-  td {
-    padding: 1rem 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid #e5e7eb;
-  }
+  .trips-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
 
-  .destination-cell {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    thead {
+      background-color: #f5f5f5;
+      th {
+        text-align: left;
+        padding: 0.75em;
+        font-weight: bold;
+        border-bottom: 2px solid #e0e0e0;
+      }
+    }
 
-    .stay-thumb {
-      width: 56px;
-      height: 56px;
-      border-radius: 8px;
-      object-fit: cover;
+    tbody {
+      tr {
+        border-bottom: 1px solid #eaeaea;
+
+        td {
+          padding: 0.75em;
+          vertical-align: middle;
+        }
+
+        .host-cell {
+          display: flex;
+          align-items: center;
+          gap: 0.75em;
+        }
+        .host-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75em;
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; 
+            object-fit: cover;
+          }
+
+          span {
+            font-weight: 500;
+          }
+        }
+
+        .status {
+          font-weight: bold;
+          text-transform: capitalize;
+
+          &.approved {
+            color: green;
+          }
+
+          &.pending {
+            color: orange;
+          }
+
+          &.rejected {
+            color: red;
+          }
+        }
+      }
     }
   }
+}
 
-  .status {
-    font-weight: 600;
-    &.pending {
-      color: #f59e0b;
-    }
-    &.approved {
-      color: #10b981;
-    }
-    &.rejected {
-      color: #ef4444;
+.trips-main {
+  @media (max-width: 640px) {
+    padding: 1em;
+
+    .trips-table {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        tr {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background-color: #fff;
+          padding: 1.2em;
+          border-radius: 12px;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+          gap: 1em;
+          font-size: 0.9rem;
+
+          td {
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            padding: 0.8em;
+            border-radius: 8px;
+
+            &::before {
+              content: attr(data-label);
+              font-size: 0.75em;
+              font-weight: 600;
+              color: #777;
+              margin-bottom: 4px;
+              text-transform: uppercase;
+            }
+
+            &:nth-child(1) {
+              grid-column: span 2;
+              align-items: center;
+              text-align: center;
+              background-color: #f0f0f0;
+
+              img {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 0.4em;
+              }
+
+              .host-name {
+                font-weight: 600;
+                font-size: 0.95em;
+              }
+            }
+
+            .label {
+              font-size: 0.75em;
+              font-weight: 600;
+              color: #555;
+              margin-bottom: 4px;
+              text-transform: uppercase;
+            }
+
+            .value {
+              font-size: 0.9em;
+              font-weight: 500;
+            }
+
+            &.status {
+              grid-column: span 1;
+              background-color: transparent;
+              font-weight: bold;
+              text-align: start;
+              padding-left: 0;
+
+              &.approved {
+                color: $approve-reservation;
+              }
+
+              &.pending {
+                color: $pending-reservation;
+              }
+
+              &.rejected {
+                color: $reject-reservation;
+              }
+            }
+
+            &.actions {
+              grid-column: span 1;
+              background-color: $gray12;
+              display: flex;
+              justify-content: flex-end;
+              gap: 0.5em;
+
+              button {
+                padding: 0.3em 0.9em;
+                border: none;
+                border-radius: 20px;
+                font-weight: 600;
+                cursor: pointer;
+
+                &.approve {
+                  background-color: $approve-reservation;
+                  color: $clr-white;
+                }
+
+                &.reject {
+                  background-color: $clr-white;
+                  color: $reject-reservation;
+                  border: 1px solid $reject-reservation;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
