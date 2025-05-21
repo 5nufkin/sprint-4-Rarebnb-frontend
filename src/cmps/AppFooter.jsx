@@ -1,7 +1,9 @@
 import { GlobeIcon, PrivacyChoicesIcon } from './Icons'
+import { MobileNavBar } from '../cmps/NavBarMobile'
 
 export function AppFooter() {
   return (
+    <>
     <footer className="app-footer full">
       <div className="footer-left">
         <span>© 2025 Rarebnb, Inc.</span>
@@ -35,5 +37,7 @@ export function AppFooter() {
         </div>
       </div>
     </footer>
+    <MobileNavBar />
+    </>
   )
 }

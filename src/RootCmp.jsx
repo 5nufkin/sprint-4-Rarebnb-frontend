@@ -22,6 +22,8 @@ import { Trips } from './pages/Trips.jsx'
 import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_STATUS_CHANGED, socketService } from './services/socket.service.js'
 import { showSuccessMsg } from './services/event-bus.service.js'
 import { Reservations } from './pages/Reservations.jsx'
+import { LoginMobile } from './pages/LoginMobile.jsx'
+import { SignupMobile } from './pages/SignupMobile.jsx'
 // import { LoginSignup } from "./pages/LoginSignup.jsx"
 // import { Login } from "./pages/Login.jsx"
 // import { Signup } from "./pages/Signup.jsx"
@@ -71,6 +73,8 @@ export function RootCmp() {
           <Route path="review" element={<ReviewIndex />} />
           <Route path="chat" element={<ChatApp />} />
           <Route path="admin" element={<AdminIndex />} />
+          <Route path="login" element={<LoginMobile />} />
+          <Route path="signup" element={<SignupMobile />} />
         </Routes>
       </main>
       <AppFooter />
