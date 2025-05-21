@@ -2,7 +2,7 @@ import { HeroGallery } from '../cmps/StayDetails/HeroGallery.jsx'
 import { HeadingBar } from '../cmps/StayDetails/HeadingBar.jsx'
 import { Highlights } from '../cmps/StayDetails/Highlights.jsx'
 import { AmenitiesGrid } from '../cmps/StayDetails/AmenitiesGrid.jsx'
-import { SleepingRooms } from '../cmps/StayDetails/SleepingRooms.jsx'
+// import { SleepingRooms } from '../cmps/StayDetails/SleepingRooms.jsx'
 import { ReviewsSection } from '../cmps/StayDetails/ReviewsSection.jsx'
 import { LocationMap } from '../cmps/StayDetails/LocationMap.jsx'
 import { HostCard } from '../cmps/StayDetails/HostCard.jsx'
@@ -87,9 +87,10 @@ export function StayDetails() {
               <div className="section-divider" />
 
               <AmenitiesGrid amenities={stay.amenities} />
+              <div className="section-end" />
               
-              <div className="section-divider" />
-              <SleepingRooms rooms={demoRooms} />
+              {/* <div className="section-divider" />
+              <SleepingRooms rooms={demoRooms} /> */}
             </div>
 
             <aside className="booking-col">
