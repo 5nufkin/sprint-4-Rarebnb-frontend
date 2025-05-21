@@ -1,0 +1,81 @@
+.mobile-login {
+  padding: 2em;
+  max-width: 400px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 1.3rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+  }
+
+  input {
+    padding: 0.7em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  button {
+    padding: 0.8em;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+
+    &:not(.upload-btn) {
+      background: linear-gradient(to right, #ff385c, #bd1e59);
+      color: white;
+
+      &:hover {
+        opacity: 0.95;
+      }
+    }
+  }
+
+  .upload-btn {
+    background-color: #3399ff;
+    color: white;
+    text-align: center;
+    padding: 0.7em;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 0.3em;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 0.5em;
+    font-size: 0.9rem;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 1.5em;
+
+    button {
+      background-color: #f7f7f7;
+      color: #111;
+      border: 1px solid #ccc;
+    }
+  }
+}

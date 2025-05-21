@@ -1999,3 +1999,155 @@ export function DashboardRefundedIcon() {
 }
 
 ///////////////////////////////////////////////////////////////////
+
+// Nav bar mobile
+
+export function WishlistIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentcolor',
+        strokeWidth: 2,
+        overflow: 'visible'
+      }}
+    >
+      <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path>
+    </svg>
+  )
+}
+
+export function TripsIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentcolor',
+        strokeWidth: 2,
+        overflow: 'visible'
+      }}
+    >
+      <g fill="none">
+        <path d="M16.67 24.94c-2.35 3.15-4.7 4.73-7.07 4.73-3.62 0-5.17-2.38-5.53-4.21-.32-1.63.5-3.82.8-4.54l1.75-3.85A205.3 205.3 0 0 1 11.7 6.6L12.6 5l.23-.41c.4-.68 1.5-2.25 3.84-2.25a4.16 4.16 0 0 1 3.78 2.16l.29.5.76 1.37.4.73c1.22 2.3 2.75 5.52 4.02 8.25l2.51 5.5c.27.61 1.16 2.92.83 4.62-.36 1.83-1.9 4.2-5.53 4.2-2.42 0-4.77-1.57-7.06-4.72z" />
+        <path d="M16.67 24.94c2.1-2.8 3.34-5.09 3.7-6.84.52-2.63-1.06-4.83-3.7-4.83s-4.23 2.2-3.7 4.83c.35 1.75 1.59 4.03 3.7 6.84z" />
+      </g>
+    </svg>
+  )
+}
+
+export function MessageIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentcolor',
+        strokeWidth: 2,
+        overflow: 'visible'
+      }}
+    >
+      <path
+        fill="none"
+        d="M26 3a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-6.32L16 29.5 12.32 25H6a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z"
+      />
+    </svg>
+  )
+}
+
+export function ProfileIcon() {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentcolor',
+        strokeWidth: 2,
+        overflow: 'visible'
+      }}
+    >
+      <g fill="none">
+        <circle cx="16" cy="16" r="14" />
+        <path d="M26.46 25.62c-1.58-2.81-4.26-4.9-7.46-5.73v-.72c1.79-1.04 3-2.96 3-5.17 0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.14 3 5.17v.72c-3.16.82-5.83 2.87-7.42 5.64" />
+      </g>
+    </svg>
+  )
+}
+
+export function ExploreIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentcolor',
+        strokeWidth: 2.66667,
+        overflow: 'visible'
+      }}
+    >
+      <g fill="none">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M19 19L30 30" />
+      </g>
+    </svg>
+  )
+}
+
+export function LogoutIcon() {
+  return (
+    <svg
+      viewBox="0 0 15 15"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentColor',
+        strokeWidth: '1.5',
+        overflow: 'visible',
+      }}
+    >
+      <path d="M13.5 7.5L10.5 10.75M13.5 7.5L10.5 4.5M13.5 7.5L4 7.5M8 13.5H1.5L1.5 1.5L8 1.5" />
+    </svg>
+  )
+}

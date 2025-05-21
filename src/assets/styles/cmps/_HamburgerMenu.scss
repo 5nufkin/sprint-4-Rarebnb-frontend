@@ -116,3 +116,49 @@
     display: none;
   }
 }
+
+////////////////////////////////////////////////////////////////
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5em 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+
+  &.hide {
+    transform: translateY(100%);
+  }
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  a {
+    color: #888;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75em;
+
+    svg {
+      font-size: 1.2em;
+    }
+
+    &.active {
+      color: #ff385c;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .mobile-nav {
+    display: none;
+  }
+}
