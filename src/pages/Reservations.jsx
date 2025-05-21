@@ -232,24 +232,24 @@ export function Reservations() {
           {orders.map((order) => {
             return (
               <tr key={order._id}>
-                <td className="guest-info">
+                <td data-label="Guest" className="guest-info">
                   <img src={order.guest.imgUrl} alt={order.guest.fullname} />
                   <span>{order.guest.fullname}</span>
                 </td>
-                <td>{formatDate(order.startDate)}</td>
-                <td>{formatDate(order.endDate)}</td>
+                <td data-label="Check-in">{formatDate(order.startDate)}</td>
+                <td data-label="Check-out">{formatDate(order.endDate)}</td>
 
-                <td>{formatDate(order.createdAt)}</td>
+                <td data-label="Booked">{formatDate(order.createdAt)}</td>
                 {/* <td>{order.createdAt}</td> */}
                 {/* <td>Booked placeholder</td> */}
 
-                <td>{order.stay.name}</td>
-                <td>${order.totalPrice}</td>
+                <td data-label="Listing">{order.stay.name}</td>
+                <td data-label="Total Payout">${order.totalPrice}</td>
 
                 {/* <td>{order.status}</td> */}
-                <td className={`status ${order.status}`}>{order.status}</td>
+                <td data-label="Status" className={`status ${order.status}`}>{order.status}</td>
 
-                <td>
+                <td data-label="Todo">
                   <button
                     onClick={() => updateStatus(order._id, 'approved')}
                     className={`btn-approve ${
