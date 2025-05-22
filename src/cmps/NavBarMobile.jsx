@@ -62,11 +62,11 @@ export function MobileNavBar() {
             <span>Trips</span>
           </Link>
           <Link
-            to="/messages"
-            className={location.pathname === '/messages' ? 'active' : ''}
+            to="/reservation"
+            className={location.pathname === '/reservation' ? 'active' : ''}
           >
             <MessageIcon />
-            <span>Messages</span>
+            <span>Reservation</span>
           </Link>
 
           <Link to="/" onClick={handleLogout}>
