@@ -1,9 +1,6 @@
 // import React from 'react'
 import { Routes, Route } from 'react-router'
-
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { userService } from './services/user'
 
 import { StayIndex } from './pages/StayIndex.jsx'
 import { ReviewIndex } from './pages/ReviewIndex.jsx'
@@ -29,18 +26,18 @@ import { SignupMobile } from './pages/SignupMobile.jsx'
 // import { Signup } from "./pages/Signup.jsx"
 
 export function RootCmp() {
-  const dispatch = useDispatch()
+  const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+
 
   useEffect(() => {
-    const user = userService.getLoggedInUser()
-    if (user) dispatch({ type: 'SET_USER', user })
-  }, [])
+    if (loggedInUser) return
 
+  }, [loggedInUser])
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
       showSuccessMsg(`New reservation at ${order.stay.name}!`)
-      console.log('NEW ORDER _ IT WORKED!')
+      console.log('NEW ORDER _ IT WORKED!') //todo remove
     })
     return () => {
       socketService.off(SOCKET_EVENT_ORDER_ADDED)
@@ -50,7 +47,7 @@ export function RootCmp() {
   useEffect(() => {
     socketService.on(SOCKET_EVENT_STATUS_CHANGED, (order) => {
       showSuccessMsg(`New order status for ${order.stay.name}!`)
-      console.log('NEW STATUS WORKED!')
+      console.log('NEW STATUS WORKED!') //todo remove
     })
     return () => {
       socketService.off(SOCKET_EVENT_STATUS_CHANGED)

@@ -40,7 +40,6 @@ export function PaymentPage() {
   function onConfirmOrder() {
     setIsConfirmed(true)
     placeOrder(orderToSave)
-    socketService.emit(SOCKET_EMIT_PLACE_ORDER, '123')
   }
 
   if (!stay) return <div>Loading…</div>
@@ -95,4 +94,3 @@ export function PaymentPage() {
     </section>
   )
 }
- 
