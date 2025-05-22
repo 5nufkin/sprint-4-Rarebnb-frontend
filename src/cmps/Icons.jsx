@@ -2017,7 +2017,7 @@ export function WishlistIcon() {
         width: '24px',
         stroke: 'currentcolor',
         strokeWidth: 2,
-        overflow: 'visible'
+        overflow: 'visible',
       }}
     >
       <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path>
@@ -2040,7 +2040,7 @@ export function TripsIcon() {
         width: '24px',
         stroke: 'currentcolor',
         strokeWidth: 2,
-        overflow: 'visible'
+        overflow: 'visible',
       }}
     >
       <g fill="none">
@@ -2066,7 +2066,7 @@ export function MessageIcon() {
         width: '24px',
         stroke: 'currentcolor',
         strokeWidth: 2,
-        overflow: 'visible'
+        overflow: 'visible',
       }}
     >
       <path
@@ -2092,7 +2092,7 @@ export function ProfileIcon() {
         width: '24px',
         stroke: 'currentcolor',
         strokeWidth: 2,
-        overflow: 'visible'
+        overflow: 'visible',
       }}
     >
       <g fill="none">
@@ -2118,7 +2118,7 @@ export function ExploreIcon() {
         width: '24px',
         stroke: 'currentcolor',
         strokeWidth: 2.66667,
-        overflow: 'visible'
+        overflow: 'visible',
       }}
     >
       <g fill="none">
@@ -2148,6 +2148,34 @@ export function LogoutIcon() {
       }}
     >
       <path d="M13.5 7.5L10.5 10.75M13.5 7.5L10.5 4.5M13.5 7.5L4 7.5M8 13.5H1.5L1.5 1.5L8 1.5" />
+    </svg>
+  )
+}
+
+export function ReservationIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '24px',
+        width: '24px',
+        stroke: 'currentColor',
+        strokeWidth: 2.2,
+        overflow: 'visible',
+      }}
+    >
+      <g fill="none">
+        <rect x="6" y="6" width="20" height="20" rx="3" />
+        <line x1="10" y1="12" x2="22" y2="12" />
+        <line x1="10" y1="16" x2="22" y2="16" />
+        <line x1="10" y1="20" x2="16" y2="20" />
+      </g>
     </svg>
   )
 }

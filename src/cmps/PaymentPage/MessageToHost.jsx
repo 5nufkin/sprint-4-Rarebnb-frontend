@@ -13,6 +13,7 @@ export function MessageToHost() {
         </p>
 
         <textarea
+        className="message-area"
           value={msg}
           onChange={(ev) => setMsg(ev.target.value)}
           placeholder="Example: 'Hi Amir, my partner and I are going to a friend’s wedding and your place is right down the street.'"

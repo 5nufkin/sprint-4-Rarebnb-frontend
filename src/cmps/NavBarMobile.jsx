@@ -3,8 +3,8 @@ import { Link, Navigate, useLocation } from 'react-router-dom'
 import {
   ExploreIcon,
   LogoutIcon,
-  MessageIcon,
   ProfileIcon,
+  ReservationIcon,
   TripsIcon,
   WishlistIcon,
 } from './Icons'
@@ -62,11 +62,11 @@ export function MobileNavBar() {
             <span>Trips</span>
           </Link>
           <Link
-            to="/messages"
-            className={location.pathname === '/messages' ? 'active' : ''}
+            to="/reservation"
+            className={location.pathname === '/reservation' ? 'active' : ''}
           >
-            <MessageIcon />
-            <span>Messages</span>
+            <ReservationIcon />
+            <span>Reservation</span>
           </Link>
 
           <Link to="/" onClick={handleLogout}>

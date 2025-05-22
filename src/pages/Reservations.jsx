@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux"
-import { useEffect, useState } from "react"
-import { orderService } from "../services/order"
-import { updateOrder } from "../store/actions/order.actions"
-import { showErrorMsg } from "../services/event-bus.service"
+import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { orderService } from '../services/order'
+import { updateOrder } from '../store/actions/order.actions'
+import { showErrorMsg } from '../services/event-bus.service'
 
 export function Reservations() {
-  const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+  const loggedInUser = useSelector(
+    (storeState) => storeState.userModule.loggedInUser
+  )
   const [orders, setOrders] = useState([])
 
   console.log(orders)
@@ -26,13 +28,23 @@ export function Reservations() {
 
   async function updateStatus(orderId, newStatus) {
     const prevOrders = [...orders]
-    setOrders(prevOrders => prevOrders.map(order => order._id === orderId ? { ...order, status: newStatus } : order))
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order._id === orderId ? { ...order, status: newStatus } : order
+      )
+    )
 
     try {
-      const orderToUpdate = orders.find(order => order._id === orderId)
-      const updatedOrder = await orderService.save({ ...orderToUpdate, status: newStatus })
-      setOrders(prevOrders => prevOrders.map(order => order._id === orderId ? updatedOrder : order))
-
+      const orderToUpdate = orders.find((order) => order._id === orderId)
+      const updatedOrder = await orderService.save({
+        ...orderToUpdate,
+        status: newStatus,
+      })
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? updatedOrder : order
+        )
+      )
     } catch (err) {
       console.log('Failed updating order status', err)
       setOrders(prevOrders)
@@ -44,7 +56,6 @@ export function Reservations() {
     const date = new Date(dateStr)
     return new Intl.DateTimeFormat('en-GB').format(date)
   }
-
 
   return (
     <section className="reservations">
@@ -63,10 +74,13 @@ export function Reservations() {
           </tr>
         </thead>
         <tbody>
-          {orders.map(order => {
+          {orders.map((order) => {
             return (
               <tr key={order._id}>
-                <td className="guest-info"><img src={order.guest.imgUrl} /><span>{order.guest.fullname}</span></td>
+                <td className="guest-info">
+                  <img src={order.guest.imgUrl} />
+                  <span>{order.guest.fullname}</span>
+                </td>
                 <td>{order.status}</td>
                 <td>{formatDate(order.startDate)}</td>
                 <td>{formatDate(order.endDate)}</td>
@@ -74,22 +88,29 @@ export function Reservations() {
                 <td>Booked placeholder</td>
                 <td>{order.stay.name}</td>
                 <td>${order.totalPrice}</td>
-                {(order.status === 'pending')
-                  ? < td >
-                    <button onClick={() => updateStatus(order._id, 'approved')} className="btn-approve">
+                {order.status === 'pending' ? (
+                  <td>
+                    <button
+                      onClick={() => updateStatus(order._id, 'approved')}
+                      className="btn-approve"
+                    >
                       Approve
                     </button>
-                    <button onClick={() => updateStatus(order._id, 'rejected')} className="btn-reject">
+                    <button
+                      onClick={() => updateStatus(order._id, 'rejected')}
+                      className="btn-reject"
+                    >
                       Reject
                     </button>
                   </td>
-                  : <td></td>
-                }
+                ) : (
+                  <td></td>
+                )}
               </tr>
             )
           })}
         </tbody>
-      </table >
-    </section >
+      </table>
+    </section>
   )
 }
