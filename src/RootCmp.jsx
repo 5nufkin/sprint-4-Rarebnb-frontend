@@ -16,7 +16,7 @@ import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { Dashboard } from './pages/Dashboard.jsx'
 import { Trips } from './pages/Trips.jsx'
-import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_STATUS_CHANGED, socketService } from './services/socket.service.js'
+import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATED, socketService } from './services/socket.service.js'
 import { showSuccessMsg } from './services/event-bus.service.js'
 import { Reservations } from './pages/Reservations.jsx'
 import { LoginMobile } from './pages/LoginMobile.jsx'
@@ -27,18 +27,16 @@ import { useSelector } from 'react-redux'
 // import { Signup } from "./pages/Signup.jsx"
 
 export function RootCmp() {
-  const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+  // const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 
+  // useEffect(() => {
+  //   if (loggedInUser) return
 
-  useEffect(() => {
-    if (loggedInUser) return
-
-  }, [loggedInUser])
+  // }, [loggedInUser])
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
       showSuccessMsg(`New reservation at ${order.stay.name}!`)
-      console.log('NEW ORDER _ IT WORKED!') //todo remove
     })
     return () => {
       socketService.off(SOCKET_EVENT_ORDER_ADDED)
@@ -46,12 +44,11 @@ export function RootCmp() {
   }, [])
 
   useEffect(() => {
-    socketService.on(SOCKET_EVENT_STATUS_CHANGED, (order) => {
+    socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
       showSuccessMsg(`New order status for ${order.stay.name}!`)
-      console.log('NEW STATUS WORKED!') //todo remove
     })
     return () => {
-      socketService.off(SOCKET_EVENT_STATUS_CHANGED)
+      socketService.off(SOCKET_EVENT_ORDER_UPDATED)
     }
   }, [])
 

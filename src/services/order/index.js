@@ -26,7 +26,7 @@ function getEmptyOrder(stay) {
 
 function calculateOrderFees(pricePerNight, numOfNights) {
   const subTotal = pricePerNight * numOfNights
-  const serviceFee = Math.round(subTotal * SERVICE_FEE)
+  const serviceFee = subTotal * SERVICE_FEE
   const totalPrice = subTotal + serviceFee + CLEANING_FEE
   return { subTotal, serviceFee, cleaningFee: CLEANING_FEE, totalPrice }
 }

@@ -1,54 +1,43 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { orderService } from '../services/order'
-import { updateOrder } from '../store/actions/order.actions'
+import { getCmdAddOrder, loadOrders, updateOrder } from '../store/actions/order.actions'
 import { showErrorMsg } from '../services/event-bus.service'
+import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATED, socketService } from '../services/socket.service'
 
 export function Reservations() {
-  const loggedInUser = useSelector(
-    (storeState) => storeState.userModule.loggedInUser
-  )
-  const [orders, setOrders] = useState([])
-
-  console.log(orders)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
+  const orders = useSelector(storeState => storeState.orderModule.orders)
+  const filterBy = { hostId: loggedInUser._id, sortField: '_id', sortDir: -1 }
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    loadOrders()
+    loadOrders(filterBy)
+
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+      dispatch(getCmdAddOrder(order))
+    })
+
+    // socketService.on(SOCKET_EVENT_ORDER_UPDATED, () => {
+    //   loadOrders(filterBy)
+    // })
+
+    return () => {
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+      // socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+    }
   }, [loggedInUser])
 
-  async function loadOrders() {
-    const filterBy = { hostId: loggedInUser._id }
-    try {
-      const orders = await orderService.query(filterBy)
-      setOrders(orders)
-    } catch (err) {
-      console.log('Failed to load host orders', err)
-    }
-  }
-
   async function updateStatus(orderId, newStatus) {
-    const prevOrders = [...orders]
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order._id === orderId ? { ...order, status: newStatus } : order
-      )
-    )
+    const orderToUpdate = orders.find((order) => order._id === orderId)
+    if (!orderToUpdate) return
 
     try {
-      const orderToUpdate = orders.find((order) => order._id === orderId)
-      const updatedOrder = await orderService.save({
-        ...orderToUpdate,
-        status: newStatus,
-      })
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order._id === orderId ? updatedOrder : order
-        )
-      )
+      const updatedOrder = { ...orderToUpdate, status: newStatus }
+      updateOrder(updatedOrder)
     } catch (err) {
-      console.log('Failed updating order status', err)
-      setOrders(prevOrders)
-      showErrorMsg('Something went wrong. Pleae try again.')
+      console.log('Failed to update order status', err)
+      showErrorMsg('Something went wrong. Please try again.')
     }
   }
 
@@ -87,7 +76,7 @@ export function Reservations() {
                 {/* <td>{order.createdAt}</td> */}
                 <td>Booked placeholder</td>
                 <td>{order.stay.name}</td>
-                <td>${order.totalPrice}</td>
+                <td>${order.totalPrice.toFixed(2)}</td>
                 {order.status === 'pending' ? (
                   <td>
                     <button

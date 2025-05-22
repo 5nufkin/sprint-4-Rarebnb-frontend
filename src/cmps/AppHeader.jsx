@@ -125,7 +125,7 @@ export function AppHeader() {
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
-      <header
+      <header onClick={()=>console.log('HEADER CLICKED')}
         className={`app-header main-layout full ${
           isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
         }`}
@@ -192,7 +192,7 @@ export function AppHeader() {
           />
         )}
       </header>
-      <div
+      {/* <div
         className={`header-backdrop ${
           !isAtTop && isHeaderExpanded ? 'visible' : ''
         }`}
@@ -200,7 +200,7 @@ export function AppHeader() {
           setIsHeaderExpanded(false)
           setActiveSection('')
         }}
-      ></div>
+      ></div> */}
     </>
   )
 }
