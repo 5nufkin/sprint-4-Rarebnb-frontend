@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useSearchParams } from 'react-router-dom'
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom'
 import {
   AirbnbLogoFull,
   AirbnbLogoIcon,
@@ -19,8 +19,6 @@ export function AppHeader() {
   const loggedInUser = useSelector(
     (storeState) => storeState.userModule.loggedInUser
   )
-  // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-  // const pageIdx = useSelector(storeState => storeState.stayModule.pageIdx)
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
@@ -32,10 +30,9 @@ export function AppHeader() {
   const menuRef = useRef()
   const buttonRef = useRef()
   const topRef = useRef()
+  const currPage = useLocation()
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const dispatch = useDispatch()
-  const defaultFilter = stayService.getDefaultFilter()
   const filterBy = getFilterFromSearchParams(searchParams)
 
   useEffect(() => {
@@ -48,6 +45,12 @@ export function AppHeader() {
   }, [])
 
   useEffect(() => {
+    if (currPage.pathname !== '/') {
+      setIsAtTop(false)
+      setIsHeaderExpanded(false)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsAtTop(entry.isIntersecting)
@@ -65,7 +68,7 @@ export function AppHeader() {
     return () => {
       if (topRef.current) observer.unobserve(topRef.current)
     }
-  }, [])
+  }, [currPage.pathname])
 
   useEffect(() => {
     function handleResize() {
@@ -125,10 +128,9 @@ export function AppHeader() {
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
-      <header onClick={()=>console.log('HEADER CLICKED')}
-        className={`app-header main-layout full ${
-          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
-        }`}
+      <header onClick={() => console.log('HEADER CLICKED')}
+        className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
+          }`}
       >
         {!isHeaderExpanded && (
           <StayFilterMinimized
