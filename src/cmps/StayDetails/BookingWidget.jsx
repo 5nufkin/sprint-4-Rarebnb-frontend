@@ -60,7 +60,6 @@ export function BookingWidget({ stay }) {
 
   function handleDateChange(dateType, date) {
     const key = dateType === 'checkIn' ? 'startDate' : 'endDate'
-    console.log(date)
     updateOrderToSave(key, date)
   }
 

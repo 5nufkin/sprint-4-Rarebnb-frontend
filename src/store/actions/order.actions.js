@@ -133,13 +133,13 @@ function getCmdRemoveOrder(orderId) {
     orderId
   }
 }
-function getCmdAddOrder(order) {
+export function getCmdAddOrder(order) {
   return {
     type: ADD_ORDER,
     order
   }
 }
-function getCmdUpdateOrder(order) {
+export function getCmdUpdateOrder(order) {
   return {
     type: UPDATE_ORDER,
     order
