@@ -14,18 +14,13 @@ export function SignupModal({ onClose, onBack, onLoginSuccess }) {
     setCredentials((prev) => ({ ...prev, [name]: value }))
   }
 
-  // function onSignup(ev) {
-  //   ev.preventDefault()
-  //   console.log("Signing up with:", credentials)
-  //   onClose()
-  // }
   async function onSignup(ev) {
     ev.preventDefault()
 
     try {
       await userService.signup(credentials)
-      await login(credentials) 
-      onClose() 
+      await login(credentials)
+      onClose()
     } catch (err) {
       console.error("Signup failed", err)
     }

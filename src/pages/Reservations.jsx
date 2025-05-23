@@ -42,6 +42,7 @@ export function Reservations() {
   }
 
   function formatDate(dateStr) {
+    if (!dateStr) return
     const date = new Date(dateStr)
     return new Intl.DateTimeFormat('en-GB').format(date)
   }

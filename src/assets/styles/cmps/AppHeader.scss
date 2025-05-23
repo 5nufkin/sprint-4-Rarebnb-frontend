@@ -7,7 +7,8 @@
 }
 
 .app-header {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 999;
   background: linear-gradient(180deg, $clr-white 39.9%, $gray-3 100%);
@@ -15,7 +16,7 @@
   border-block-end: 1px solid #ebebeb;
   margin-inline: 0;
 
-  // transition: height .2s; //! Glitching 
+  transition: height .2s; //! Glitching 
 
   @media(min-width: 744px) {
     padding-inline: rem(32px)
@@ -108,7 +109,7 @@
 }
 
 
-body:has(main.stay-details) .app-header .header-content{
-  max-width:1120px;
-  margin-inline:auto;
+body:has(main.stay-details) .app-header .header-content {
+  max-width: 1120px;
+  margin-inline: auto;
 }

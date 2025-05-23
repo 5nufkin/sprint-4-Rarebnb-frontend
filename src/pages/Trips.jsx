@@ -9,8 +9,6 @@ export function Trips() {
   const filterBy = { guestId: loggedInUser._id, sortField: '_id', sortDir: -1 }
   const dispatch = useDispatch()
 
-  console.log(orders)
-
   useEffect(() => {
     loadOrders(filterBy)
 

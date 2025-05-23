@@ -84,5 +84,9 @@ export function getFilterFromSearchParams(searchParams) {
     //   sortDir: +searchParams.get('sortDir') || 1,
     // },
     pageIdx: +searchParams.get('pageIdx') || 0,
+    adults: +searchParams.get('adults') || 0,
+    children: +searchParams.get('children') || 0,
+    infants: +searchParams.get('infants') || 0,
+    pets: +searchParams.get('pets') || 0,
   }
 }

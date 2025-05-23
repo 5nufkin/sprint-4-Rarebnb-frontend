@@ -3,12 +3,9 @@ import { DiamondIcon, StarIcon } from "../Icons"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { stayService } from "../../services/stay/index"
-// import { useLocation } from "react-router-dom"
-import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 
 export function BookingSummary({ isConfirmed }) {
-  // const { state } = useLocation() 
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const orderDetails = useSelector(storeState => storeState.orderModule.orderToSave)
@@ -38,9 +35,7 @@ export function BookingSummary({ isConfirmed }) {
       try {
         const stay = await stayService.getById(stayId)
         setStay(stay)
-        showSuccessMsg()
       } catch (err) {
-        showErrorMsg()
         console.error("Error fetching stay:", err)
       }
     }
@@ -48,13 +43,7 @@ export function BookingSummary({ isConfirmed }) {
   }, [stayId])
 
   if (!stay) return <div>Loading…</div>
-  const reviews = stay.reviews || []
-  const avgRating =
-    reviews.length > 0
-      ? (
-        reviews.reduce((sum, review) => sum + review.rate, 0) / reviews.length
-      ).toFixed(2)
-      : "–"
+
   return (
     <div className="payment-right">
       <aside className="booking-summary">
@@ -67,7 +56,7 @@ export function BookingSummary({ isConfirmed }) {
               <div className="rating-line">
                 <span>
                   <StarIcon />
-                  {avgRating} ({reviews.length})
+                  {stay.avgRating} ({stay.reviews.length})
                 </span>
                 {stay.isSuperhost && (
                   <span className="superhost"> • Superhost</span>

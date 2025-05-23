@@ -14,11 +14,10 @@ import { HamburgerMenu } from './HamburgerMenu'
 import { StayFilterMinimized } from './StayFilterMinimized'
 import { getFilterFromSearchParams } from '../services/util.service'
 import { LoginModal } from '../pages/Login'
+import { logout } from '../store/actions/user.actions'
 
 export function AppHeader() {
-  const loggedInUser = useSelector(
-    (storeState) => storeState.userModule.loggedInUser
-  )
+  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
@@ -34,6 +33,15 @@ export function AppHeader() {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const filterBy = getFilterFromSearchParams(searchParams)
+
+  useEffect(() => {
+    const hasToken = document.cookie.includes('loginToken')
+    const hasUser = !!loggedInUser
+
+    if (!hasUser && hasToken) {
+      logout()
+    }
+  }, [loggedInUser])
 
   useEffect(() => {
     loadStays(filterBy)
@@ -128,7 +136,7 @@ export function AppHeader() {
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
-      <header onClick={() => console.log('HEADER CLICKED')}
+      <header
         className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
           }`}
       >
@@ -194,15 +202,14 @@ export function AppHeader() {
           />
         )}
       </header>
-      {/* <div
-        className={`header-backdrop ${
-          !isAtTop && isHeaderExpanded ? 'visible' : ''
-        }`}
+      <div
+        className={`header-backdrop ${!isAtTop && isHeaderExpanded ? 'visible' : ''
+          }`}
         onClick={() => {
           setIsHeaderExpanded(false)
           setActiveSection('')
         }}
-      ></div> */}
+      ></div>
     </>
   )
 }

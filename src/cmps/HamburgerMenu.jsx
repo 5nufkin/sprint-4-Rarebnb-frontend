@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { LoginModal } from '../pages/Login'
 import { userService } from '../services/user/index'
 import { logout } from '../store/actions/user.actions'
 
 export function HamburgerMenu({ onClose, onOpenLogin }) {
   const [loggedInUser, setLoggedInUser] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const user = userService.getLoggedInUser()
@@ -13,6 +14,7 @@ export function HamburgerMenu({ onClose, onOpenLogin }) {
   }, [])
 
   async function onLogout() {
+    navigate('/')
     await logout()
     setLoggedInUser(null)
     window.dispatchEvent(new Event('userChanged'))
