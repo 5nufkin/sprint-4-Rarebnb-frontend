@@ -167,17 +167,6 @@ export function Trips() {
     return 'https://res.cloudinary.com/demo/image/upload/sample.jpg'
   }
 
-  // function toggleSort(field) {
-  //   setSortBy((prev) =>
-  //     prev.field === field ? { field, asc: !prev.asc } : { field, asc: true }
-  //   )
-  // }
-
-  // function renderArrow(field) {
-  //   if (sortBy.field !== field) return '⇅'
-  //   return sortBy.asc ? '↑' : '↓'
-  // }
-
   function formatDate(dateStr) {
     if (!dateStr) return ''
     const date = new Date(dateStr)

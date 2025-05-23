@@ -30,13 +30,15 @@ export function StayIndex() {
 
   return (
     <section className="stay-index main-layout">
-      {isFirstLoad ? (
+      {isFirstLoad && (
         <div className="stay-filter-icon-skeleton">
           <StaySkeletonIconRow />
         </div>
-      ) : (
-        <StayIconFilter />
       )}
+
+      <div className="stay-icon-filter">
+        <StayIconFilter />
+      </div>
 
       {isLoading ? (
         <div className="stay-list grid">
@@ -61,7 +63,9 @@ export function StayIndex() {
             </button>
           </section>
 
-          <StayList stays={stays} />
+          <div className="stay-list main-content">
+            <StayList stays={stays} />
+          </div>
         </>
       )}
     </section>

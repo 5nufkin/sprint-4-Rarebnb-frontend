@@ -131,7 +131,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       height: 2px;
@@ -149,9 +149,14 @@
       opacity: 1;
     }
   }
-
 }
 
 .scroll-btn {
   z-index: 3;
+}
+
+@media (max-width: 764px) {
+  .stay-icon-filter {
+    display: none;
+  }
 }
