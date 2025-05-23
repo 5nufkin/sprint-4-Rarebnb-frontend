@@ -259,7 +259,7 @@ export function AppHeader() {
           setIsHeaderExpanded(false)
           setActiveSection('')
         }}
-      ></div> */}
+      ></div> 
     </>
   )
 }
