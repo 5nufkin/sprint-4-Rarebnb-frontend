@@ -67,15 +67,18 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
       color: $clr-brand-main;
 
-
-      .logo-icon,
       .logo-full {
-        display: none;
+        width: rem(98px);
+        transform: translateX(-2px);
+        visibility: hidden;
+        pointer-events: none;
+        cursor: default;
       }
 
-      // // Show icon only on medium screens
       @media (min-width: 550px) and (max-width: 743px) {
         .logo-icon {
           display: block;
@@ -83,9 +86,9 @@
       }
 
       // Show full logo on wide screens
-      @media (min-width: 744px) {
+      @media (min-width: 950px) {
         .logo-full {
-          display: block;
+          visibility: visible;
         }
       }
     }
