@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 export function MainNav() {
 
-
   return (
     <section className="main-nav">
       <nav>
