@@ -181,9 +181,6 @@ export function AppHeader() {
         <section className="header-content">
           <NavLink to="/" className="logo">
             <AirbnbLogoIcon className="logo-icon" />
-            {/* <AirbnbLogoFull className="logo-full" /> */}
-            {/* <span className='logo-full'>rarebnb</span> */}
-            {/* <span className='logo-full'>airbnb</span> */}
             <img className='logo-full' src="https://res.cloudinary.com/dbbj46yzt/image/upload/v1748125476/ChatGPT_Image_May_25_2025_01_24_19_AM_ih42tm.png" />
           </NavLink>
           {((isAtTop && currPage.pathname === '/') || isHeaderExpanded) && <MainNav />}
