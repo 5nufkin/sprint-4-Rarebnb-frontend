@@ -17,6 +17,7 @@ import { getFilterFromSearchParams } from '../services/util.service'
 import { LoginModal } from '../pages/Login'
 import { logout } from '../store/actions/user.actions'
 import { StayIconFilter } from '../cmps/StayIconFilter'
+import { MainNav } from './MainNav'
 
 export function AppHeader() {
   const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
@@ -69,7 +70,6 @@ export function AppHeader() {
     if (currPage.pathname !== '/') {
       setIsAtTop(false)
       setIsHeaderExpanded(false)
-      return
     }
 
     const observer = new IntersectionObserver(
@@ -190,7 +190,7 @@ export function AppHeader() {
             <AirbnbLogoIcon className="logo-icon" />
             <AirbnbLogoFull className="logo-full" />
           </NavLink>
-          <div className="spacer"></div>
+          {isAtTop && <MainNav />}
           {isScreenWide && (
             <div className="menu-container">
               <button

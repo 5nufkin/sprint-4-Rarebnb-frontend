@@ -41,6 +41,7 @@
 
   .header-content {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     align-items: center;
     font-size: .8em;
@@ -121,14 +122,13 @@ body:has(main.stay-details) .app-header .header-content {
   }
 
   .search-wrapper-card {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
 }
-
-}
-
