@@ -1,15 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom'
-import {
-  AirbnbLogoFull,
-  AirbnbLogoIcon,
-  MagnifyingGlassIcon,
-  MenuIcon,
-  UserGuestIcon,
-} from './Icons'
+import { AirbnbLogoFull, AirbnbLogoIcon, MagnifyingGlassIcon, MenuIcon, UserGuestIcon } from './Icons'
 import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
-import { stayService } from '../services/stay'
 import { loadStays } from '../store/actions/stay.actions'
 import { HamburgerMenu } from './HamburgerMenu'
 import { StayFilterMinimized } from './StayFilterMinimized'
@@ -128,7 +121,7 @@ export function AppHeader() {
   function openLoginModal() {
     closeHamburgerMenu()
     setIsLoginModalOpen(true)
-  }
+  } currPage
 
   function closeLoginModal() {
     setIsLoginModalOpen(false)
@@ -138,7 +131,7 @@ export function AppHeader() {
     <>
       <div className="observer-top" ref={topRef}></div>
       <header
-        className={`app-header main-layout full ${isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
+        className={`app-header main-layout full ${(isAtTop && currPage.pathname === '/') || isHeaderExpanded ? 'header-large' : 'header-small'
           }`}
       >
         {/* Mobile: show compact search bar + icons only at top of page */}
@@ -159,7 +152,7 @@ export function AppHeader() {
         {!isHeaderExpanded && (
           <StayFilterMinimized
             filterBy={filterBy}
-            isHidden={isAtTop}
+            isHidden={isAtTop && currPage.pathname === '/'}
             setIsHeaderExpanded={setIsHeaderExpanded}
             setActiveSection={setActiveSection}
           />
@@ -190,7 +183,7 @@ export function AppHeader() {
             <AirbnbLogoIcon className="logo-icon" />
             <AirbnbLogoFull className="logo-full" />
           </NavLink>
-          {isAtTop && <MainNav />}
+          {((isAtTop && currPage.pathname === '/') || isHeaderExpanded) && <MainNav />}
           {isScreenWide && (
             <div className="menu-container">
               <button
