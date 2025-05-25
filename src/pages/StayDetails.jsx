@@ -55,16 +55,6 @@ export function StayDetails() {
     reviews   : stay.reviews,
   };
 
-  const demoHighlights = [
-    'Your very own island',
-    'Beachfront and garden views',
-    'In-home washer'
-  ]
-  const demoRooms = stay?.imgUrls?.length > 2 ? [
-    { type: 'Bedroom 1', beds: ['King'], imgUrl: stay.imgUrls[1] },
-    { type: 'Bedroom 2', beds: ['Queen'], imgUrl: stay.imgUrls[2] },
-  ] : []
-
   return (
     <main className="stay-details">
 
@@ -89,8 +79,6 @@ export function StayDetails() {
               <AmenitiesGrid amenities={stay.amenities} />
               <div className="section-end" />
               
-              {/* <div className="section-divider" />
-              <SleepingRooms rooms={demoRooms} /> */}
             </div>
 
             <aside className="booking-col">
