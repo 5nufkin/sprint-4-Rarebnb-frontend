@@ -1,4 +1,8 @@
 .reservations {
+  h2 {
+    margin-block: rem(24px);
+  }
+
   .btn-approve,
   .btn-reject {
     padding: 5px 12px;
@@ -15,23 +19,28 @@
   .btn-approve {
     color: $approve-reservation;
     border-color: $approve-reservation;
+
     &:hover {
       background-color: $approve-reservation;
       color: $clr-white;
     }
+
     &.active {
       background-color: $approve-reservation;
       color: $clr-white;
     }
   }
+
   // Reject button
   .btn-reject {
     color: $reject-reservation;
     border-color: $reject-reservation;
+
     &:hover {
       background-color: $reject-reservation;
       color: $clr-white;
     }
+
     &.active {
       background-color: $reject-reservation;
       color: $clr-white;
@@ -43,17 +52,21 @@
     width: 100%;
     border-collapse: collapse;
     font-size: rem(14px);
+
     thead {
       background-color: $gray0;
+
       th {
         &:first-child {
           width: 15%;
         }
+
         &:nth-child(2),
         &:nth-child(3),
         &:nth-child(4) {
           width: 10%;
         }
+
         &:nth-child(7) {
           width: 7%;
         }
@@ -63,13 +76,16 @@
     tbody {
       tr {
         padding-block: rem(10px);
+
         td {
           text-align: center;
           padding: 0.7em 0.9em;
         }
+
         &:nth-child(even) {
           background-color: $gray12;
         }
+
         &:nth-child(even):hover {
           background-color: $gray11;
         }
@@ -116,6 +132,7 @@ tr:hover {
 ///////////////////////////////////////////////////////////////
 @media (max-width: 600px) {
   .reservations {
+
     table,
     tbody,
     th,
@@ -123,6 +140,7 @@ tr:hover {
     tr {
       display: block;
     }
+
     thead {
       display: none;
     }
@@ -138,10 +156,14 @@ tr:hover {
       grid-template-rows: repeat(4, auto);
       gap: 0.6em 1em;
 
-      :nth-child(1),:nth-child(4),:nth-child(5),:nth-child(8) {
+      :nth-child(1),
+      :nth-child(4),
+      :nth-child(5),
+      :nth-child(8) {
         background-color: $gray-1;
       }
     }
+
     tbody td {
       display: flex;
       flex-direction: column;

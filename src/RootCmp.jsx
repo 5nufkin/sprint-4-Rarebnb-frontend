@@ -1,5 +1,5 @@
 // import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router'
 import { useEffect } from 'react'
 
 import { StayIndex } from './pages/StayIndex.jsx'
@@ -28,6 +28,8 @@ import { useSelector } from 'react-redux'
 
 export function RootCmp() {
   // const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+  const location = useLocation()
+  const isIndexPage = location.pathname === '/'
 
   // useEffect(() => {
   //   if (loggedInUser) return
@@ -56,7 +58,7 @@ export function RootCmp() {
     <>
       <AppHeader />
       <UserMsg />
-      <main className="main-layout">
+      <main className={`main-layout ${isIndexPage ? 'home-padding' : 'default-padding'}`}>
         <Routes>
           <Route path="/" element={<StayIndex />} />
           <Route path="stay/:stayId" element={<StayDetails />} />

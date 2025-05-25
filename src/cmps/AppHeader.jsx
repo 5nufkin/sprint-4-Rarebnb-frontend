@@ -1,28 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useSearchParams } from 'react-router-dom'
-import {
-  AirbnbLogoFull,
-  AirbnbLogoIcon,
-  MagnifyingGlassIcon,
-  MenuIcon,
-  UserGuestIcon,
-} from './Icons'
+import { useSelector } from 'react-redux'
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom'
+import { AirbnbLogoFull, AirbnbLogoIcon, MagnifyingGlassIcon, MenuIcon, UserGuestIcon } from './Icons'
 import { StayFilterExpanded } from '../cmps/StayFilterExpanded'
-import { stayService } from '../services/stay'
 import { loadStays } from '../store/actions/stay.actions'
 import { HamburgerMenu } from './HamburgerMenu'
 import { StayFilterMinimized } from './StayFilterMinimized'
 import { getFilterFromSearchParams } from '../services/util.service'
 import { LoginModal } from '../pages/Login'
+import { logout } from '../store/actions/user.actions'
 import { StayIconFilter } from '../cmps/StayIconFilter'
+import { MainNav } from './MainNav'
 
 export function AppHeader() {
-  const loggedInUser = useSelector(
-    (storeState) => storeState.userModule.loggedInUser
-  )
-  // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-  // const pageIdx = useSelector(storeState => storeState.stayModule.pageIdx)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.loggedInUser)
   const [isAtTop, setIsAtTop] = useState(true)
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true)
   const [isScreenWide, setIsScreenWide] = useState(window.innerWidth > 639)
@@ -45,11 +36,19 @@ export function AppHeader() {
   const menuRef = useRef()
   const buttonRef = useRef()
   const topRef = useRef()
+  const currPage = useLocation()
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const dispatch = useDispatch()
-  const defaultFilter = stayService.getDefaultFilter()
   const filterBy = getFilterFromSearchParams(searchParams)
+
+  useEffect(() => {
+    const hasToken = document.cookie.includes('loginToken')
+    const hasUser = !!loggedInUser
+
+    if (!hasUser && hasToken) {
+      logout()
+    }
+  }, [loggedInUser])
 
   useEffect(() => {
     loadStays(filterBy)
@@ -61,6 +60,11 @@ export function AppHeader() {
   }, [])
 
   useEffect(() => {
+    if (currPage.pathname !== '/') {
+      setIsAtTop(false)
+      setIsHeaderExpanded(false)
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsAtTop(entry.isIntersecting)
@@ -78,7 +82,7 @@ export function AppHeader() {
     return () => {
       if (topRef.current) observer.unobserve(topRef.current)
     }
-  }, [])
+  }, [currPage.pathname])
 
   useEffect(() => {
     function handleResize() {
@@ -117,7 +121,7 @@ export function AppHeader() {
   function openLoginModal() {
     closeHamburgerMenu()
     setIsLoginModalOpen(true)
-  }
+  } currPage
 
   function closeLoginModal() {
     setIsLoginModalOpen(false)
@@ -126,10 +130,9 @@ export function AppHeader() {
   return (
     <>
       <div className="observer-top" ref={topRef}></div>
-      <header onClick={()=>console.log('HEADER CLICKED')}
-        className={`app-header main-layout full ${
-          isAtTop || isHeaderExpanded ? 'header-large' : 'header-small'
-        }`}
+      <header
+        className={`app-header main-layout full ${(isAtTop && currPage.pathname === '/') || isHeaderExpanded ? 'header-large' : 'header-small'
+          }`}
       >
         {/* Mobile: show compact search bar + icons only at top of page */}
         {!isScreenWide && isAtTop && !isHeaderExpanded && (
@@ -149,7 +152,7 @@ export function AppHeader() {
         {!isHeaderExpanded && (
           <StayFilterMinimized
             filterBy={filterBy}
-            isHidden={isAtTop}
+            isHidden={isAtTop && currPage.pathname === '/'}
             setIsHeaderExpanded={setIsHeaderExpanded}
             setActiveSection={setActiveSection}
           />
@@ -178,9 +181,9 @@ export function AppHeader() {
         <section className="header-content">
           <NavLink to="/" className="logo">
             <AirbnbLogoIcon className="logo-icon" />
-            <AirbnbLogoFull className="logo-full" />
+            <img className='logo-full' src="https://res.cloudinary.com/dbbj46yzt/image/upload/v1748125476/ChatGPT_Image_May_25_2025_01_24_19_AM_ih42tm.png" />
           </NavLink>
-          <div className="spacer"></div>
+          {((isAtTop && currPage.pathname === '/') || isHeaderExpanded) && <MainNav />}
           {isScreenWide && (
             <div className="menu-container">
               <button
@@ -249,17 +252,14 @@ export function AppHeader() {
           </div>
         )}
       </header>
-
-      {/* Dark backdrop behind modal filter (mobile only) */}
       <div
-        className={`header-backdrop ${
-          !isAtTop && isHeaderExpanded ? 'visible' : ''
-        }`}
+        className={`header-backdrop ${!isAtTop && isHeaderExpanded ? 'visible' : ''
+          }`}
         onClick={() => {
           setIsHeaderExpanded(false)
           setActiveSection('')
         }}
-      ></div> 
+      ></div>
     </>
   )
 }

@@ -5,7 +5,8 @@
   width: 16.7em;
   background-color: $clr-bg;
   border-radius: 16px;
-  box-shadow: 0 4px 16px $clr-btn-menu;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+
   padding: 0.3em 0;
   z-index: 1000;
   margin-top: 1em;
@@ -60,6 +61,7 @@
 .hamburger-menu li:nth-child(7) {
   border-top: 1px solid #ebebeb;
 }
+
 .hamburger-menu li:first-child,
 .hamburger-menu li:nth-child(2) {
   font-weight: 600;
@@ -93,10 +95,6 @@
 .header-content {
   display: flex;
   align-items: center;
-}
-
-.spacer {
-  flex: 1;
 }
 
 .menu-icon {

@@ -45,6 +45,14 @@
     max-width: unset;
   }
 
+  &.home-padding {
+    padding-block-start: 200px;
+  }
+
+  &.default-padding {
+    padding-block-start: 80px;
+  }
+
   // margin-block: rem(16px) rem(82px); // Optional: applies to the whole page
 }
 
