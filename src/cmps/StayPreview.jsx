@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { stayService } from '../services/stay'
 import { HeartIcon, StarIcon } from './Icons'
 import { formatRating } from '../services/util.service';
@@ -10,11 +10,14 @@ import 'swiper/css/pagination'
 
 
 export function StayPreview({ stay }) {
-
+  const [searchParams, setSearchParams] = useSearchParams()
 
   return (
     <article className="stay-preview">
-      <Link to={`/stay/${stay._id}`}>
+      <Link to={{
+        pathname: `/stay/${stay._id}`,
+        search: `?${searchParams.toString()}`
+      }}>
 
         <section className="preview-img">
           {/* <img src={stay.imgUrls[0]} alt={stay.name} />

@@ -12,9 +12,7 @@ export function StayIndex() {
   const totalPages = useSelector((store) => store.stayModule.totalPages)
   const [searchParams, setSearchParams] = useSearchParams()
   const pageIdx = +searchParams.get('pageIdx' || 0)
-  const isLoading = useSelector(
-    (storeState) => storeState.systemModule.isLoading
-  )
+  const isLoading = useSelector((storeState) => storeState.systemModule.isLoading)
   const [isFirstLoad, setIsFirstLoad] = useState(true)
 
   useEffect(() => {
