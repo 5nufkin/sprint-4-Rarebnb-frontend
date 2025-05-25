@@ -64,16 +64,6 @@ export function StayDetails() {
     reviews: stay.reviews,
   };
 
-  const demoHighlights = [
-    'Your very own island',
-    'Beachfront and garden views',
-    'In-home washer'
-  ]
-  const demoRooms = stay?.imgUrls?.length > 2 ? [
-    { type: 'Bedroom 1', beds: ['King'], imgUrl: stay.imgUrls[1] },
-    { type: 'Bedroom 2', beds: ['Queen'], imgUrl: stay.imgUrls[2] },
-  ] : []
-
   return (
     <main className="stay-details">
 

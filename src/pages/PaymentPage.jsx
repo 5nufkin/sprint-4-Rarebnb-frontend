@@ -9,6 +9,7 @@ import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
 import { GlowButton } from "../cmps/PaymentPage/GlowButton"
 import { placeOrder } from "../store/actions/order.actions"
 import { useSelector } from "react-redux"
+import { PaymentPageSkeleton } from "../cmps/StaySkeleton"
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
@@ -41,8 +42,7 @@ export function PaymentPage() {
     placeOrder(orderToSave)
   }
 
-  if (!stay) return <div>Loading…</div>
-
+  if (!stay) return <PaymentPageSkeleton />
   return (
     <section className="payment-page">
       {!isConfirmed && <h1 className="back-to-detail">Request to book</h1>}
