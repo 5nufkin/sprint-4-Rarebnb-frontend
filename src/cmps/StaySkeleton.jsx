@@ -40,6 +40,54 @@ export function StaySkeletonIconFilter() {
   )
 }
 
+export function PaymentPageSkeleton() {
+  return (
+    <section className="payment-page-skeleton main-payment-grid">
+      {/* LEFT SIDE */}
+      <div className="payment-left">
+        {/* Payment Method */}
+        <div className="skeleton card-skeleton payment-method-skeleton">
+          <div className="line short"></div>
+          <div className="line medium"></div>
+        </div>
+
+        {/* Message to host */}
+        <div className="skeleton card-skeleton message-to-host-skeleton">
+          <div className="line short"></div>
+          <div className="line long"></div>
+          <div className="textarea-skeleton"></div>
+        </div>
+
+        {/* Info text */}
+        <div className="line text-skeleton"></div>
+
+        {/* Button */}
+        <div className="skeleton btn-skeleton"></div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="booking-summary-wrapper">
+        <div className="skeleton card-skeleton booking-summary-skeleton large-skeleton">
+          <div className="img-placeholder small"></div>
+          <div className="line medium"></div>
+          <div className="line short"></div>
+          <div className="line long"></div>
+          <div className="line medium"></div>
+          <div className="line short"></div>
+          <div className="line medium"></div>
+          <div className="line short"></div>
+        </div>
+      {/* Rare find */}
+      <div className="rare-find-skeleton skeleton">
+        <div className="icon-placeholder"></div>
+        <div className="line short"></div>
+        <div className="line xshort"></div>
+      </div>
+      </div>
+
+    </section>
+  )
+}
 
 export function StaySkeletonIconRow() {
   return (

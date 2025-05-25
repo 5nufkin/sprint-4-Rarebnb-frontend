@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
 export function ReviewModal({ reviews, onClose }) {
   function handleBackdropClick(ev) {
@@ -34,7 +34,9 @@ export function ReviewModal({ reviews, onClose }) {
                 />
                 <div>
                   <h4>{review.by.fullname}</h4>
-                  <p className="review-location">{review.date || 'Unknown date'}</p>
+                  <p className="review-location">
+                    {review.date || 'Unknown date'}
+                  </p>
                 </div>
               </div>
               <p className="review-text">{review.txt}</p>
