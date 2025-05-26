@@ -83,9 +83,9 @@ export function PaymentPage() {
             </>
           ) : (
             <div className="confirmation-success">
-              <h2 className="success-header">
+              <h1 className="success-header">
                 <ReservationSuccess /> Reservation success!
-              </h2>
+              </h1>
               <div className="rare-find-confirmation">
                 <RareFindDiamond />
               </div>
