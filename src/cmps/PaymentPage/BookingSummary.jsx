@@ -53,10 +53,11 @@ export function BookingSummary({ isConfirmed }) {
             <img src={stay.imgUrls[0]} alt="Stay" className="stay-img" />
             <div className="stay-info">
               <h3>{stay.name}</h3>
+              <span className="stay-type-payment">{stay.type}</span>
               <div className="rating-line">
+                <StarIcon/>
                 <span>
-                  <StarIcon />
-                  {stay.avgRating} ({stay.reviews.length})
+                  {stay.avgRating} ({stay.reviews.length} reviews)
                 </span>
                 {stay.isSuperhost && (
                   <span className="superhost"> • Superhost</span>

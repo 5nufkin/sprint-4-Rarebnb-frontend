@@ -63,6 +63,9 @@ export function BookingWidget({ stay }) {
     updateOrderToSave(key, date)
   }
 
+  const isDatesFilled = !!(startDate && endDate && numOfNights > 0)
+  const buttonText = isDatesFilled ? "Reserve" : "Check availability"
+
   return (
     <>
       <div className="booking-widget">
@@ -75,8 +78,6 @@ export function BookingWidget({ stay }) {
           <span className="stay-price">${stay.price.toLocaleString()}</span>
           <span className="stay-per">night</span>
         </div>
-
-
         <div className="field-grid">
           <div className="field-cell">
             <label>CHECK-IN</label>
@@ -115,7 +116,8 @@ export function BookingWidget({ stay }) {
           className="reserve-btn glow-buton"
           disabled={!numOfNights}
           onClick={onReserve}
-        >Reserve
+        >
+          {buttonText}
         </GlowButton>
         <p className="note">You won't be charged yet</p>
 

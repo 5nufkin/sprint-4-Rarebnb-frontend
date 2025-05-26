@@ -2,7 +2,6 @@ import { HeroGallery } from '../cmps/StayDetails/HeroGallery.jsx'
 import { HeadingBar } from '../cmps/StayDetails/HeadingBar.jsx'
 import { Highlights } from '../cmps/StayDetails/Highlights.jsx'
 import { AmenitiesGrid } from '../cmps/StayDetails/AmenitiesGrid.jsx'
-// import { SleepingRooms } from '../cmps/StayDetails/SleepingRooms.jsx'
 import { ReviewsSection } from '../cmps/StayDetails/ReviewsSection.jsx'
 import { LocationMap } from '../cmps/StayDetails/LocationMap.jsx'
 import { HostCard } from '../cmps/StayDetails/HostCard.jsx'
@@ -14,15 +13,26 @@ import '../assets/styles/pages/StayDetails.scss'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay/index.js'
-import { setEmptyOrderToSave } from '../store/actions/order.actions.js'
+import { setEmptyOrderToSave, updateOrderToSave } from '../store/actions/order.actions.js'
 import { useSelector } from 'react-redux'
 import { StayDetailsSkeleton } from '../cmps/StaySkeleton.jsx'
+import { useSearchParams } from 'react-router-dom'
 
 
 export function StayDetails() {
   const [stay, setStay] = useState(null)
   const { stayId } = useParams()
   const orderToSave = useSelector(storeState => storeState.orderModule.orderToSave)
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const checkIn = searchParams.get('checkIn')
+  const checkOut = searchParams.get('checkOut')
+  const guests = {
+    adults: +searchParams.get('adults'),
+    children: +searchParams.get('children'),
+    infants: +searchParams.get('infants'),
+    pets: +searchParams.get('pets'),
+  }
 
   useEffect(() => {
     async function loadStay() {
@@ -32,6 +42,9 @@ export function StayDetails() {
 
         try {
           setEmptyOrderToSave(stay)
+          if (checkIn) updateOrderToSave('startDate', new Date(checkIn))
+          if (checkOut) updateOrderToSave('endDate', new Date(checkOut))
+          updateOrderToSave('guestCountMap', guests)
         } catch (err) {
           console.error('Error setting empty order:', err)
         }
@@ -43,34 +56,20 @@ export function StayDetails() {
     loadStay()
   }, [stayId])
 
-  useEffect(() => {
-    stayService.getById(stayId).then(setStay)
-  }, [stayId])
-
   if (!stay) return <StayDetailsSkeleton />
 
-    const hostWithStats = {
+  const hostWithStats = {
     ...stay.host,
-    avgRating : stay.avgRating,
-    reviews   : stay.reviews,
+    avgRating: stay.avgRating,
+    reviews: stay.reviews,
   };
-
-  const demoHighlights = [
-    'Your very own island',
-    'Beachfront and garden views',
-    'In-home washer'
-  ]
-  const demoRooms = stay?.imgUrls?.length > 2 ? [
-    { type: 'Bedroom 1', beds: ['King'], imgUrl: stay.imgUrls[1] },
-    { type: 'Bedroom 2', beds: ['Queen'], imgUrl: stay.imgUrls[2] },
-  ] : []
 
   return (
     <main className="stay-details">
 
       <div className="page-container">
         <div className="scroll-area">
-        <AssetTitle title={stay.name} />
+          <AssetTitle title={stay.name} />
           <HeroGallery images={stay.imgUrls} />
           <HeadingBar stay={stay} />
           <div className="main-grid">
@@ -88,9 +87,6 @@ export function StayDetails() {
 
               <AmenitiesGrid amenities={stay.amenities} />
               <div className="section-end" />
-              
-              {/* <div className="section-divider" />
-              <SleepingRooms rooms={demoRooms} /> */}
             </div>
 
             <aside className="booking-col">
@@ -99,11 +95,11 @@ export function StayDetails() {
 
           </div>
         </div>
-              <ReviewsSection stay={stay} />
-              <div className="section-divider" />
-              <LocationMap location={stay.loc} />
-              <HostCard host={hostWithStats} />
-              <div className="section-divider" />
+        <ReviewsSection stay={stay} />
+        <div className="section-divider" />
+        <LocationMap location={stay.loc} />
+        <HostCard host={hostWithStats} />
+        <div className="section-divider" />
       </div>
     </main>
   )

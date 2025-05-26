@@ -28,7 +28,7 @@
       }
 
       .rating-line {
-        font-size: 0.8em;
+        font-size: 0.9rem;
         color: $clr7;
       }
 
@@ -49,6 +49,14 @@
     border-top: 1px solid $gray1;
     padding-top: 0.85em;
   }
+}
+
+.stay-type-payment{
+  font-size: 0.9em;
+}
+
+.rating-star-payment{
+  font-size: .75rem;
 }
 
 .payment-summary-bottom {

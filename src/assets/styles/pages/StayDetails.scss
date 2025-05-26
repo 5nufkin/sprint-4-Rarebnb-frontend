@@ -4,11 +4,6 @@ $bp-tablet: 768px;
 $bp-laptop: 1024px;
 $bp-desktop: 1280px;
 
-@mixin mq($from) {
-  @media (min-width: $from) {
-    @content;
-  }
-}
 
 /* ========= HERO ========= */
 .hero-gallery {
@@ -22,18 +17,6 @@ $bp-desktop: 1280px;
   gap: 0.5rem;
   border-radius: 0.75rem;
   overflow: hidden;
-
-  @include mq($bp-tablet) {
-    grid-auto-rows: 15rem;
-  }
-
-  @include mq($bp-laptop) {
-    grid-auto-rows: 18rem;
-  }
-
-  @include mq($bp-desktop) {
-    grid-auto-rows: 20rem;
-  }
 }
 
 .hero-img {
@@ -61,7 +44,6 @@ $bp-desktop: 1280px;
 .hero-4 {
   grid-area: side4;
 }
-
 
 .hero-img,
 .btn-show-all {
@@ -129,13 +111,6 @@ $bp-desktop: 1280px;
   &:hover {
     background: rgba(0, 0, 0, 0.7);
   }
-
-  @include mq($bp-tablet) {
-    top: 0.5rem;
-    right: 0.5rem;
-    background: none;
-    font-size: 2.5rem;
-  }
 }
 
 .slider-viewport {
@@ -190,22 +165,10 @@ $bp-desktop: 1280px;
 
   &--prev {
     left: 0.5rem;
-
-    @include mq($bp-tablet) {
-      left: 1rem;
-      padding: 1rem 1.25rem;
-      font-size: 2rem;
-    }
   }
 
   &--next {
     right: 0.5rem;
-
-    @include mq($bp-tablet) {
-      right: 1rem;
-      padding: 1rem 1.25rem;
-      font-size: 2rem;
-    }
   }
 
   &:disabled {
@@ -225,11 +188,6 @@ $bp-desktop: 1280px;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   z-index: 1102;
-
-  @include mq($bp-tablet) {
-    bottom: 1rem;
-    font-size: 1rem;
-  }
 }
 
 
@@ -239,10 +197,6 @@ $bp-desktop: 1280px;
   margin-bottom: 1rem;
   font-size: 1.625rem;
   font-weight: 500;
-
-  @include mq($bp-tablet) {
-    margin: 1.25rem 0;
-  }
 }
 
 .title-row {
@@ -250,10 +204,6 @@ $bp-desktop: 1280px;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-
-  @include mq($bp-tablet) {
-    flex-wrap: nowrap;
-  }
 }
 
 .title-actions {
@@ -280,33 +230,17 @@ $bp-desktop: 1280px;
       text-decoration: underline;
     }
   }
-
-  @include mq($bp-tablet) {
-    margin-left: auto;
-    width: auto;
-    justify-content: flex-end;
-    gap: 1.25rem;
-    flex-wrap: nowrap;
-  }
 }
 
 /* ========= HEADING BAR ========= */
 .heading-bar {
   margin-top: 1rem;
-
-  @include mq($bp-tablet) {
-    margin-top: 1.5rem;
-  }
 }
 
 .stay-type {
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: -0.313rem;
-
-  @include mq($bp-tablet) {
-    font-size: 1.375rem;
-  }
 
   @media (max-width:$bp-mobile - 1) {
     font-size: 1.25rem;
@@ -317,10 +251,6 @@ $bp-desktop: 1280px;
   margin: 0 0 0.5rem;
   font-size: 0.9rem;
   color: #222;
-
-  @include mq($bp-tablet) {
-    font-size: 1rem;
-  }
 }
 
 .rating-line {
@@ -331,11 +261,6 @@ $bp-desktop: 1280px;
   align-items: center;
   gap: 0.25rem;
 
-  @include mq($bp-tablet) {
-    font-size: 1.125rem;
-    line-height: 1;
-  }
-
   @media (max-width:$bp-mobile - 1) {
     font-size: 1rem;
   }
@@ -343,10 +268,6 @@ $bp-desktop: 1280px;
 
 .star {
   font-size: 0.7rem;
-
-  @include mq($bp-tablet) {
-    font-size: .75rem;
-  }
 }
 
 .reviews-link {
@@ -359,10 +280,6 @@ $bp-desktop: 1280px;
   border: none;
   cursor: pointer;
   margin-left: 0.5rem;
-
-  @include mq($bp-tablet) {
-    margin-left: .75rem;
-  }
 }
 
 /* ========= HOST SUMMARY ========= */
@@ -370,10 +287,6 @@ $bp-desktop: 1280px;
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  @include mq($bp-tablet) {
-    gap: 1.375rem;
-  }
 }
 
 .host-avatar {
@@ -381,30 +294,17 @@ $bp-desktop: 1280px;
   height: 2rem;
   border-radius: 50%;
   object-fit: cover;
-
-  @include mq($bp-tablet) {
-    width: 2.625rem;
-    height: 2.625rem;
-  }
 }
 
 .host-title {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 500;
-
-  @include mq($bp-tablet) {
-    font-size: 1rem;
-  }
 }
 
 .host-sub {
   font-size: 0.8rem;
   color: #717171;
-
-  @include mq($bp-tablet) {
-    font-size: .875rem;
-  }
 }
 
 /* ========= GRID LAYOUT ========= */
@@ -412,15 +312,6 @@ $bp-desktop: 1280px;
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr;
-
-  @include mq($bp-tablet) {
-    grid-template-columns: 1fr 20rem;
-    gap: 2.5rem;
-  }
-
-  @include mq($bp-laptop) {
-    grid-template-columns: 1fr 25rem;
-  }
 }
 
 .booking-col {
@@ -428,13 +319,6 @@ $bp-desktop: 1280px;
   top: auto;
   height: auto;
   margin: 1rem 0;
-
-  @include mq($bp-tablet) {
-    position: sticky;
-    top: 8rem;
-    height: max-content;
-    margin: 1.25rem auto;
-  }
 }
 
 /* ========= HIGHLIGHTS ========= */
@@ -445,10 +329,6 @@ $bp-desktop: 1280px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  @include mq($bp-tablet) {
-    gap: 1.5rem;
-  }
 }
 
 .highlight-row {
@@ -472,20 +352,7 @@ $bp-desktop: 1280px;
     color: #717171;
     font-size: .75rem;
   }
-
-  @include mq($bp-tablet) {
-    gap: 1.75rem;
-
-    .hl-title {
-      font-size: 0.875rem;
-    }
-
-    .hl-sub {
-      font-size: .875rem;
-    }
-  }
 }
-
 
 /* ========= AMENITIES ========= */
 .amenities-grid {
@@ -510,27 +377,10 @@ $bp-desktop: 1280px;
     transform: scale(1.1);
   }
 
-  @include mq($bp-mobile) {
+  @media (min-width: $bp-mobile) {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include mq($bp-tablet) {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 1rem;
-    column-gap: 3rem;
-
-    li {
-      gap: 1.25rem;
-      font-size: 1rem;
-    }
-
-    .amenity-icn {
-      flex: 0 0 1.25rem;
-      transform: scale(1.3);
-    }
   }
 }
-
 
 .amenities-grid li {
   padding: 0.25rem 0;
@@ -540,11 +390,6 @@ $bp-desktop: 1280px;
   font-size: 1.25rem;
   font-weight: 500;
   margin: 0 0 1rem;
-
-  @include mq($bp-tablet) {
-    font-size: 1.5rem;
-    margin: 0 0 1.25rem;
-  }
 }
 
 /* ========= SLEEPING ROOMS ========= */
@@ -561,10 +406,6 @@ $bp-desktop: 1280px;
 .sleeping-card {
   flex: 0 0 12rem;
   scroll-snap-align: start;
-
-  @include mq($bp-mobile) {
-    flex: 0 0 15rem;
-  }
 }
 
 .sleeping-card img {
@@ -572,10 +413,6 @@ $bp-desktop: 1280px;
   height: 8rem;
   object-fit: cover;
   border-radius: 0.5rem;
-
-  @include mq($bp-mobile) {
-    height: 10rem;
-  }
 }
 
 /* ========= BOOKING WIDGET ========= */
@@ -583,10 +420,6 @@ $bp-desktop: 1280px;
   height: 1px;
   background: #dddddd;
   margin: 1rem 0;
-
-  @include mq($bp-tablet) {
-    margin: 1.25rem 0;
-  }
 }
 
 .section-end {
@@ -605,16 +438,8 @@ $bp-desktop: 1280px;
   .glow-button {
     border-radius: 1.875rem;
     font-size: 1.05em;
+    font-weight: 600;
     margin-top: 0.75rem;
-  }
-
-  @include mq($bp-tablet) {
-    padding: 2.5rem;
-
-    .glow-button {
-      font-size: 1.15em;
-      margin-top: 1rem;
-    }
   }
 }
 
@@ -649,21 +474,6 @@ $bp-desktop: 1280px;
     height: 0.8rem;
     fill: #ff385c;
   }
-
-  @include mq($bp-tablet) {
-    top: -1rem;
-    width: 100%;
-    min-width: 18rem;
-    padding: .625rem 1.25rem;
-    gap: .5rem;
-    font-size: .9375rem;
-
-    svg {
-      flex: 0 0 1rem;
-      width: 1rem;
-      height: 1rem;
-    }
-  }
 }
 
 .stay-price-line {
@@ -684,20 +494,6 @@ $bp-desktop: 1280px;
     color: #222;
   }
 
-  @include mq($bp-tablet) {
-    gap: .15em;
-    font-size: 1.75rem;
-    margin-bottom: 1.25rem;
-
-    .stay-price {
-      font-size: 1.5rem;
-    }
-
-    .stay-per {
-      font-size: 1.125rem;
-    }
-  }
-
   @media (max-width:$bp-mobile - 1) {
     font-size: 1.5rem;
   }
@@ -709,10 +505,6 @@ $bp-desktop: 1280px;
   border: 1px solid #b0b0b0;
   border-radius: 0.5rem;
   overflow: visible;
-
-  @include mq($bp-mobile) {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .field-cell {
@@ -725,18 +517,10 @@ $bp-desktop: 1280px;
   &:last-of-type {
     border-bottom: 1px solid #b0b0b0;
   }
-
-  @include mq($bp-tablet) {
-    padding: 0.5rem 0.75rem;
-  }
 }
 
 .field-cell:nth-child(2) {
   border-right: 1px solid #b0b0b0;
-
-  @include mq($bp-mobile) {
-    border-right: none;
-  }
 }
 
 .field-cell.guests-cell {
@@ -744,15 +528,6 @@ $bp-desktop: 1280px;
   border-bottom: none;
   position: relative;
   border-right: 1px solid #b0b0b0;
-
-  @include mq($bp-mobile) {
-    grid-column: 1/3;
-    border-right: none;
-  }
-
-  @include mq($bp-tablet) {
-    grid-column: 1/3;
-  }
 }
 
 .field-cell label {
@@ -761,12 +536,6 @@ $bp-desktop: 1280px;
   letter-spacing: .5px;
   color: #222;
   margin-bottom: 0.1rem;
-
-  @include mq($bp-tablet) {
-    font-size: 0.625rem;
-    letter-spacing: .6px;
-    margin-bottom: 0.125rem;
-  }
 }
 
 .date-input,
@@ -776,10 +545,6 @@ $bp-desktop: 1280px;
   width: 100%;
   padding: 0;
   outline: none;
-
-  @include mq($bp-tablet) {
-    font-size: 0.875rem;
-  }
 }
 
 .note {
@@ -787,31 +552,17 @@ $bp-desktop: 1280px;
   margin: 0.4rem 0 0;
   color: #222;
   font-size: 0.8rem;
-
-  @include mq($bp-tablet) {
-    margin: 0.5rem 0 0;
-    font-size: 0.875rem;
-  }
 }
 
 .breakdown {
   margin-top: 1rem;
   font-size: 0.9rem;
-
-  @include mq($bp-tablet) {
-    margin-top: 1.5rem;
-    font-size: 1rem;
-  }
 }
 
 .breakdown div {
   display: flex;
   justify-content: space-between;
   margin: 0.3rem 0;
-
-  @include mq($bp-tablet) {
-    margin: 0.375rem 0;
-  }
 }
 
 .breakdown a {
@@ -822,10 +573,6 @@ $bp-desktop: 1280px;
   border: none;
   border-top: 1px solid #ddd;
   margin: 0.5rem 0;
-
-  @include mq($bp-tablet) {
-    margin: 0.75rem 0;
-  }
 }
 
 .total {
@@ -840,11 +587,6 @@ $bp-desktop: 1280px;
   color: #717171;
   font-weight: 600;
   text-decoration: underline;
-
-  @include mq($bp-tablet) {
-    margin: 1.25rem auto 0;
-    font-size: 0.875rem;
-  }
 }
 
 .guests-btn {
@@ -857,10 +599,6 @@ $bp-desktop: 1280px;
   text-align: left;
   cursor: pointer;
   position: relative;
-
-  @include mq($bp-tablet) {
-    padding: 0 2rem 0 0;
-  }
 }
 
 .guests-btn::after {
@@ -875,11 +613,6 @@ $bp-desktop: 1280px;
   border-bottom: 2px solid currentColor;
   transform: rotate(45deg);
   transition: transform .2s;
-
-  @include mq($bp-tablet) {
-    width: 0.625rem;
-    height: 0.625rem;
-  }
 }
 
 .guests-btn.open::after {
@@ -905,15 +638,6 @@ $bp-desktop: 1280px;
   font-size: 0.9rem;
   font-weight: 600;
   color: #222;
-
-  @include mq($bp-tablet) {
-    min-width: 15rem;
-    max-width: 22.5rem;
-    max-height: calc(100vh - 13.75rem);
-    padding: 1.25rem;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, .15);
-    font-size: 1rem;
-  }
 }
 
 .guests-pop::before {
@@ -927,13 +651,6 @@ $bp-desktop: 1280px;
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;
   transform: rotate(45deg);
-
-  @include mq($bp-tablet) {
-    top: -0.375rem;
-    left: 2.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-  }
 }
 
 .guests-pop .row {
@@ -941,10 +658,6 @@ $bp-desktop: 1280px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.75rem;
-
-  @include mq($bp-tablet) {
-    margin-bottom: 1.25rem;
-  }
 }
 
 .guests-pop .lbl .sub {
@@ -952,20 +665,12 @@ $bp-desktop: 1280px;
   font-size: 0.75rem;
   font-weight: 400;
   color: #222;
-
-  @include mq($bp-tablet) {
-    font-size: 0.875rem;
-  }
 }
 
 .guests-pop .ctrls {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-
-  @include mq($bp-tablet) {
-    gap: 0.75rem;
-  }
 }
 
 .guests-pop .ctrls button {
@@ -981,12 +686,6 @@ $bp-desktop: 1280px;
   align-items: center;
   color: #222;
   cursor: pointer;
-
-  @include mq($bp-tablet) {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.25rem;
-  }
 }
 
 .guests-pop .ctrls button:disabled {
@@ -998,11 +697,6 @@ $bp-desktop: 1280px;
   font-size: 0.65rem;
   color: #717171;
   margin-top: 0.25rem;
-
-  @include mq($bp-tablet) {
-    font-size: 0.75rem;
-    margin-top: 0.375rem;
-  }
 }
 
 .guests-pop .close {
@@ -1011,10 +705,6 @@ $bp-desktop: 1280px;
   font-weight: 600;
   margin-top: 0.75rem;
   cursor: pointer;
-
-  @include mq($bp-tablet) {
-    margin-top: 1.125rem;
-  }
 }
 
 /* ========= MAP ========= */
@@ -1024,22 +714,12 @@ $bp-desktop: 1280px;
   border: 0;
   border-radius: 0.75rem;
   margin-top: 0.5rem;
-
-  @include mq($bp-tablet) {
-    height: 23.75rem;
-    margin-top: 0.75rem;
-  }
 }
 
 .where-title {
   font-size: 1rem;
   font-weight: 500;
   margin: 0 0 0.75rem;
-
-  @include mq($bp-tablet) {
-    font-size: 1.25rem;
-    margin: 0 0 1.25rem;
-  }
 }
 
 /* ========= HOST ========= */
@@ -1049,16 +729,6 @@ $bp-desktop: 1280px;
   gap: 1rem;
   grid-template-columns: 1fr;
   align-items: flex-start;
-
-  @include mq($bp-tablet) {
-    margin-top: 3rem;
-    grid-template-columns: 20rem 1fr;
-    gap: 2rem;
-  }
-
-  @include mq($bp-laptop) {
-    grid-template-columns: 27.5rem 1fr;
-  }
 }
 
 .host-main {
@@ -1129,60 +799,6 @@ $bp-desktop: 1280px;
       }
     }
   }
-
-  @include mq($bp-mobile) {
-    flex-direction: row;
-    padding: 1.5rem;
-
-    &__txt {
-      text-align: left;
-    }
-
-    .badges {
-      justify-content: flex-start;
-    }
-
-    .stats {
-      justify-content: flex-start;
-    }
-  }
-
-  @include mq($bp-tablet) {
-    padding: 2rem 1.75rem;
-    gap: 1.5rem;
-
-    .avatar {
-      width: 6rem;
-      height: 6rem;
-    }
-
-    .name {
-      margin: 0 0 0.25rem;
-      font-size: 1.5rem;
-    }
-
-    .badges {
-      gap: 0.375rem;
-      margin-bottom: 0.75rem;
-
-      .badge {
-        gap: 0.375rem;
-        font-size: 0.875rem;
-      }
-    }
-
-    .stats {
-      gap: 1.75rem;
-
-      li strong {
-        font-size: 1.25rem;
-      }
-
-      li span {
-        font-size: 0.75rem;
-      }
-    }
-  }
 }
 
 .host-extra {
@@ -1238,8 +854,401 @@ $bp-desktop: 1280px;
       height: 0.8rem;
     }
   }
+}
 
-  @include mq($bp-tablet) {
+
+/* ========= PAGE LAYOUT ========= */
+.page-container {
+  display: grid;
+  grid-template-columns: minmax(0.5rem, 1fr) minmax(auto, 70rem) minmax(0.5rem, 1fr);
+  margin: 0;
+}
+
+.page-container>* {
+  grid-column: 2;
+}
+
+/* ========= REVIEWS & DESCRIPTION ========= */
+.review {
+  margin-top: 0.75rem;
+
+  h4 {
+    margin: 0 0 0.2rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+}
+
+.stay-description {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.sleeping-scroll {
+  max-width: 100%;
+  overflow-x: clip;
+  flex-wrap: wrap;
+}
+
+/* ========= MEDIA QUERIES ========= */
+@media (min-width: $bp-tablet) {
+  /* ========= HERO ========= */
+  .hero-gallery {
+    grid-auto-rows: 15rem;
+  }
+
+  /* ========= PHOTOS MODAL (SLIDER) ========= */
+  .close-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    font-size: 2.5rem;
+  }
+
+  .slider-btn {
+    &--prev {
+      left: 1rem;
+      padding: 1rem 1.25rem;
+      font-size: 2rem;
+    }
+
+    &--next {
+      right: 1rem;
+      padding: 1rem 1.25rem;
+      font-size: 2rem;
+    }
+  }
+
+  .slider-counter {
+    bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  /* ========= HEADING ========= */
+  .stay-title {
+    margin: 1.25rem 0;
+  }
+
+  .title-row {
+    flex-wrap: nowrap;
+  }
+
+  .title-actions {
+    margin-left: auto;
+    width: auto;
+    justify-content: flex-end;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
+  }
+
+  /* ========= HEADING BAR ========= */
+  .heading-bar {
+    margin-top: 1.5rem;
+  }
+
+  .stay-type {
+    font-size: 1.375rem;
+  }
+
+  .stay-info {
+    font-size: 1rem;
+  }
+
+  .rating-line {
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  .star {
+    font-size: .75rem;
+  }
+
+  .icon-btn {
+    margin-left: .75rem;
+  }
+
+  /* ========= HOST SUMMARY ========= */
+  .host-summary {
+    gap: 1.375rem;
+  }
+
+  .host-avatar {
+    width: 2.625rem;
+    height: 2.625rem;
+  }
+
+  .host-title {
+    font-size: 1rem;
+  }
+
+  .host-sub {
+    font-size: .875rem;
+  }
+
+  /* ========= GRID LAYOUT ========= */
+  .main-grid {
+    grid-template-columns: 1fr 20rem;
+    gap: 2.5rem;
+  }
+
+  .booking-col {
+    position: sticky;
+    top: 8rem;
+    height: max-content;
+    margin: 1.25rem auto;
+  }
+
+  /* ========= HIGHLIGHTS ========= */
+  .highlights-list {
+    gap: 1.5rem;
+  }
+
+  .highlight-row {
+    gap: 1.75rem;
+
+    .hl-title {
+      font-size: 0.875rem;
+    }
+
+    .hl-sub {
+      font-size: .875rem;
+    }
+  }
+
+  /* ========= AMENITIES ========= */
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+    column-gap: 3rem;
+
+    li {
+      gap: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .amenity-icn {
+      flex: 0 0 1.25rem;
+      transform: scale(1.3);
+    }
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  /* ========= SLEEPING ROOMS ========= */
+  .sleeping-card {
+    flex: 0 0 15rem;
+  }
+
+  .sleeping-card img {
+    height: 10rem;
+  }
+
+  /* ========= BOOKING WIDGET ========= */
+  .section-divider {
+    margin: 1.25rem 0;
+  }
+
+  .booking-widget {
+    padding: 2.5rem;
+
+    .glow-button {
+      font-size: 1.15em;
+      margin-top: 1rem;
+    }
+  }
+
+  .rare-banner {
+    top: -1rem;
+    width: 100%;
+    min-width: 18rem;
+    padding: .625rem 1.25rem;
+    gap: .5rem;
+    font-size: .9375rem;
+
+    svg {
+      flex: 0 0 1rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .stay-price-line {
+    gap: .15em;
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+
+    .stay-price {
+      font-size: 1.5rem;
+    }
+
+    .stay-per {
+      font-size: 1.125rem;
+    }
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .field-cell {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .field-cell:nth-child(2) {
+    border-right: none;
+  }
+
+  .field-cell.guests-cell {
+    grid-column: 1/3;
+    border-right: none;
+  }
+
+  .field-cell label {
+    font-size: 0.625rem;
+    letter-spacing: .6px;
+    margin-bottom: 0.125rem;
+  }
+
+  .date-input,
+  .guests-cell select {
+    font-size: 0.875rem;
+  }
+
+  .note {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+  }
+
+  .breakdown {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .breakdown div {
+    margin: 0.375rem 0;
+  }
+
+  .breakdown hr {
+    margin: 0.75rem 0;
+  }
+
+  .report-link {
+    margin: 1.25rem auto 0;
+    font-size: 0.875rem;
+  }
+
+  .guests-btn {
+    padding: 0 2rem 0 0;
+  }
+
+  .guests-btn::after {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  .guests-pop {
+    min-width: 15rem;
+    max-width: 22.5rem;
+    max-height: calc(100vh - 13.75rem);
+    padding: 1.25rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, .15);
+    font-size: 1rem;
+  }
+
+  .guests-pop::before {
+    top: -0.375rem;
+    left: 2.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .guests-pop .row {
+    margin-bottom: 1.25rem;
+  }
+
+  .guests-pop .lbl .sub {
+    font-size: 0.875rem;
+  }
+
+  .guests-pop .ctrls {
+    gap: 0.75rem;
+  }
+
+  .guests-pop .ctrls button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .guests-pop .footer {
+    font-size: 0.75rem;
+    margin-top: 0.375rem;
+  }
+
+  .guests-pop .close {
+    margin-top: 1.125rem;
+  }
+
+  /* ========= MAP ========= */
+  .map-section iframe {
+    height: 23.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .where-title {
+    font-size: 1.25rem;
+    margin: 0 0 1.25rem;
+  }
+
+  /* ========= HOST ========= */
+  .host-card {
+    margin-top: 3rem;
+    grid-template-columns: 20rem 1fr;
+    gap: 2rem;
+  }
+
+  .host-main {
+    padding: 2rem 1.75rem;
+    gap: 1.5rem;
+
+    .avatar {
+      width: 6rem;
+      height: 6rem;
+    }
+
+    .name {
+      margin: 0 0 0.25rem;
+      font-size: 1.5rem;
+    }
+
+    .badges {
+      gap: 0.375rem;
+      margin-bottom: 0.75rem;
+
+      .badge {
+        gap: 0.375rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    .stats {
+      gap: 1.75rem;
+
+      li strong {
+        font-size: 1.25rem;
+      }
+
+      li span {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .host-extra {
     .superhost-desc {
       margin: 0 0 1.25rem;
       font-size: 1rem;
@@ -1271,44 +1280,14 @@ $bp-desktop: 1280px;
       }
     }
   }
-}
 
-
-/* ========= PAGE LAYOUT ========= */
-.page-container {
-  display: grid;
-  grid-template-columns: minmax(0.5rem, 1fr) minmax(auto, 70rem) minmax(0.5rem, 1fr);
-  margin: 0;
-
-  @include mq($bp-mobile) {
-    grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70rem) minmax(1rem, 1fr);
-  }
-
-  @include mq($bp-tablet) {
+  /* ========= PAGE LAYOUT ========= */
+  .page-container {
     grid-template-columns: minmax(1.25rem, 1fr) minmax(auto, 70rem) minmax(1.25rem, 1fr);
   }
 
-  @include mq($bp-desktop) {
-    grid-template-columns: minmax(2rem, 1fr) minmax(auto, 80rem) minmax(2rem, 1fr);
-  }
-}
-
-.page-container>* {
-  grid-column: 2;
-}
-
-
-/* ========= REVIEWS & DESCRIPTION ========= */
-.review {
-  margin-top: 0.75rem;
-
-  h4 {
-    margin: 0 0 0.2rem 0;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-
-  @include mq($bp-tablet) {
+  /* ========= REVIEWS & DESCRIPTION ========= */
+  .review {
     margin-top: 1rem;
 
     h4 {
@@ -1316,21 +1295,38 @@ $bp-desktop: 1280px;
       font-size: 1.15rem;
     }
   }
-}
 
-.stay-description {
-  margin: 1rem 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-
-  @include mq($bp-tablet) {
+  .stay-description {
     margin: 1.5rem 0;
     font-size: 1rem;
   }
 }
 
-.sleeping-scroll {
-  max-width: 100%;
-  overflow-x: clip;
-  flex-wrap: wrap;
+@media (min-width: $bp-laptop) {
+  /* ========= HERO ========= */
+  .hero-gallery {
+    grid-auto-rows: 18rem;
+  }
+
+  /* ========= GRID LAYOUT ========= */
+  .main-grid {
+    grid-template-columns: 1fr 25rem;
+  }
+
+  /* ========= HOST ========= */
+  .host-card {
+    grid-template-columns: 27.5rem 1fr;
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  /* ========= HERO ========= */
+  .hero-gallery {
+    grid-auto-rows: 20rem;
+  }
+
+  /* ========= PAGE LAYOUT ========= */
+  .page-container {
+    grid-template-columns: minmax(2rem, 1fr) minmax(auto, 80rem) minmax(2rem, 1fr);
+  }
 }
