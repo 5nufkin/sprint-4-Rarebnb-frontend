@@ -1,15 +1,15 @@
-import { BookingSummary } from "../cmps/PaymentPage/BookingSummary"
-import { MessageToHost } from "../cmps/PaymentPage/MessageToHost"
-import { PaymentMethod } from "../cmps/PaymentPage/PaymentMethod"
-import { useNavigate, useParams } from "react-router"
-import { useEffect, useState } from "react"
-import { stayService } from "../services/stay"
-import { ReservationSuccess } from "../cmps/Icons"
-import { RareFindDiamond } from "../cmps/PaymentPage/RareFindDiamond"
-import { GlowButton } from "../cmps/PaymentPage/GlowButton"
-import { placeOrder } from "../store/actions/order.actions"
-import { useSelector } from "react-redux"
-import { PaymentPageSkeleton } from "../cmps/StaySkeleton"
+import { BookingSummary } from '../cmps/PaymentPage/BookingSummary'
+import { MessageToHost } from '../cmps/PaymentPage/MessageToHost'
+import { PaymentMethod } from '../cmps/PaymentPage/PaymentMethod'
+import { useNavigate, useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import { stayService } from '../services/stay'
+import { FullLeftArrow, ReservationSuccess } from '../cmps/Icons'
+import { RareFindDiamond } from '../cmps/PaymentPage/RareFindDiamond'
+import { GlowButton } from '../cmps/PaymentPage/GlowButton'
+import { placeOrder } from '../store/actions/order.actions'
+import { useSelector } from 'react-redux'
+import { PaymentPageSkeleton } from '../cmps/StaySkeleton'
 
 export function PaymentPage() {
   const [stay, setStay] = useState(null)
@@ -43,9 +43,9 @@ export function PaymentPage() {
   }
 
   if (!stay) return <PaymentPageSkeleton />
+
   return (
     <section className="payment-page">
-      {!isConfirmed && <h1 className="back-to-detail">Request to book</h1>}
       <div className="main-payment-grid">
         {/* SIDE: RIGHT */}
         <div className="booking-summary-wrapper">
@@ -57,12 +57,26 @@ export function PaymentPage() {
         <div className="payment-left">
           {!isConfirmed ? (
             <>
+              <div className="payment-header">
+                <button
+                  className="payment-header-btn"
+                  onClick={() => navigate(`/stay/${stayId}`)}
+                >
+                  <FullLeftArrow />
+                </button>
+                <h1 className="back-to-detail">Request to book</h1>
+              </div>
+
               <div className="payment-method-wrapper">
                 <PaymentMethod />
               </div>
               <MessageToHost />
               <div className="confirm-wrapper">
-                <GlowButton className="btn-request" onClick={onConfirmOrder}>
+                <GlowButton
+                  type="button"
+                  className="btn-request"
+                  onClick={onConfirmOrder}
+                >
                   Request to book
                 </GlowButton>
               </div>
@@ -80,6 +94,7 @@ export function PaymentPage() {
                   Your trip has been confirmed. We look forward to hosting you!
                 </p>
                 <GlowButton
+                  type="button"
                   className="btn-request"
                   onClick={() => navigate('/trips')}
                 >

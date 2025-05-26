@@ -1,6 +1,17 @@
 .payment-page {
   margin-top: 1em;
+}
 
+.payment-header{
+  display: flex;
+  gap: 1.5em;
+
+  .payment-header-btn{
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    background-color: $gray0;
+  }
 }
 
 .back-to-detail {

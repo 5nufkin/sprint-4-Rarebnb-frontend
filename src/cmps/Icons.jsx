@@ -292,7 +292,7 @@ export function VISAicon() {
   )
 }
 
-export function fullLeftArrow() {
+export function FullLeftArrow() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +300,15 @@ export function fullLeftArrow() {
       aria-hidden="true"
       role="presentation"
       focusable="false"
-      style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;"
+      style={{
+        display: 'block',
+        fill: 'none',
+        height: '16px',
+        width: '16px',
+        stroke: 'black',
+        strokeWidth: 4,
+        overflow: 'visible',
+      }}
     >
       <g fill="none">
         <path d="M4 16h26M15 28 3.7 16.7a1 1 0 0 1 0-1.4L15 4" />
@@ -308,6 +316,7 @@ export function fullLeftArrow() {
     </svg>
   )
 }
+
 
 export function LeftArrow() {
   return (
